@@ -75,6 +75,19 @@ function init() {
   console.log('SkinLoop initialized ✓');
 }
 
+/* ============================================
+   Utility Functions
+   ============================================ */
+
+/**
+ * Format a hyphenated string to title case with spaces
+ * @param {string} str - String to format (e.g., "spot-treatment")
+ * @returns {string} Formatted string (e.g., "Spot treatment")
+ */
+function formatLabel(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).replace('-', ' ');
+}
+
 // Start the app when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
@@ -241,7 +254,7 @@ function createProductCard(product) {
   card.className = 'product-card';
   card.dataset.productId = product.id;
   
-  const typeLabel = product.type.charAt(0).toUpperCase() + product.type.slice(1).replace('-', ' ');
+  const typeLabel = formatLabel(product.type);
   const activesText = product.actives.length > 0 
     ? product.actives.map(a => a.replace('-', ' ')).join(', ')
     : 'No actives listed';
@@ -308,7 +321,7 @@ function renderProductDetail(productId) {
   const strength = getProductStrength(product);
   const timing = getUsageTiming(product);
   const instruction = getUsageInstruction(product);
-  const typeLabel = product.type.charAt(0).toUpperCase() + product.type.slice(1).replace('-', ' ');
+  const typeLabel = formatLabel(product.type);
   
   const strengthBadgeClass = strength === 'gentle' ? 'badge-gentle' : strength === 'medium' ? 'badge-medium' : 'badge-strong';
   const strengthLabel = strength.charAt(0).toUpperCase() + strength.slice(1);
@@ -435,7 +448,7 @@ function renderRoutine(timeOfDay = 'AM') {
   container.innerHTML = '';
   
   routine.forEach(({ step, type, product }) => {
-    const typeLabel = type.charAt(0).toUpperCase() + type.slice(1).replace('-', ' ');
+    const typeLabel = formatLabel(type);
     
     const stepCard = document.createElement('div');
     stepCard.className = 'product-card';
