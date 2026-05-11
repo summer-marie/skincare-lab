@@ -83,8 +83,62 @@ function init() {
     });
   }
 
-  // Set up the rest of the event listeners
-  setupEventListeners();
+  // Camera button
+  const cameraBtn = document.getElementById('use-camera-btn');
+  const cameraStatus = document.getElementById('camera-status');
+  if (cameraBtn) {
+    cameraBtn.addEventListener('click', () => {
+      cameraStatus.textContent = 'Camera scanning coming soon.';
+      cameraStatus.hidden = false;
+      setTimeout(() => {
+        cameraStatus.hidden = true;
+      }, 3000);
+    });
+  }
+  
+  // Type chips (single-select)
+  document.querySelectorAll('#type-chips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#type-chips .chip').forEach(c => c.classList.remove('is-selected'));
+      chip.classList.add('is-selected');
+    });
+  });
+  
+  // Actives chips (multi-select)
+  document.querySelectorAll('#actives-chips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('is-selected');
+    });
+  });
+  
+  // Filter chips
+  document.querySelectorAll('#filter-chips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#filter-chips .chip').forEach(c => c.classList.remove('is-selected'));
+      chip.classList.add('is-selected');
+      renderProducts(chip.dataset.filter);
+    });
+  });
+  
+  // Add product form
+  const form = document.getElementById('add-product-form');
+  if (form) {
+    form.addEventListener('submit', handleAddProductSubmit);
+  }
+  
+  // Routine time toggle
+  document.querySelectorAll('.segmented-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.segmented-toggle button').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      renderRoutine(btn.dataset.time);
+    });
+  });
+  
+  // Back to home buttons
+  document.querySelectorAll('[data-action="go-home"]').forEach(btn => {
+    btn.addEventListener('click', () => showScreen('home'));
+  });
 
   console.log('SkinLoop initialized ✓');
 }
@@ -553,70 +607,4 @@ function handleAddProductSubmit(e) {
   resetAddProductForm();
   showScreen('products');
   renderProducts();
-}
-
-/* ============================================
-   Event Listeners Setup
-   ============================================ */
-
-/**
- * Set up additional event listeners
- */
-function setupEventListeners() {
-  // Camera button
-  const cameraBtn = document.getElementById('use-camera-btn');
-  const cameraStatus = document.getElementById('camera-status');
-  if (cameraBtn) {
-    cameraBtn.addEventListener('click', () => {
-      cameraStatus.textContent = 'Camera scanning coming soon.';
-      cameraStatus.hidden = false;
-      setTimeout(() => {
-        cameraStatus.hidden = true;
-      }, 3000);
-    });
-  }
-  
-  // Type chips (single-select)
-  document.querySelectorAll('#type-chips .chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('#type-chips .chip').forEach(c => c.classList.remove('is-selected'));
-      chip.classList.add('is-selected');
-    });
-  });
-  
-  // Actives chips (multi-select)
-  document.querySelectorAll('#actives-chips .chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('is-selected');
-    });
-  });
-  
-  // Filter chips
-  document.querySelectorAll('#filter-chips .chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('#filter-chips .chip').forEach(c => c.classList.remove('is-selected'));
-      chip.classList.add('is-selected');
-      renderProducts(chip.dataset.filter);
-    });
-  });
-  
-  // Add product form
-  const form = document.getElementById('add-product-form');
-  if (form) {
-    form.addEventListener('submit', handleAddProductSubmit);
-  }
-  
-  // Routine time toggle
-  document.querySelectorAll('.segmented-toggle button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.segmented-toggle button').forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      renderRoutine(btn.dataset.time);
-    });
-  });
-  
-  // Back to home buttons
-  document.querySelectorAll('[data-action="go-home"]').forEach(btn => {
-    btn.addEventListener('click', () => showScreen('home'));
-  });
 }
