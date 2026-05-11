@@ -2,13 +2,90 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300..700&display=swap" rel="stylesheet">
     <link href="/src/style.css" rel="stylesheet" />
-    <title>skincare-lab</title>
+    <title>SkinLoop — Safer skincare routines for teens</title>
   </head>
   <body>
-    <h1 class="text-3xl font-bold underline text-red-500">Hello world!</h1>
+    <div class="app-shell">
+      <header class="top-bar">
+        <span class="text-lg font-bold" style="color: var(--color-primary);">SkinLoop</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400">Safer skincare routines for teens</span>
+      </header>
+
+      <main id="app-main" class="screen-container">
+        <!-- Home Screen -->
+        <section class="screen is-active" data-screen="home">
+          <div class="flex flex-col gap-8 px-5 py-8">
+            <div class="text-center flex flex-col gap-3 mt-6">
+              <h1 class="text-4xl font-semibold text-gray-900 dark:text-gray-50">SkinLoop</h1>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Safer skincare routines for teens</p>
+            </div>
+
+            <div class="flex flex-col gap-4">
+              <button class="btn btn-primary w-full" data-action="go-scan">
+                Scan product barcode
+              </button>
+              <button class="btn btn-secondary w-full" data-action="go-add">
+                Add product manually
+              </button>
+              <button class="btn btn-ghost w-full" data-action="go-products">
+                View my products
+              </button>
+            </div>
+
+            <p class="text-xs text-center text-gray-500 dark:text-gray-400 italic mt-4">
+              Not a replacement for a dermatologist.
+            </p>
+          </div>
+        </section>
+
+        <!-- Scan Screen -->
+        <section class="screen" data-screen="scan">
+          <div class="flex flex-col gap-4 px-5 py-6">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Scan Product</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Point your camera at the barcode to scan.</p>
+            <button class="btn btn-ghost" data-action="go-add">
+              Or add product manually
+            </button>
+          </div>
+        </section>
+
+        <!-- Add Product Screen -->
+        <section class="screen" data-screen="add">
+          <div class="flex flex-col gap-4 px-5 py-6">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Add Product Manually</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Enter product details to add it to your collection.</p>
+          </div>
+        </section>
+
+        <!-- My Products Screen -->
+        <section class="screen" data-screen="products">
+          <div class="flex flex-col gap-4 px-5 py-6">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">My Products</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Your saved skincare products will appear here.</p>
+          </div>
+        </section>
+
+        <!-- Routine Screen -->
+        <section class="screen" data-screen="routine">
+          <div class="flex flex-col gap-4 px-5 py-6">
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">My Routine</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Build your morning and evening skincare routines.</p>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Primary navigation">
+        <button data-nav="home" aria-current="page">Home</button>
+        <button data-nav="products">My Products</button>
+        <button data-nav="routine">Routine</button>
+      </nav>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
