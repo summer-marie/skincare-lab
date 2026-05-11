@@ -41,6 +41,9 @@ function showScreen(screenName) {
  * Initialize the app
  */
 function init() {
+  // Seed data first
+  seedIfEmpty();
+  
   // Wire up bottom navigation buttons
   const navButtons = document.querySelectorAll('[data-nav]');
   navButtons.forEach((button) => {
@@ -79,6 +82,9 @@ function init() {
       showScreen('products');
     });
   }
+
+  // Set up the rest of the event listeners
+  setupEventListeners();
 
   console.log('SkinLoop initialized ✓');
 }
@@ -614,7 +620,3 @@ function setupEventListeners() {
     btn.addEventListener('click', () => showScreen('home'));
   });
 }
-
-// Seed data and set up listeners on load
-seedIfEmpty();
-setupEventListeners();
