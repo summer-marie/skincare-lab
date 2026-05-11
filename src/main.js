@@ -371,34 +371,33 @@ function renderProducts(filter = 'all') {
 }
 
 /**
- * Render product detail view
- * @param {string} productId - Product ID
+ * Get a product by its ID
+ * @param {string} id - Product ID
+ * @returns {Object|null} Product object or null if not found
  */
-function renderProductDetail(productId) {
-  const products = getProducts();
-  const product = products.find(p => p.id === productId);
-  
-  if (!product) return;
-  
-  const listView = document.getElementById('products-list-view');
-  const detailView = document.getElementById('product-detail-view');
-  
-  listView.classList.add('hidden');
-  detailView.classList.remove('hidden');
-  
+function getProductById(id) {
+  return getProducts().find(p => p.id === id) || null;
+}
+
+/**
+ * Build the HTML for product detail view
+ * @param {Object} product - Product object
+ * @returns {string} HTML string for the detail view
+ */
+function buildDetailHTML(product) {
   const strength = getProductStrength(product);
   const timing = getUsageTiming(product);
   const instruction = getUsageInstruction(product);
   const typeLabel = formatLabel(product.type);
   
   const strengthBadgeClass = strength === 'gentle' ? 'badge-gentle' : strength === 'medium' ? 'badge-medium' : 'badge-strong';
-  const strengthLabel = strength.charAt(0).toUpperCase() + strength.slice(1);
+  const strengthLabel = formatLabel(strength);
   
   const warningText = (strength === 'medium' || strength === 'strong')
     ? '<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Avoid combining with other strong actives in the same routine.</p>'
     : '';
   
-  detailView.innerHTML = `
+  return `
     <div class="flex flex-col gap-5 px-5 py-6">
       <button class="btn btn-ghost self-start -ml-3" id="back-to-products">
         ‹ Back to my products
@@ -459,6 +458,24 @@ function renderProductDetail(productId) {
       </button>
     </div>
   `;
+}
+
+/**
+ * Render product detail view
+ * @param {string} productId - Product ID
+ */
+function renderProductDetail(productId) {
+  const product = getProductById(productId);
+  
+  if (!product) return;
+  
+  const listView = document.getElementById('products-list-view');
+  const detailView = document.getElementById('product-detail-view');
+  
+  listView.classList.add('hidden');
+  detailView.classList.remove('hidden');
+  
+  detailView.innerHTML = buildDetailHTML(product);
   
   document.getElementById('back-to-products').addEventListener('click', showProductsList);
   document.getElementById('back-to-products-bottom').addEventListener('click', showProductsList);
