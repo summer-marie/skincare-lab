@@ -47,6 +47,14 @@ function init() {
     button.addEventListener('click', () => {
       const screenName = button.dataset.nav;
       showScreen(screenName);
+      
+      // Screen-specific rendering
+      if (screenName === 'products') {
+        showProductsList();
+        renderProducts();
+      } else if (screenName === 'routine') {
+        renderRoutine('AM');
+      }
     });
   });
 
@@ -604,20 +612,6 @@ function setupEventListeners() {
   // Back to home buttons
   document.querySelectorAll('[data-action="go-home"]').forEach(btn => {
     btn.addEventListener('click', () => showScreen('home'));
-  });
-  
-  // Screen-specific rendering when screens become active
-  const navButtons = document.querySelectorAll('[data-nav]');
-  navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const screen = btn.dataset.nav;
-      if (screen === 'products') {
-        showProductsList();
-        renderProducts();
-      } else if (screen === 'routine') {
-        renderRoutine('AM');
-      }
-    });
   });
 }
 
