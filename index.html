@@ -45,36 +45,148 @@
 
         <!-- Scan Screen -->
         <section class="screen" data-screen="scan">
-          <div class="flex flex-col gap-4 px-5 py-6">
-            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Scan Product</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Point your camera at the barcode to scan.</p>
-            <button class="btn btn-ghost" data-action="go-add">
-              Or add product manually
+          <div class="flex flex-col gap-6 px-5 py-6">
+            <button class="btn btn-ghost self-start -ml-3" data-action="go-home">
+              ‹ Back
+            </button>
+            
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Scan your product</h2>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div class="barcode-visual flex items-center justify-center gap-1 h-24">
+                <div class="bg-gray-900 dark:bg-gray-100 w-1 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-0.5 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-2 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-1 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-0.5 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-1.5 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-1 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-2 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-0.5 h-full"></div>
+                <div class="bg-gray-900 dark:bg-gray-100 w-1 h-full"></div>
+              </div>
+            </div>
+            
+            <p class="text-sm text-gray-600 dark:text-gray-400 text-center">Point your camera at the barcode</p>
+            
+            <button class="btn btn-primary w-full" id="use-camera-btn">
+              Use camera
+            </button>
+            
+            <p class="text-sm text-center" style="color: var(--color-primary);" id="camera-status" hidden></p>
+            
+            <button class="btn btn-ghost w-full" data-action="go-add">
+              Or enter product manually
             </button>
           </div>
         </section>
 
         <!-- Add Product Screen -->
         <section class="screen" data-screen="add">
-          <div class="flex flex-col gap-4 px-5 py-6">
-            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Add Product Manually</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Enter product details to add it to your collection.</p>
+          <div class="flex flex-col gap-6 px-5 py-6">
+            <button class="btn btn-ghost self-start -ml-3" data-action="go-home">
+              ‹ Back
+            </button>
+            
+            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Add product</h2>
+            
+            <form id="add-product-form" class="flex flex-col gap-5">
+              <div class="form-field">
+                <label for="product-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Product name</label>
+                <input type="text" id="product-name" class="input" placeholder="e.g., Hydrating Cleanser" required>
+              </div>
+              
+              <div class="form-field">
+                <label for="product-brand" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Brand</label>
+                <input type="text" id="product-brand" class="input" placeholder="e.g., CeraVe" required>
+              </div>
+              
+              <div class="form-field">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Type</label>
+                <div class="flex flex-wrap gap-2" id="type-chips">
+                  <button type="button" class="chip" data-type="cleanser">Cleanser</button>
+                  <button type="button" class="chip" data-type="exfoliant">Exfoliant</button>
+                  <button type="button" class="chip" data-type="serum">Serum</button>
+                  <button type="button" class="chip" data-type="spot-treatment">Spot treatment</button>
+                  <button type="button" class="chip" data-type="moisturizer">Moisturizer</button>
+                  <button type="button" class="chip" data-type="spf">SPF</button>
+                </div>
+              </div>
+              
+              <div class="form-field">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Main actives (select all that apply)</label>
+                <div class="flex flex-wrap gap-2" id="actives-chips">
+                  <button type="button" class="chip" data-active="salicylic-acid">Salicylic acid</button>
+                  <button type="button" class="chip" data-active="benzoyl-peroxide">Benzoyl peroxide</button>
+                  <button type="button" class="chip" data-active="niacinamide">Niacinamide</button>
+                  <button type="button" class="chip" data-active="retinoid">Retinoid</button>
+                  <button type="button" class="chip" data-active="other">Other</button>
+                </div>
+              </div>
+              
+              <p class="text-sm text-red-600 dark:text-red-400" id="form-error" hidden></p>
+              
+              <button type="submit" class="btn btn-primary w-full mt-4">
+                Save product
+              </button>
+            </form>
           </div>
         </section>
 
         <!-- My Products Screen -->
         <section class="screen" data-screen="products">
-          <div class="flex flex-col gap-4 px-5 py-6">
-            <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">My Products</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Your saved skincare products will appear here.</p>
+          <div id="products-list-view">
+            <div class="flex flex-col gap-4 px-5 py-6">
+              <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">My products</h2>
+              
+              <div class="flex flex-wrap gap-2" id="filter-chips">
+                <button class="chip is-selected" data-filter="all">All</button>
+                <button class="chip" data-filter="cleanser">Cleansers</button>
+                <button class="chip" data-filter="exfoliant">Exfoliants</button>
+                <button class="chip" data-filter="serum">Serums</button>
+                <button class="chip" data-filter="moisturizer">Moisturizers</button>
+                <button class="chip" data-filter="spf">SPF</button>
+              </div>
+              
+              <div id="products-container" class="flex flex-col gap-3 mt-2">
+                <!-- Products rendered here -->
+              </div>
+            </div>
+          </div>
+          
+          <div id="product-detail-view" class="hidden">
+            <!-- Product detail rendered here -->
           </div>
         </section>
 
         <!-- Routine Screen -->
         <section class="screen" data-screen="routine">
-          <div class="flex flex-col gap-4 px-5 py-6">
+          <div class="flex flex-col gap-5 px-5 py-6">
             <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">My Routine</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Build your morning and evening skincare routines.</p>
+            
+            <div class="segmented-toggle">
+              <button class="is-active" data-time="AM">AM</button>
+              <button data-time="PM">PM</button>
+            </div>
+            
+            <div class="warning-banner" id="routine-warning" hidden>
+              <span class="text-lg">⚠</span>
+              <p class="text-sm">Too many strong treatments tonight. Consider removing one.</p>
+            </div>
+            
+            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-50">Today's suggested routine</h3>
+            
+            <div id="routine-container" class="flex flex-col gap-3">
+              <!-- Routine steps rendered here -->
+            </div>
+            
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+              This routine is a suggestion based on your products and goals.
+            </p>
+            
+            <p class="text-xs text-center text-gray-500 dark:text-gray-400 italic mt-4">
+              Not a replacement for a dermatologist.
+            </p>
           </div>
         </section>
       </main>

@@ -110,6 +110,86 @@ body {
     background: var(--color-error-soft);
     color: var(--color-error);
   }
+
+  /* Form elements */
+  .form-field {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .input {
+    @apply w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-base;
+    min-height: 44px;
+  }
+
+  .input:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 0;
+    border-color: var(--color-primary);
+  }
+
+  /* Section card for detail view */
+  .section-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm;
+  }
+
+  /* Warning banner */
+  .warning-banner {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg border-l-4;
+    background: var(--color-warning-soft);
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+  }
+
+  /* Empty state */
+  .empty-state {
+    @apply text-center py-12 px-6 text-gray-500 dark:text-gray-400 text-sm;
+  }
+
+  /* Segmented toggle */
+  .segmented-toggle {
+    @apply inline-flex rounded-lg p-1 bg-gray-200 dark:bg-gray-700;
+  }
+
+  .segmented-toggle button {
+    @apply px-6 py-2 rounded-md text-sm font-medium transition-all;
+    min-height: 40px;
+  }
+
+  .segmented-toggle button.is-active {
+    @apply bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 shadow-sm;
+  }
+
+  .segmented-toggle button:not(.is-active) {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  /* Routine flow */
+  .routine-flow {
+    @apply flex items-center justify-center gap-2 flex-wrap;
+  }
+
+  .routine-step {
+    @apply px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs font-medium text-gray-700 dark:text-gray-300;
+  }
+
+  .routine-step.is-current {
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+    border-color: var(--color-primary);
+  }
+
+  /* Product card enhancements */
+  .product-card {
+    @apply bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 shadow-sm transition-all cursor-pointer;
+  }
+
+  .product-card:hover {
+    @apply shadow-md border-gray-300 dark:border-gray-600;
+  }
+
+  .product-card:active {
+    @apply scale-[0.98];
+  }
 }
 
 /* App shell layout */
