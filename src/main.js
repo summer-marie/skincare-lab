@@ -148,7 +148,10 @@ function init() {
   
   // Back to home buttons
   document.querySelectorAll('[data-action="go-home"]').forEach(btn => {
-    btn.addEventListener('click', () => showScreen('home'));
+    btn.addEventListener('click', () => {
+      stopScanner();
+      showScreen('home');
+    });
   });
 
   console.log('SkinLoop initialized ✓');
@@ -335,7 +338,7 @@ function createProductCard(product) {
   
   const typeLabel = formatLabel(product.type);
   const activesText = product.actives.length > 0 
-    ? product.actives.map(a => a.replace('-', ' ')).join(', ')
+    ? product.actives.map(a => a.replaceAll('-', ' ')).join(', ')
     : 'No actives listed';
   
   card.innerHTML = `
@@ -449,7 +452,7 @@ function buildDetailHTML(product) {
       activeDiv.className = 'text-sm';
       const activeName = document.createElement('span');
       activeName.className = 'font-medium text-gray-900 dark:text-gray-50';
-      activeName.textContent = active.replace('-', ' ');
+      activeName.textContent = active.replaceAll('-', ' ');
       const activeDesc = document.createElement('span');
       activeDesc.className = 'text-gray-600 dark:text-gray-400';
       activeDesc.textContent = ` — ${getActiveDescription(active)}`;
