@@ -404,71 +404,168 @@ function buildDetailHTML(product) {
   const strengthBadgeClass = strength === 'gentle' ? 'badge-gentle' : strength === 'medium' ? 'badge-medium' : 'badge-strong';
   const strengthLabel = formatLabel(strength);
   
-  const warningText = (strength === 'medium' || strength === 'strong')
-    ? '<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Avoid combining with other strong actives in the same routine.</p>'
-    : '';
+  // Create main container
+  const container = document.createElement('div');
+  container.className = 'flex flex-col gap-5 px-5 py-6';
   
-  return `
-    <div class="flex flex-col gap-5 px-5 py-6">
-      <button class="btn btn-ghost self-start -ml-3" id="back-to-products">
-        ‹ Back to my products
-      </button>
-      
-      <div>
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">${product.name}</h2>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">${product.brand} · ${typeLabel}</p>
-      </div>
-      
-      <div class="section-card">
-        <h3 class="text-base font-semibold text-gray-900 dark:text-gray-50 mb-3 flex items-center gap-2">
-          What's in it
-          <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">i</span>
-        </h3>
-        <div class="flex flex-col gap-2">
-          ${product.actives.map(active => `
-            <div class="text-sm">
-              <span class="font-medium text-gray-900 dark:text-gray-50">${active.replace('-', ' ')}</span>
-              <span class="text-gray-600 dark:text-gray-400"> — ${getActiveDescription(active)}</span>
-            </div>
-          `).join('')}
-          ${product.actives.length === 0 ? '<p class="text-sm text-gray-500 dark:text-gray-400">No actives listed</p>' : ''}
-        </div>
-      </div>
-      
-      <div class="section-card">
-        <h3 class="text-base font-semibold text-gray-900 dark:text-gray-50 mb-3">How to use it</h3>
-        <div class="flex items-center gap-2 mb-2">
-          <span class="badge badge-gentle">${timing}</span>
-        </div>
-        <p class="text-sm text-gray-600 dark:text-gray-400">${instruction}</p>
-      </div>
-      
-      <div class="section-card">
-        <h3 class="text-base font-semibold text-gray-900 dark:text-gray-50 mb-3">Strength & safety</h3>
-        <div class="flex items-center gap-2 mb-2">
-          <span class="badge ${strengthBadgeClass}">${strengthLabel}</span>
-        </div>
-        ${warningText}
-      </div>
-      
-      <div class="section-card">
-        <h3 class="text-base font-semibold text-gray-900 dark:text-gray-50 mb-3">In your routine</h3>
-        <div class="routine-flow">
-          <div class="routine-step">Cleanser</div>
-          <span class="text-gray-400">→</span>
-          <div class="routine-step is-current">${typeLabel}</div>
-          <span class="text-gray-400">→</span>
-          <div class="routine-step">Moisturizer</div>
-          <span class="text-gray-400">→</span>
-          <div class="routine-step">SPF</div>
-        </div>
-      </div>
-      
-      <button class="btn btn-primary w-full mt-2" id="back-to-products-bottom">
-        Back to my products
-      </button>
-    </div>
-  `;
+  // Back button
+  const backBtn = document.createElement('button');
+  backBtn.className = 'btn btn-ghost self-start -ml-3';
+  backBtn.id = 'back-to-products';
+  backBtn.textContent = '‹ Back to my products';
+  container.appendChild(backBtn);
+  
+  // Header section
+  const header = document.createElement('div');
+  const title = document.createElement('h2');
+  title.className = 'text-2xl font-semibold text-gray-900 dark:text-gray-50';
+  title.textContent = product.name;
+  const subtitle = document.createElement('p');
+  subtitle.className = 'text-sm text-gray-600 dark:text-gray-400 mt-1';
+  subtitle.textContent = `${product.brand} · ${typeLabel}`;
+  header.appendChild(title);
+  header.appendChild(subtitle);
+  container.appendChild(header);
+  
+  // "What's in it" section
+  const activesCard = document.createElement('div');
+  activesCard.className = 'section-card';
+  const activesTitle = document.createElement('h3');
+  activesTitle.className = 'text-base font-semibold text-gray-900 dark:text-gray-50 mb-3 flex items-center gap-2';
+  activesTitle.innerHTML = 'What\'s in it <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-700 text-xs">i</span>';
+  activesCard.appendChild(activesTitle);
+  
+  const activesContent = document.createElement('div');
+  activesContent.className = 'flex flex-col gap-2';
+  
+  if (product.actives.length === 0) {
+    const noActives = document.createElement('p');
+    noActives.className = 'text-sm text-gray-500 dark:text-gray-400';
+    noActives.textContent = 'No actives listed';
+    activesContent.appendChild(noActives);
+  } else {
+    product.actives.forEach(active => {
+      const activeDiv = document.createElement('div');
+      activeDiv.className = 'text-sm';
+      const activeName = document.createElement('span');
+      activeName.className = 'font-medium text-gray-900 dark:text-gray-50';
+      activeName.textContent = active.replace('-', ' ');
+      const activeDesc = document.createElement('span');
+      activeDesc.className = 'text-gray-600 dark:text-gray-400';
+      activeDesc.textContent = ` — ${getActiveDescription(active)}`;
+      activeDiv.appendChild(activeName);
+      activeDiv.appendChild(activeDesc);
+      activesContent.appendChild(activeDiv);
+    });
+  }
+  
+  activesCard.appendChild(activesContent);
+  container.appendChild(activesCard);
+  
+  // "How to use it" section
+  const usageCard = document.createElement('div');
+  usageCard.className = 'section-card';
+  const usageTitle = document.createElement('h3');
+  usageTitle.className = 'text-base font-semibold text-gray-900 dark:text-gray-50 mb-3';
+  usageTitle.textContent = 'How to use it';
+  usageCard.appendChild(usageTitle);
+  
+  const timingBadgeContainer = document.createElement('div');
+  timingBadgeContainer.className = 'flex items-center gap-2 mb-2';
+  const timingBadge = document.createElement('span');
+  timingBadge.className = 'badge badge-gentle';
+  timingBadge.textContent = timing;
+  timingBadgeContainer.appendChild(timingBadge);
+  usageCard.appendChild(timingBadgeContainer);
+  
+  const usageInstruction = document.createElement('p');
+  usageInstruction.className = 'text-sm text-gray-600 dark:text-gray-400';
+  usageInstruction.textContent = instruction;
+  usageCard.appendChild(usageInstruction);
+  container.appendChild(usageCard);
+  
+  // "Strength & safety" section
+  const strengthCard = document.createElement('div');
+  strengthCard.className = 'section-card';
+  const strengthTitle = document.createElement('h3');
+  strengthTitle.className = 'text-base font-semibold text-gray-900 dark:text-gray-50 mb-3';
+  strengthTitle.textContent = 'Strength & safety';
+  strengthCard.appendChild(strengthTitle);
+  
+  const strengthBadgeContainer = document.createElement('div');
+  strengthBadgeContainer.className = 'flex items-center gap-2 mb-2';
+  const strengthBadge = document.createElement('span');
+  strengthBadge.className = `badge ${strengthBadgeClass}`;
+  strengthBadge.textContent = strengthLabel;
+  strengthBadgeContainer.appendChild(strengthBadge);
+  strengthCard.appendChild(strengthBadgeContainer);
+  
+  if (strength === 'medium' || strength === 'strong') {
+    const warningText = document.createElement('p');
+    warningText.className = 'text-sm text-gray-600 dark:text-gray-400 mt-2';
+    warningText.textContent = 'Avoid combining with other strong actives in the same routine.';
+    strengthCard.appendChild(warningText);
+  }
+  
+  container.appendChild(strengthCard);
+  
+  // "In your routine" section
+  const routineCard = document.createElement('div');
+  routineCard.className = 'section-card';
+  const routineTitle = document.createElement('h3');
+  routineTitle.className = 'text-base font-semibold text-gray-900 dark:text-gray-50 mb-3';
+  routineTitle.textContent = 'In your routine';
+  routineCard.appendChild(routineTitle);
+  
+  const routineFlow = document.createElement('div');
+  routineFlow.className = 'routine-flow';
+  
+  const cleanserStep = document.createElement('div');
+  cleanserStep.className = 'routine-step';
+  cleanserStep.textContent = 'Cleanser';
+  routineFlow.appendChild(cleanserStep);
+  
+  const arrow1 = document.createElement('span');
+  arrow1.className = 'text-gray-400';
+  arrow1.textContent = '→';
+  routineFlow.appendChild(arrow1);
+  
+  const currentStep = document.createElement('div');
+  currentStep.className = 'routine-step is-current';
+  currentStep.textContent = typeLabel;
+  routineFlow.appendChild(currentStep);
+  
+  const arrow2 = document.createElement('span');
+  arrow2.className = 'text-gray-400';
+  arrow2.textContent = '→';
+  routineFlow.appendChild(arrow2);
+  
+  const moisturizerStep = document.createElement('div');
+  moisturizerStep.className = 'routine-step';
+  moisturizerStep.textContent = 'Moisturizer';
+  routineFlow.appendChild(moisturizerStep);
+  
+  const arrow3 = document.createElement('span');
+  arrow3.className = 'text-gray-400';
+  arrow3.textContent = '→';
+  routineFlow.appendChild(arrow3);
+  
+  const spfStep = document.createElement('div');
+  spfStep.className = 'routine-step';
+  spfStep.textContent = 'SPF';
+  routineFlow.appendChild(spfStep);
+  
+  routineCard.appendChild(routineFlow);
+  container.appendChild(routineCard);
+  
+  // Bottom back button
+  const bottomBackBtn = document.createElement('button');
+  bottomBackBtn.className = 'btn btn-primary w-full mt-2';
+  bottomBackBtn.id = 'back-to-products-bottom';
+  bottomBackBtn.textContent = 'Back to my products';
+  container.appendChild(bottomBackBtn);
+  
+  return container;
 }
 
 /**
@@ -486,7 +583,8 @@ function renderProductDetail(productId) {
   listView.classList.add('hidden');
   detailView.classList.remove('hidden');
   
-  detailView.innerHTML = buildDetailHTML(product);
+  detailView.innerHTML = '';
+  detailView.append(buildDetailHTML(product));
   
   document.getElementById('back-to-products').addEventListener('click', showProductsList);
   document.getElementById('back-to-products-bottom').addEventListener('click', showProductsList);
@@ -552,7 +650,7 @@ function renderRoutine(timeOfDay = 'AM') {
     if (product) {
       stepCard.innerHTML = `
         <div class="flex items-center gap-3">
-          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-semibold text-gray-700 dark:text-gray-300">
             ${step}
           </div>
           <div class="flex-1">
@@ -571,7 +669,7 @@ function renderRoutine(timeOfDay = 'AM') {
       stepCard.className = 'bg-white dark:bg-gray-800 rounded-xl p-4 border border-dashed border-gray-300 dark:border-gray-700';
       stepCard.innerHTML = `
         <div class="flex items-center gap-3">
-          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-semibold text-gray-700 dark:text-gray-300">
+          <div class="shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-semibold text-gray-700 dark:text-gray-300">
             ${step}
           </div>
           <div class="flex-1">
