@@ -96,6 +96,7 @@ body {
 
   .chip {
     @apply inline-flex items-center px-4 py-2 rounded-full text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 cursor-pointer transition-all;
+    min-height: 44px;
   }
 
   .chip.is-selected {
@@ -167,7 +168,7 @@ body {
 
   .segmented-toggle button {
     @apply px-6 py-2 rounded-md text-sm font-medium transition-all;
-    min-height: 40px;
+    min-height: 44px;
   }
 
   .segmented-toggle button.is-active {
@@ -251,6 +252,7 @@ body {
 
 .bottom-nav button {
   @apply flex items-center justify-center text-sm font-medium text-gray-500 dark:text-gray-400 transition-colors;
+  min-height: 44px;
 }
 
 .bottom-nav button[aria-current="page"] {

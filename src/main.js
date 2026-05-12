@@ -387,17 +387,16 @@ function renderProducts(filter = 'all') {
   if (filtered.length === 0) {
     const emptyState = document.createElement('div');
     emptyState.className = 'empty-state';
-    
-    const message = document.createElement('p');
-    message.textContent = 'No products in your stash yet.';
-    emptyState.appendChild(message);
-    
+    emptyState.innerHTML = `
+      <div class="text-4xl mb-4">🧴</div>
+      <p class="font-medium text-gray-700 dark:text-gray-300 mb-1">Your stash is empty</p>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Scan a barcode or add a product manually to get started.</p>
+    `;
     const addButton = document.createElement('button');
-    addButton.className = 'btn btn-primary mt-4';
+    addButton.className = 'btn btn-primary';
     addButton.textContent = 'Add your first product';
     addButton.addEventListener('click', () => showScreen('add'));
     emptyState.appendChild(addButton);
-    
     container.appendChild(emptyState);
     return;
   }
