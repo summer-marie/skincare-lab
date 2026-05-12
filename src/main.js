@@ -5,6 +5,9 @@
 
 import { startScanner, stopScanner, lookupBarcode } from './modules/scanner.js';
 
+// DOM element cache
+let DOM = {};
+
 /**
  * Show a specific screen and update navigation state
  * @param {string} screenName - The data-screen attribute value to show
@@ -45,6 +48,18 @@ function showScreen(screenName) {
 function init() {
   // Seed data first
   seedIfEmpty();
+  
+  // Cache stable DOM elements
+  DOM = {
+    scannerSpinner: document.getElementById('scanner-spinner'),
+    scannerError: document.getElementById('scanner-error'),
+    scannerResult: document.getElementById('scanner-result'),
+    routineContainer: document.getElementById('routine-container'),
+    routineWarning: document.getElementById('routine-warning'),
+    productsContainer: document.getElementById('products-container'),
+    productsListView: document.getElementById('products-list-view'),
+    productDetailView: document.getElementById('product-detail-view')
+  };
   
   // Wire up bottom navigation buttons
   const navButtons = document.querySelectorAll('[data-nav]');
@@ -89,19 +104,6 @@ function init() {
   if (productsButton) {
     productsButton.addEventListener('click', () => {
       showScreen('products');
-    });
-  }
-
-  // Camera button
-  const cameraBtn = document.getElementById('use-camera-btn');
-  const cameraStatus = document.getElementById('camera-status');
-  if (cameraBtn) {
-    cameraBtn.addEventListener('click', () => {
-      cameraStatus.textContent = 'Camera scanning coming soon.';
-      cameraStatus.hidden = false;
-      setTimeout(() => {
-        cameraStatus.hidden = true;
-      }, 3000);
     });
   }
   
@@ -162,7 +164,7 @@ function init() {
  * @returns {string} Formatted string (e.g., "Spot treatment")
  */
 function formatLabel(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1).replace('-', ' ');
+  return str.charAt(0).toUpperCase() + str.slice(1).replaceAll('-', ' ');
 }
 
 // Start the app when DOM is ready
@@ -359,7 +361,7 @@ function createProductCard(product) {
  * @param {string} filter - Filter by type ("all" or specific type)
  */
 function renderProducts(filter = 'all') {
-  const container = document.getElementById('products-container');
+  const container = DOM.productsContainer;
   const products = getProducts();
   
   let filtered = products;
@@ -478,8 +480,8 @@ function renderProductDetail(productId) {
   
   if (!product) return;
   
-  const listView = document.getElementById('products-list-view');
-  const detailView = document.getElementById('product-detail-view');
+  const listView = DOM.productsListView;
+  const detailView = DOM.productDetailView;
   
   listView.classList.add('hidden');
   detailView.classList.remove('hidden');
@@ -494,8 +496,8 @@ function renderProductDetail(productId) {
  * Show products list view (hide detail view)
  */
 function showProductsList() {
-  const listView = document.getElementById('products-list-view');
-  const detailView = document.getElementById('product-detail-view');
+  const listView = DOM.productsListView;
+  const detailView = DOM.productDetailView;
   
   listView.classList.remove('hidden');
   detailView.classList.add('hidden');
@@ -510,9 +512,9 @@ function showProductsList() {
  * @param {string} timeOfDay - "AM" or "PM"
  */
 function renderRoutine(timeOfDay = 'AM') {
-  const container = document.getElementById('routine-container');
+  const container = DOM.routineContainer;
   const products = getProducts();
-  const warningBanner = document.getElementById('routine-warning');
+  const warningBanner = DOM.routineWarning;
   
   // Define routine order
   const routineOrder = timeOfDay === 'AM'
@@ -681,9 +683,9 @@ function initScanScreen() {
     cameraBtn.parentNode.replaceChild(newBtn, cameraBtn);
     
     newBtn.addEventListener('click', () => {
-      const spinner = document.getElementById('scanner-spinner');
-      const errorEl = document.getElementById('scanner-error');
-      const resultEl = document.getElementById('scanner-result');
+      const spinner = DOM.scannerSpinner;
+      const errorEl = DOM.scannerError;
+      const resultEl = DOM.scannerResult;
       
       spinner.hidden = true;
       errorEl.hidden = true;
@@ -699,9 +701,9 @@ function initScanScreen() {
  * @param {string} barcode - Scanned barcode string
  */
 async function handleScanSuccess(barcode) {
-  const spinner = document.getElementById('scanner-spinner');
-  const errorEl = document.getElementById('scanner-error');
-  const resultEl = document.getElementById('scanner-result');
+  const spinner = DOM.scannerSpinner;
+  const errorEl = DOM.scannerError;
+  const resultEl = DOM.scannerResult;
   
   spinner.hidden = false;
   errorEl.hidden = true;
@@ -732,8 +734,8 @@ async function handleScanSuccess(barcode) {
  * @param {string} message - Error message
  */
 function handleScanError(message) {
-  const spinner = document.getElementById('scanner-spinner');
-  const errorEl = document.getElementById('scanner-error');
+  const spinner = DOM.scannerSpinner;
+  const errorEl = DOM.scannerError;
   
   spinner.hidden = true;
   errorEl.textContent = message;
