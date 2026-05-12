@@ -90,6 +90,20 @@
             
             <p class="text-sm text-center" style="color: var(--color-primary);" id="camera-status" hidden></p>
             
+            <!-- Or separator -->
+            <div class="flex items-center gap-3 py-2">
+              <div class="flex-1 border-t border-gray-200 dark:border-gray-700"></div>
+              <span class="text-sm text-gray-500 dark:text-gray-400">or</span>
+              <div class="flex-1 border-t border-gray-200 dark:border-gray-700"></div>
+            </div>
+            
+            <!-- Upload barcode photo -->
+            <div class="section-card">
+              <label for="barcode-upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Upload a photo of the barcode</label>
+              <input type="file" id="barcode-upload" accept="image/*" class="input w-full text-sm">
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Works on desktop — take a photo of the barcode with your phone and upload it here</p>
+            </div>
+            
             <button class="btn btn-ghost w-full" data-action="go-add">
               Or enter product manually
             </button>

@@ -3,7 +3,7 @@
    Navigation and app shell logic
    ============================================ */
 
-import { startScanner, stopScanner, lookupBarcode } from './modules/scanner.js';
+import { startScanner, stopScanner, lookupBarcode, scanFromFile } from './modules/scanner.js';
 import { getAMRoutine, getPMRoutine, getConflictWarnings } from './modules/routineEngine.js';
 
 // DOM element cache
@@ -927,6 +927,35 @@ function initScanScreen() {
       resultEl.hidden = true;
       
       startScanner('scanner-container', handleScanSuccess, handleScanError);
+    });
+  }
+  
+  // Wire up file upload barcode scanner
+  const fileInput = document.getElementById('barcode-upload');
+  if (fileInput) {
+    fileInput.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      const spinner = DOM.scannerSpinner;
+      const errorEl = DOM.scannerError;
+      const resultEl = DOM.scannerResult;
+      
+      spinner.hidden = false;
+      errorEl.hidden = true;
+      resultEl.hidden = true;
+      
+      try {
+        const barcode = await scanFromFile(file);
+        await handleScanSuccess(barcode);
+      } catch (err) {
+        spinner.hidden = true;
+        errorEl.textContent = "Couldn't read that barcode. Try a clearer photo in good lighting.";
+        errorEl.hidden = false;
+      }
+      
+      // Reset file input so same file can be resubmitted
+      fileInput.value = '';
     });
   }
 }

@@ -69,6 +69,26 @@ export function stopScanner() {
   }
 }
 
+/**
+ * Scan barcode from an uploaded image file
+ * @param {File} file - Image file containing a barcode
+ * @returns {Promise<string>} Decoded barcode text
+ * @throws {Error} If scan fails
+ */
+export async function scanFromFile(file) {
+  const tempId = `temp-scanner-${Date.now()}`;
+  const tempScanner = new Html5Qrcode(tempId);
+  
+  try {
+    const decodedText = await tempScanner.scanFile(file, false);
+    tempScanner.clear();
+    return decodedText;
+  } catch (err) {
+    tempScanner.clear();
+    throw new Error('Could not read barcode from image');
+  }
+}
+
 /* ============================================
    Barcode Lookup
    ============================================ */
