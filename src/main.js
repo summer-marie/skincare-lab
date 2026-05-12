@@ -3,6 +3,8 @@
    Navigation and app shell logic
    ============================================ */
 
+import { startScanner, stopScanner, lookupBarcode } from './modules/scanner.js';
+
 /**
  * Show a specific screen and update navigation state
  * @param {string} screenName - The data-screen attribute value to show
@@ -49,6 +51,12 @@ function init() {
   navButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const screenName = button.dataset.nav;
+      
+      // Stop scanner when leaving scan screen
+      if (screenName !== 'scan') {
+        stopScanner();
+      }
+      
       showScreen(screenName);
       
       // Screen-specific rendering
@@ -66,6 +74,7 @@ function init() {
   if (scanButton) {
     scanButton.addEventListener('click', () => {
       showScreen('scan');
+      initScanScreen();
     });
   }
 
@@ -624,4 +633,109 @@ function handleAddProductSubmit(e) {
   resetAddProductForm();
   showScreen('products');
   renderProducts();
+}
+
+/* ============================================
+   Scanner Integration
+   ============================================ */
+
+/**
+ * Prefill the add product form with scanned data
+ * @param {Object} productData - Product data from barcode lookup
+ */
+function prefillForm(productData) {
+  // Set name and brand inputs
+  document.getElementById('product-name').value = productData.name || '';
+  document.getElementById('product-brand').value = productData.brand || '';
+  
+  // Select the product type chip
+  const typeChips = document.querySelectorAll('#type-chips .chip');
+  typeChips.forEach(chip => chip.classList.remove('is-selected'));
+  const typeChip = document.querySelector(`#type-chips .chip[data-type="${productData.type}"]`);
+  if (typeChip) {
+    typeChip.classList.add('is-selected');
+  }
+  
+  // Select the actives chips
+  const activesChips = document.querySelectorAll('#actives-chips .chip');
+  activesChips.forEach(chip => chip.classList.remove('is-selected'));
+  if (productData.actives && productData.actives.length > 0) {
+    productData.actives.forEach(active => {
+      const activeChip = document.querySelector(`#actives-chips .chip[data-active="${active}"]`);
+      if (activeChip) {
+        activeChip.classList.add('is-selected');
+      }
+    });
+  }
+}
+
+/**
+ * Initialize the scan screen and wire up scanner
+ */
+function initScanScreen() {
+  const cameraBtn = document.getElementById('use-camera-btn');
+  
+  if (cameraBtn) {
+    // Remove any existing listeners by cloning
+    const newBtn = cameraBtn.cloneNode(true);
+    cameraBtn.parentNode.replaceChild(newBtn, cameraBtn);
+    
+    newBtn.addEventListener('click', () => {
+      const spinner = document.getElementById('scanner-spinner');
+      const errorEl = document.getElementById('scanner-error');
+      const resultEl = document.getElementById('scanner-result');
+      
+      spinner.hidden = true;
+      errorEl.hidden = true;
+      resultEl.hidden = true;
+      
+      startScanner('scanner-container', handleScanSuccess, handleScanError);
+    });
+  }
+}
+
+/**
+ * Handle successful barcode scan
+ * @param {string} barcode - Scanned barcode string
+ */
+async function handleScanSuccess(barcode) {
+  const spinner = document.getElementById('scanner-spinner');
+  const errorEl = document.getElementById('scanner-error');
+  const resultEl = document.getElementById('scanner-result');
+  
+  spinner.hidden = false;
+  errorEl.hidden = true;
+  resultEl.hidden = true;
+  
+  const result = await lookupBarcode(barcode);
+  
+  if (result) {
+    prefillForm(result);
+    showScreen('add');
+  } else {
+    spinner.hidden = true;
+    resultEl.innerHTML = `
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Product not found — add it manually</p>
+      <button class="btn btn-secondary" data-action="go-add">Add manually</button>
+    `;
+    resultEl.hidden = false;
+    
+    // Wire up the new button
+    resultEl.querySelector('[data-action="go-add"]').addEventListener('click', () => {
+      showScreen('add');
+    });
+  }
+}
+
+/**
+ * Handle scanner error
+ * @param {string} message - Error message
+ */
+function handleScanError(message) {
+  const spinner = document.getElementById('scanner-spinner');
+  const errorEl = document.getElementById('scanner-error');
+  
+  spinner.hidden = true;
+  errorEl.textContent = message;
+  errorEl.hidden = false;
 }
