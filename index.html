@@ -126,6 +126,28 @@
                 </div>
               </div>
               
+              <!-- Scanned Product Data (read-only, populated by barcode scanner) -->
+              <div id="scanned-safety-score" class="form-field" hidden>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Safety Score</label>
+                <div class="flex items-center gap-2">
+                  <span id="safety-score-badge" class="badge"></span>
+                  <span class="text-xs text-gray-500 dark:text-gray-400">From ingredient analysis</span>
+                </div>
+              </div>
+              
+              <div id="scanned-compatibility" class="form-field" hidden>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Best for skin types</label>
+                <div id="compatibility-tags" class="flex flex-wrap gap-2"></div>
+              </div>
+              
+              <div id="scanned-allergens" class="warning-banner" hidden>
+                <span>⚠️</span>
+                <div class="flex-1">
+                  <p class="text-sm font-medium mb-1">Allergen warnings</p>
+                  <ul id="allergen-list" class="text-sm space-y-0.5"></ul>
+                </div>
+              </div>
+              
               <p class="text-sm text-red-600 dark:text-red-400" id="form-error" hidden></p>
               
               <button type="submit" class="btn btn-primary w-full mt-4">

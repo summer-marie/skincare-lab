@@ -736,6 +736,13 @@ function resetAddProductForm() {
   document.getElementById('form-error').hidden = true;
   document.getElementById('add-product-form').dataset.editingId = '';
   document.querySelector('[data-screen="add"] h2').textContent = 'Add a product';
+  
+  // Clear scanned product data sections
+  document.getElementById('scanned-safety-score').hidden = true;
+  document.getElementById('scanned-compatibility').hidden = true;
+  document.getElementById('scanned-allergens').hidden = true;
+  document.getElementById('compatibility-tags').innerHTML = '';
+  document.getElementById('allergen-list').innerHTML = '';
 }
 
 /**
@@ -826,6 +833,58 @@ function prefillForm(productData) {
         activeChip.classList.add('is-selected');
       }
     });
+  }
+  
+  // Display safety score (if available)
+  const safetyScoreSection = document.getElementById('scanned-safety-score');
+  const safetyScoreBadge = document.getElementById('safety-score-badge');
+  if (productData.safetyScore !== undefined && productData.safetyScore !== null) {
+    const score = productData.safetyScore;
+    safetyScoreBadge.textContent = `${score}/10`;
+    // Color code: 1-4 = strong (red), 5-7 = medium (yellow), 8-10 = gentle (green)
+    if (score <= 4) {
+      safetyScoreBadge.className = 'badge badge-strong';
+    } else if (score <= 7) {
+      safetyScoreBadge.className = 'badge badge-medium';
+    } else {
+      safetyScoreBadge.className = 'badge badge-gentle';
+    }
+    safetyScoreSection.hidden = false;
+  } else {
+    safetyScoreBadge.textContent = 'N/A';
+    safetyScoreBadge.className = 'badge';
+    safetyScoreSection.hidden = productData.safetyScore === undefined;
+  }
+  
+  // Display skin compatibility (if available)
+  const compatibilitySection = document.getElementById('scanned-compatibility');
+  const compatibilityTags = document.getElementById('compatibility-tags');
+  if (productData.skinCompatibility && productData.skinCompatibility.length > 0) {
+    compatibilityTags.innerHTML = '';
+    productData.skinCompatibility.forEach(skinType => {
+      const tag = document.createElement('span');
+      tag.className = 'badge badge-gentle';
+      tag.textContent = formatLabel(skinType);
+      compatibilityTags.appendChild(tag);
+    });
+    compatibilitySection.hidden = false;
+  } else {
+    compatibilitySection.hidden = true;
+  }
+  
+  // Display allergen warnings (if any)
+  const allergensSection = document.getElementById('scanned-allergens');
+  const allergenList = document.getElementById('allergen-list');
+  if (productData.allergenWarnings && productData.allergenWarnings.length > 0) {
+    allergenList.innerHTML = '';
+    productData.allergenWarnings.forEach(warning => {
+      const li = document.createElement('li');
+      li.textContent = warning;
+      allergenList.appendChild(li);
+    });
+    allergensSection.hidden = false;
+  } else {
+    allergensSection.hidden = true;
   }
 }
 
