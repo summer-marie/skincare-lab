@@ -3,41 +3,15 @@
    Html5-qrcode wrapper for barcode scanning
    ============================================ */
 
+import inciData from '../data/inci-data.json';
+
 /**
- * Mock barcode database for testing
+ * Build a fast O(1) lookup map from the INCI JSON array on first import.
+ * Key: barcode string  →  Value: product object
  */
-const MOCK_BARCODES = {
-  '036602320018': {
-    name: 'CeraVe Foaming Cleanser',
-    brand: 'CeraVe',
-    type: 'cleanser',
-    actives: ['niacinamide', 'ceramides']
-  },
-  '386160130000': {
-    name: 'The Ordinary Niacinamide 10%',
-    brand: 'The Ordinary',
-    type: 'serum',
-    actives: ['niacinamide', 'zinc']
-  },
-  '726150111719': {
-    name: "Paula's Choice 2% BHA Liquid",
-    brand: "Paula's Choice",
-    type: 'exfoliant',
-    actives: ['salicylic-acid']
-  },
-  '036602307026': {
-    name: 'CeraVe PM Moisturizing Lotion',
-    brand: 'CeraVe',
-    type: 'moisturizer',
-    actives: ['niacinamide', 'ceramides']
-  },
-  '3337875545082': {
-    name: 'La Roche-Posay Anthelios SPF 50',
-    brand: 'La Roche-Posay',
-    type: 'spf',
-    actives: ['avobenzone']
-  }
-};
+const INCI_MAP = Object.fromEntries(
+  inciData.map((product) => [product.barcode, product])
+);
 
 /**
  * Html5Qrcode scanner instance
@@ -66,15 +40,15 @@ export function startScanner(containerId, onSuccess, onError) {
     qrbox: { width: 250, height: 250 }
   };
 
-  const cameraConfig = { facingMode: "environment" };
+  const cameraConfig = { facingMode: 'environment' };
 
   scannerInstance
     .start(cameraConfig, config, (decodedText) => {
       stopScanner();
       onSuccess(decodedText);
     })
-    .catch((err) => {
-      onError("Camera access was denied. Try adding your product manually.");
+    .catch(() => {
+      onError('Camera access was denied. Try adding your product manually.');
     });
 }
 
@@ -100,27 +74,37 @@ export function stopScanner() {
    ============================================ */
 
 /**
- * Look up product data by barcode
+ * Look up product data by barcode.
+ * Priority:
+ *   1. Local inci-data.json  (full skincare metadata)
+ *   2. Open Food Facts API   (name/brand only, generic fallback)
+ *
  * @param {string} barcode - UPC/EAN barcode string
- * @returns {Promise<Object|null>} Product data or null if not found
+ * @returns {Promise<Object|null>} Normalized product data or null if not found
  */
 export async function lookupBarcode(barcode) {
-  // Check mock database first
-  if (MOCK_BARCODES[barcode]) {
-    return MOCK_BARCODES[barcode];
+  // ── 1. Check local INCI data ─────────────────────────────────────────
+  if (INCI_MAP[barcode]) {
+    return INCI_MAP[barcode];
   }
 
-  // Try Open Food Facts API
+  // ── 2. Fall back to Open Food Facts API ─────────────────────────────
   try {
-    const response = await fetch(`https://world.openfoodfacts.org/api/v2/product/${barcode}.json`);
+    const response = await fetch(
+      `https://world.openfoodfacts.org/api/v2/product/${barcode}.json`
+    );
     const data = await response.json();
 
     if (data.status === 1 && data.product) {
       return {
+        barcode,
         name: data.product.product_name || 'Unknown Product',
         brand: data.product.brands || 'Unknown Brand',
-        type: 'moisturizer',
-        actives: []
+        type: 'moisturizer',         // best-guess default; user can correct in form
+        actives: [],
+        safetyScore: null,           // not available from OFF
+        skinCompatibility: [],
+        allergenWarnings: []
       };
     }
   } catch (err) {
