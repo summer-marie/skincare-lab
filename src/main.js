@@ -601,7 +601,7 @@ function buildDetailHTML(product) {
   actionButtons.appendChild(editBtn);
   
   const deleteBtn = document.createElement('button');
-  deleteBtn.className = 'btn btn-ghost flex-1 text-red-500';
+  deleteBtn.className = 'btn btn-danger flex-1';
   deleteBtn.id = 'detail-delete-btn';
   deleteBtn.textContent = 'Delete';
   actionButtons.appendChild(deleteBtn);

@@ -85,6 +85,15 @@ body {
     background: var(--color-primary-soft);
   }
 
+  .btn-danger {
+    color: var(--color-error);
+    @apply bg-transparent;
+  }
+
+  .btn-danger:hover {
+    background: var(--color-error-soft);
+  }
+
   .chip {
     @apply inline-flex items-center px-4 py-2 rounded-full text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 cursor-pointer transition-all;
   }
