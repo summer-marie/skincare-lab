@@ -452,6 +452,10 @@ function buildDetailHTML(product) {
   header.appendChild(subtitle);
   container.appendChild(header);
   
+  // Create wrapper for three-column desktop layout
+  const detailSectionsGrid = document.createElement('div');
+  detailSectionsGrid.className = 'detail-sections-grid';
+  
   // "What's in it" section
   const activesCard = document.createElement('div');
   activesCard.className = 'section-card';
@@ -485,7 +489,7 @@ function buildDetailHTML(product) {
   }
   
   activesCard.appendChild(activesContent);
-  container.appendChild(activesCard);
+  detailSectionsGrid.appendChild(activesCard);
   
   // "How to use it" section
   const usageCard = document.createElement('div');
@@ -507,7 +511,7 @@ function buildDetailHTML(product) {
   usageInstruction.className = 'text-sm text-gray-600 dark:text-gray-400';
   usageInstruction.textContent = instruction;
   usageCard.appendChild(usageInstruction);
-  container.appendChild(usageCard);
+  detailSectionsGrid.appendChild(usageCard);
   
   // "Strength & safety" section
   const strengthCard = document.createElement('div');
@@ -532,7 +536,10 @@ function buildDetailHTML(product) {
     strengthCard.appendChild(warningText);
   }
   
-  container.appendChild(strengthCard);
+  detailSectionsGrid.appendChild(strengthCard);
+  
+  // Append the three-column grid to container
+  container.appendChild(detailSectionsGrid);
   
   // "In your routine" section
   const routineCard = document.createElement('div');

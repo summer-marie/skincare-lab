@@ -13,6 +13,18 @@
   </head>
   <body>
     <div class="app-shell">
+      <!-- Desktop Sidebar -->
+      <aside class="desktop-sidebar">
+        <div class="sidebar-brand">
+          <span class="text-xl font-bold" style="color: var(--color-primary);">SkinLoop</span>
+        </div>
+        <nav class="sidebar-nav" aria-label="Primary navigation">
+          <button data-nav="home" aria-current="page">Home</button>
+          <button data-nav="products">My Products</button>
+          <button data-nav="routine">Routine</button>
+        </nav>
+      </aside>
+
       <header class="top-bar">
         <span class="text-lg font-bold" style="color: var(--color-primary);">SkinLoop</span>
         <span class="text-xs text-gray-500 dark:text-gray-400">Safer skincare routines for teens</span>
@@ -94,36 +106,42 @@
             <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">Add product</h2>
             
             <form id="add-product-form" class="flex flex-col gap-5">
-              <div class="form-field">
-                <label for="product-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Product name</label>
-                <input type="text" id="product-name" class="input" placeholder="e.g., Hydrating Cleanser" required>
-              </div>
-              
-              <div class="form-field">
-                <label for="product-brand" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Brand</label>
-                <input type="text" id="product-brand" class="input" placeholder="e.g., CeraVe" required>
-              </div>
-              
-              <div class="form-field">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Type</label>
-                <div class="flex flex-wrap gap-2" id="type-chips">
-                  <button type="button" class="chip" data-type="cleanser">Cleanser</button>
-                  <button type="button" class="chip" data-type="exfoliant">Exfoliant</button>
-                  <button type="button" class="chip" data-type="serum">Serum</button>
-                  <button type="button" class="chip" data-type="spot-treatment">Spot treatment</button>
-                  <button type="button" class="chip" data-type="moisturizer">Moisturizer</button>
-                  <button type="button" class="chip" data-type="spf">SPF</button>
+              <div class="form-two-column">
+                <div class="form-left-column flex flex-col gap-5">
+                  <div class="form-field">
+                    <label for="product-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Product name</label>
+                    <input type="text" id="product-name" class="input" placeholder="e.g., Hydrating Cleanser" required>
+                  </div>
+                  
+                  <div class="form-field">
+                    <label for="product-brand" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Brand</label>
+                    <input type="text" id="product-brand" class="input" placeholder="e.g., CeraVe" required>
+                  </div>
+                  
+                  <div class="form-field">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Type</label>
+                    <div class="flex flex-wrap gap-2" id="type-chips">
+                      <button type="button" class="chip" data-type="cleanser">Cleanser</button>
+                      <button type="button" class="chip" data-type="exfoliant">Exfoliant</button>
+                      <button type="button" class="chip" data-type="serum">Serum</button>
+                      <button type="button" class="chip" data-type="spot-treatment">Spot treatment</button>
+                      <button type="button" class="chip" data-type="moisturizer">Moisturizer</button>
+                      <button type="button" class="chip" data-type="spf">SPF</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div class="form-field">
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Main actives (select all that apply)</label>
-                <div class="flex flex-wrap gap-2" id="actives-chips">
-                  <button type="button" class="chip" data-active="salicylic-acid">Salicylic acid</button>
-                  <button type="button" class="chip" data-active="benzoyl-peroxide">Benzoyl peroxide</button>
-                  <button type="button" class="chip" data-active="niacinamide">Niacinamide</button>
-                  <button type="button" class="chip" data-active="retinoid">Retinoid</button>
-                  <button type="button" class="chip" data-active="other">Other</button>
+                
+                <div class="form-right-column">
+                  <div class="form-field">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Main actives (select all that apply)</label>
+                    <div class="flex flex-wrap gap-2" id="actives-chips">
+                      <button type="button" class="chip" data-active="salicylic-acid">Salicylic acid</button>
+                      <button type="button" class="chip" data-active="benzoyl-peroxide">Benzoyl peroxide</button>
+                      <button type="button" class="chip" data-active="niacinamide">Niacinamide</button>
+                      <button type="button" class="chip" data-active="retinoid">Retinoid</button>
+                      <button type="button" class="chip" data-active="other">Other</button>
+                    </div>
+                  </div>
                 </div>
               </div>
               

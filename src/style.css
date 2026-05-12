@@ -7,6 +7,7 @@
 :root {
   --app-max-width: 26.875rem;
   --bottom-nav-height: 4.5rem;
+  --sidebar-width: 13rem;
   --color-primary: #4a8c8f;
   --color-primary-soft: #e8f4f4;
   --color-primary-contrast: #ffffff;
@@ -263,4 +264,104 @@ body {
 .bottom-nav button:hover {
   background: var(--color-primary-soft);
   color: var(--color-primary);
+}
+
+/* ============================================
+   Desktop Sidebar & Responsive Layout
+   ============================================ */
+
+/* Hide sidebar on mobile, show on desktop */
+.desktop-sidebar {
+  display: none;
+}
+
+/* Mobile: Form columns stack vertically */
+.form-two-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Mobile: Detail sections stack vertically */
+.detail-sections-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 48rem) {
+  /* Desktop: Show sidebar, hide bottom nav and top bar */
+  .desktop-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background: white;
+    border-right: 1px solid;
+    @apply border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800;
+    z-index: 100;
+  }
+
+  .sidebar-brand {
+    @apply px-6 py-6 border-b border-gray-200 dark:border-gray-700;
+  }
+
+  .sidebar-nav {
+    @apply flex flex-col gap-1 p-3;
+  }
+
+  .sidebar-nav button {
+    @apply flex items-center px-4 py-3 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-400 transition-colors text-left;
+    min-height: 2.75rem;
+  }
+
+  .sidebar-nav button[aria-current="page"] {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    @apply font-semibold;
+  }
+
+  .sidebar-nav button:hover {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+
+  .top-bar {
+    display: none;
+  }
+
+  /* Desktop: Two-column grid layout */
+  .app-shell {
+    max-width: none;
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .screen-container {
+    padding-bottom: 0;
+    grid-column: 2;
+  }
+
+  /* Desktop: Product detail three-column layout */
+  .detail-sections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Desktop: Add form two-column layout */
+  .form-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    flex-direction: row;
+  }
 }
