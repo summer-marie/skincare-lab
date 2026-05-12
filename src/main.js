@@ -199,6 +199,15 @@ function saveProducts(products) {
 }
 
 /**
+ * Delete a product by ID from localStorage
+ * @param {string} productId - Product ID to delete
+ */
+function deleteProduct(productId) {
+  const updated = getProducts().filter(p => p.id !== productId);
+  saveProducts(updated);
+}
+
+/**
  * Seed initial products if localStorage is empty
  */
 function seedIfEmpty() {
@@ -375,7 +384,20 @@ function renderProducts(filter = 'all') {
   container.innerHTML = '';
   
   if (filtered.length === 0) {
-    container.innerHTML = '<div class="empty-state">No products here yet.</div>';
+    const emptyState = document.createElement('div');
+    emptyState.className = 'empty-state';
+    
+    const message = document.createElement('p');
+    message.textContent = 'No products in your stash yet.';
+    emptyState.appendChild(message);
+    
+    const addButton = document.createElement('button');
+    addButton.className = 'btn btn-primary mt-4';
+    addButton.textContent = 'Add your first product';
+    addButton.addEventListener('click', () => showScreen('add'));
+    emptyState.appendChild(addButton);
+    
+    container.appendChild(emptyState);
     return;
   }
   
@@ -568,6 +590,24 @@ function buildDetailHTML(product) {
   bottomBackBtn.textContent = 'Back to my products';
   container.appendChild(bottomBackBtn);
   
+  // Edit and Delete buttons
+  const actionButtons = document.createElement('div');
+  actionButtons.className = 'flex gap-3 mt-2';
+  
+  const editBtn = document.createElement('button');
+  editBtn.className = 'btn btn-secondary flex-1';
+  editBtn.id = 'detail-edit-btn';
+  editBtn.textContent = 'Edit';
+  actionButtons.appendChild(editBtn);
+  
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'btn btn-ghost flex-1 text-red-500';
+  deleteBtn.id = 'detail-delete-btn';
+  deleteBtn.textContent = 'Delete';
+  actionButtons.appendChild(deleteBtn);
+  
+  container.appendChild(actionButtons);
+  
   return container;
 }
 
@@ -591,6 +631,19 @@ function renderProductDetail(productId) {
   
   document.getElementById('back-to-products').addEventListener('click', showProductsList);
   document.getElementById('back-to-products-bottom').addEventListener('click', showProductsList);
+  
+  document.getElementById('detail-edit-btn').addEventListener('click', () => {
+    prefillFormForEdit(product);
+    showScreen('add');
+  });
+  
+  document.getElementById('detail-delete-btn').addEventListener('click', () => {
+    if (confirm(`Remove ${product.name} from your stash?`)) {
+      deleteProduct(product.id);
+      showProductsList();
+      renderProducts();
+    }
+  });
 }
 
 /**
@@ -699,6 +752,8 @@ function resetAddProductForm() {
   document.querySelectorAll('#type-chips .chip').forEach(chip => chip.classList.remove('is-selected'));
   document.querySelectorAll('#actives-chips .chip').forEach(chip => chip.classList.remove('is-selected'));
   document.getElementById('form-error').hidden = true;
+  document.getElementById('add-product-form').dataset.editingId = '';
+  document.querySelector('[data-screen="add"] h2').textContent = 'Add a product';
 }
 
 /**
@@ -707,6 +762,7 @@ function resetAddProductForm() {
 function handleAddProductSubmit(e) {
   e.preventDefault();
   
+  const form = document.getElementById('add-product-form');
   const name = document.getElementById('product-name').value.trim();
   const brand = document.getElementById('product-brand').value.trim();
   const selectedType = document.querySelector('#type-chips .chip.is-selected');
@@ -721,17 +777,36 @@ function handleAddProductSubmit(e) {
     return;
   }
   
-  const product = {
-    id: crypto.randomUUID(),
-    name,
-    brand,
-    type: selectedType.dataset.type,
-    actives: selectedActives
-  };
+  const editingId = form.dataset.editingId;
   
-  const products = getProducts();
-  products.push(product);
-  saveProducts(products);
+  if (editingId) {
+    // Edit mode: update existing product
+    const products = getProducts();
+    const index = products.findIndex(p => p.id === editingId);
+    if (index !== -1) {
+      products[index] = {
+        id: editingId,
+        name,
+        brand,
+        type: selectedType.dataset.type,
+        actives: selectedActives
+      };
+      saveProducts(products);
+    }
+  } else {
+    // Add mode: create new product
+    const product = {
+      id: crypto.randomUUID(),
+      name,
+      brand,
+      type: selectedType.dataset.type,
+      actives: selectedActives
+    };
+    
+    const products = getProducts();
+    products.push(product);
+    saveProducts(products);
+  }
   
   resetAddProductForm();
   showScreen('products');
@@ -770,6 +845,17 @@ function prefillForm(productData) {
       }
     });
   }
+}
+
+/**
+ * Prefill the add product form for editing an existing product
+ * @param {Object} product - Product object to edit
+ */
+function prefillFormForEdit(product) {
+  const form = document.getElementById('add-product-form');
+  form.dataset.editingId = product.id;
+  prefillForm(product);
+  document.querySelector('[data-screen="add"] h2').textContent = 'Edit product';
 }
 
 /**
