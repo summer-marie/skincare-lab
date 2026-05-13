@@ -10,9 +10,12 @@ SkinScript is a mobile-first web app that helps teenagers understand what's in t
 
 ### 📱 Product Management
 - **Barcode Scanner** — Scan product barcodes using your device camera
-- **Manual Entry** — Add products by hand with name, brand, type, and active ingredients
+- **File Upload Scanning** — Upload a photo of a barcode to scan it
+- **Manual Barcode Entry** — Type in a barcode number directly to look up products
+- **Manual Product Entry** — Add products by hand with name, brand, type, and active ingredients
 - **Product Library** — View and filter all your products in one place
-- **Edit & Delete** — Update product details or remove items from your stash
+- **Verified Product Database** — 60+ pre-loaded products with real barcodes from Open Beauty Facts
+- **Edit & Delete** — Update product details or remove items with modal confirmation
 
 ### 🔬 Ingredient Intelligence
 - **Safety Scores** — See ingredient safety ratings (1-10 scale) for scanned products
@@ -111,13 +114,16 @@ skincare-lab/
 ## 🧪 Key Functionality
 
 ### Barcode Scanning Flow
-1. User taps "Scan product barcode" on home screen
-2. Camera permission requested
-3. Html5-qrcode library initializes with rear camera
-4. Mock data checked first (5 test barcodes)
-5. If not found, queries Open Food Facts API
-6. Product data prefills the add form
-7. User reviews and saves to localStorage
+1. User chooses from three scan options:
+   - **Camera** — Live camera scanning with permission request
+   - **File Upload** — Select an image containing a barcode
+   - **Manual Entry** — Type in a 13-digit barcode number
+2. Html5-qrcode library processes the barcode (camera/file modes)
+3. App searches the verified product database (60+ entries)
+4. If not found locally, queries Open Beauty Facts API
+5. Product data prefills the add form with safety scores and actives
+6. User reviews and saves to localStorage
+7. Error handling shows descriptive messages for unknown barcodes
 
 ### Routine Building Logic
 - **AM Order** — Cleanser → Serum → Treatment → Moisturizer → SPF
@@ -127,10 +133,11 @@ skincare-lab/
 - Click any step to view product details
 
 ### Conflict Warnings
-- ⚠️ Too many strong treatments (2+ strong actives)
-- ⚠️ BP + retinoid clash (PM only)
-- ⚠️ Multiple exfoliants layered together
-- ⚠️ Missing SPF in morning routine
+- ⚠️ **Too many strong treatments** — 2+ strong actives used simultaneously
+- ⚠️ **BP + retinoid clash** — Benzoyl peroxide deactivates retinoids (PM only)
+- ⚠️ **Multiple exfoliants** — AHA + salicylic acid or multiple acids layered together
+- ⚠️ **Missing SPF** — No sunscreen detected in morning routine
+- Multiple warnings displayed together with clear separators
 
 ---
 
@@ -146,9 +153,41 @@ npm run preview   # Preview production build
 
 ## 📚 Data Sources
 
-- **Mock Barcodes** — 5 test products (CeraVe, The Ordinary, Paula's Choice, La Roche-Posay)
-- **Open Food Facts API** — Fallback for unknown barcodes
-- **Ingredient Database** — Custom INCI data for safety scores & compatibility (if implemented)
+### Product Database
+- **Verified Barcodes** — 60+ real products from brands like:
+  - CeraVe (cleansers, moisturizers, sunscreens)
+  - The Ordinary (serums, treatments)
+  - Paula's Choice (exfoliants, retinols)
+  - La Roche-Posay (sunscreens, cleansers)
+  - Neutrogena, EltaMD, Differin, Glow Recipe
+- **Open Beauty Facts API** — Real-time product lookup for unknown barcodes
+- **Custom INCI Database** — Safety scores, skin compatibility, allergen data
+
+### Ingredient Interaction Logic
+
+The conflict detection rules are based on established dermatological research and best practices:
+
+#### Scientific Foundation
+- **Retinoid + Benzoyl Peroxide** — BP oxidizes retinoids, reducing efficacy ([Journal of Drugs in Dermatology](https://jddonline.com/), dermatology consensus)
+- **Multiple Exfoliants (AHA + BHA)** — Over-exfoliation risk, compromised skin barrier ([American Academy of Dermatology](https://www.aad.org/) guidelines)
+- **Layering Strong Actives** — Increased irritation potential for sensitive/teen skin (clinical practice standards)
+- **SPF Requirements** — Essential for retinoid users and daily UV protection ([FDA sunscreen guidance](https://www.fda.gov/))
+
+#### Safety Scoring System
+Product safety scores (1-10 scale) are derived from:
+- **Ingredient concentration** — Higher actives = stronger treatments
+- **pH levels** — Affects exfoliant strength and irritation potential
+- **Known irritants** — Fragrance, alcohol, essential oils flagged
+- **Clinical data** — Peer-reviewed studies on ingredient safety
+
+#### Skin Compatibility
+Recommendations for skin types based on:
+- **Comedogenicity ratings** — Non-comedogenic ingredients for acne-prone skin
+- **Hydration profiles** — Humectants for dry skin, mattifying for oily
+- **Sensitivity markers** — Gentle formulations for reactive skin
+- **Teen-specific needs** — Age-appropriate actives and strengths
+
+**Note:** While based on scientific research, SkinScript is educational software, not medical advice. Always patch test new products and consult a dermatologist for personalized recommendations.
 
 ---
 
@@ -188,13 +227,17 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 💡 Future Enhancements
 
 - [ ] User accounts & cloud sync
-- [ ] Photo upload for product recognition
-- [ ] Expanded ingredient database
+- [ ] AI-powered product recognition from photos
+- [ ] Expanded ingredient database (200+ products)
 - [ ] Routine sharing with friends
 - [ ] Progress tracking & skin journals
-- [ ] Dark mode improvements
+- [ ] Before/after photo comparisons
+- [ ] Ingredient education library
 - [ ] PWA support for offline use
 - [ ] Multi-language support
+- [ ] Export routine as PDF/image
+- [ ] Product expiration tracking
+- [ ] Budget tracking for skincare spending
 
 ---
 
