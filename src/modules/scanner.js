@@ -3,14 +3,14 @@
    Html5-qrcode wrapper for barcode scanning
    ============================================ */
 
-import inciData from '../data/inci-data.json';
+import inciData from "../data/inci-data.json";
 
 /**
  * Build a fast O(1) lookup map from the INCI JSON array on first import.
  * Key: barcode string  →  Value: product object
  */
 const INCI_MAP = Object.fromEntries(
-  inciData.map((product) => [product.barcode, product])
+  inciData.map((product) => [product.barcode, product]),
 );
 
 /**
@@ -37,10 +37,10 @@ export function startScanner(containerId, onSuccess, onError) {
 
   const config = {
     fps: 10,
-    qrbox: { width: 250, height: 250 }
+    qrbox: { width: 250, height: 250 },
   };
 
-  const cameraConfig = { facingMode: 'environment' };
+  const cameraConfig = { facingMode: "environment" };
 
   scannerInstance
     .start(cameraConfig, config, (decodedText) => {
@@ -48,7 +48,7 @@ export function startScanner(containerId, onSuccess, onError) {
       onSuccess(decodedText);
     })
     .catch(() => {
-      onError('Camera access was denied. Try adding your product manually.');
+      onError("Camera access was denied. Try adding your product manually.");
     });
 }
 
@@ -78,14 +78,14 @@ export function stopScanner() {
 export async function scanFromFile(file) {
   const tempId = `temp-scanner-${Date.now()}`;
   const tempScanner = new Html5Qrcode(tempId);
-  
+
   try {
     const decodedText = await tempScanner.scanFile(file, false);
     tempScanner.clear();
     return decodedText;
   } catch (err) {
     tempScanner.clear();
-    throw new Error('Could not read barcode from image');
+    throw new Error("Could not read barcode from image");
   }
 }
 
@@ -111,24 +111,24 @@ export async function lookupBarcode(barcode) {
   // ── 2. Fall back to Open Food Facts API ─────────────────────────────
   try {
     const response = await fetch(
-      `https://world.openfoodfacts.org/api/v2/product/${barcode}.json`
+      `https://world.openfoodfacts.org/api/v2/product/${barcode}.json`,
     );
     const data = await response.json();
 
     if (data.status === 1 && data.product) {
       return {
         barcode,
-        name: data.product.product_name || 'Unknown Product',
-        brand: data.product.brands || 'Unknown Brand',
-        type: 'moisturizer',         // best-guess default; user can correct in form
+        name: data.product.product_name || "Unknown Product",
+        brand: data.product.brands || "Unknown Brand",
+        type: "moisturizer", // best-guess default; user can correct in form
         actives: [],
-        safetyScore: null,           // not available from OFF
+        safetyScore: null, // not available from OFF
         skinCompatibility: [],
-        allergenWarnings: []
+        allergenWarnings: [],
       };
     }
   } catch (err) {
-    console.error('Barcode lookup failed:', err);
+    console.error("Barcode lookup failed:", err);
   }
 
   return null;

@@ -64,10 +64,18 @@
     "name": "The Ordinary AHA 30% + BHA 2% Peeling Solution",
     "brand": "The Ordinary",
     "type": "exfoliant",
-    "actives": ["glycolic acid", "lactic acid", "salicylic acid", "tartaric acid"],
+    "actives": [
+      "glycolic acid",
+      "lactic acid",
+      "salicylic acid",
+      "tartaric acid"
+    ],
     "safetyScore": 6,
     "skinCompatibility": ["normal", "oily", "combination"],
-    "allergenWarnings": ["high-acid — not for sensitive/broken skin", "avoid eye area"]
+    "allergenWarnings": [
+      "high-acid — not for sensitive/broken skin",
+      "avoid eye area"
+    ]
   },
   {
     "barcode": "769915190081",
@@ -77,7 +85,11 @@
     "actives": ["retinol", "squalane"],
     "safetyScore": 7,
     "skinCompatibility": ["normal", "combination", "oily"],
-    "allergenWarnings": ["avoid during pregnancy", "use SPF daily", "not for beginners under 16"]
+    "allergenWarnings": [
+      "avoid during pregnancy",
+      "use SPF daily",
+      "not for beginners under 16"
+    ]
   },
   {
     "barcode": "726150111719",
@@ -157,7 +169,9 @@
     "actives": ["avobenzone", "homosalate", "octisalate", "oxybenzone"],
     "safetyScore": 6,
     "skinCompatibility": ["normal", "oily"],
-    "allergenWarnings": ["contains oxybenzone — potential hormone disruptor concern"]
+    "allergenWarnings": [
+      "contains oxybenzone — potential hormone disruptor concern"
+    ]
   },
   {
     "barcode": "011509010998",
@@ -167,7 +181,10 @@
     "actives": ["benzoyl peroxide 10%"],
     "safetyScore": 6,
     "skinCompatibility": ["acne-prone", "oily"],
-    "allergenWarnings": ["high-strength BP — may cause dryness/irritation", "bleaches fabric"]
+    "allergenWarnings": [
+      "high-strength BP — may cause dryness/irritation",
+      "bleaches fabric"
+    ]
   },
   {
     "barcode": "074170399115",
@@ -297,7 +314,11 @@
     "actives": ["adapalene 0.1%"],
     "safetyScore": 8,
     "skinCompatibility": ["acne-prone", "oily"],
-    "allergenWarnings": ["avoid during pregnancy", "use SPF daily", "purging expected first 4–8 weeks"]
+    "allergenWarnings": [
+      "avoid during pregnancy",
+      "use SPF daily",
+      "purging expected first 4–8 weeks"
+    ]
   },
   {
     "barcode": "305210108629",
@@ -494,7 +515,12 @@
     "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer UV SPF 30",
     "brand": "La Roche-Posay",
     "type": "spf",
-    "actives": ["avobenzone", "ceramides", "niacinamide", "prebiotic thermal water"],
+    "actives": [
+      "avobenzone",
+      "ceramides",
+      "niacinamide",
+      "prebiotic thermal water"
+    ],
     "safetyScore": 9,
     "skinCompatibility": ["all", "sensitive", "dry"],
     "allergenWarnings": []
@@ -517,7 +543,11 @@
     "actives": ["adapalene 0.1%"],
     "safetyScore": 8,
     "skinCompatibility": ["acne-prone", "oily"],
-    "allergenWarnings": ["avoid during pregnancy", "use SPF daily", "purging expected first 4–8 weeks"]
+    "allergenWarnings": [
+      "avoid during pregnancy",
+      "use SPF daily",
+      "purging expected first 4–8 weeks"
+    ]
   },
   {
     "barcode": "0810052960166",
@@ -554,7 +584,15 @@
     "name": "CeraVe AM Facial Moisturizing Lotion SPF 30",
     "brand": "CeraVe",
     "type": "spf",
-    "actives": ["homosalate 12%", "octinoxate 7.5%", "octocrylene 2%", "zinc oxide 3.5%", "niacinamide", "ceramides", "hyaluronic acid"],
+    "actives": [
+      "homosalate 12%",
+      "octinoxate 7.5%",
+      "octocrylene 2%",
+      "zinc oxide 3.5%",
+      "niacinamide",
+      "ceramides",
+      "hyaluronic acid"
+    ],
     "safetyScore": 8,
     "skinCompatibility": ["all"],
     "allergenWarnings": []
