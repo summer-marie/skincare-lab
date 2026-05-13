@@ -979,18 +979,11 @@ function initScanScreen() {
     spinner.hidden = false;
     resultEl.hidden = true;
     
-    try {
-      const result = await lookupBarcode(barcode);
-      await handleScanSuccess(barcode);
-      
-      // Clear input on success
+    const result = await handleScanSuccess(barcode);
+    
+    // Only clear input if product was found
+    if (result) {
       manualBarcodeInput.value = '';
-    } catch (err) {
-      spinner.hidden = true;
-      errorEl.textContent = 'Failed to look up barcode. Please try again.';
-      errorEl.hidden = false;
-    } finally {
-      spinner.hidden = true;
     }
   };
   
@@ -1026,18 +1019,21 @@ async function handleScanSuccess(barcode) {
   if (result) {
     prefillForm(result);
     showScreen('add');
+    return result;
   } else {
     spinner.hidden = true;
-    resultEl.innerHTML = `
-      <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Product not found — add it manually</p>
-      <button class="btn btn-secondary" data-action="go-add">Add manually</button>
-    `;
-    resultEl.hidden = false;
     
-    // Wire up the new button
-    resultEl.querySelector('[data-action="go-add"]').addEventListener('click', () => {
-      showScreen('add');
-    });
+    // Show descriptive error with the barcode that wasn't found
+    errorEl.textContent = `We couldn't find this barcode (${barcode}) in our database or online. This is common for newer or regional products. Please enter your product details manually below.`;
+    errorEl.hidden = false;
+    
+    // Scroll the manual entry button into view
+    const manualEntryBtn = document.querySelector('[data-action="go-add"]');
+    if (manualEntryBtn) {
+      manualEntryBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    return null;
   }
 }
 
