@@ -933,7 +933,11 @@ function initScanScreen() {
   // Wire up file upload barcode scanner
   const fileInput = document.getElementById('barcode-upload');
   if (fileInput) {
-    fileInput.addEventListener('change', async (e) => {
+    // Remove any existing listeners by cloning
+    const newFileInput = fileInput.cloneNode(true);
+    fileInput.parentNode.replaceChild(newFileInput, fileInput);
+    
+    newFileInput.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (!file) return;
       
@@ -955,7 +959,7 @@ function initScanScreen() {
       }
       
       // Reset file input so same file can be resubmitted
-      fileInput.value = '';
+      newFileInput.value = '';
     });
   }
   
@@ -963,41 +967,45 @@ function initScanScreen() {
   const manualBarcodeInput = document.getElementById('manual-barcode');
   const manualBarcodeBtn = document.getElementById('manual-barcode-btn');
   
-  const handleManualBarcodeLookup = async () => {
-    const barcode = manualBarcodeInput.value.trim();
-    const spinner = DOM.scannerSpinner;
-    const errorEl = DOM.scannerError;
-    const resultEl = DOM.scannerResult;
-    
-    if (!barcode) {
-      errorEl.textContent = 'Please enter a barcode number.';
-      errorEl.hidden = false;
-      return;
-    }
-    
-    errorEl.hidden = true;
-    spinner.hidden = false;
-    resultEl.hidden = true;
-    
-    const result = await handleScanSuccess(barcode);
-    
-    // Only clear input if product was found
-    if (result) {
-      manualBarcodeInput.value = '';
-    }
-  };
-  
   if (manualBarcodeBtn) {
-    manualBarcodeBtn.addEventListener('click', handleManualBarcodeLookup);
-  }
-  
-  if (manualBarcodeInput) {
-    manualBarcodeInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleManualBarcodeLookup();
+    // Remove any existing listeners by cloning
+    const newManualBtn = manualBarcodeBtn.cloneNode(true);
+    manualBarcodeBtn.parentNode.replaceChild(newManualBtn, manualBarcodeBtn);
+    
+    const handleManualBarcodeLookup = async () => {
+      const barcode = manualBarcodeInput.value.trim();
+      const spinner = DOM.scannerSpinner;
+      const errorEl = DOM.scannerError;
+      const resultEl = DOM.scannerResult;
+      
+      if (!barcode) {
+        errorEl.textContent = 'Please enter a barcode number.';
+        errorEl.hidden = false;
+        return;
       }
-    });
+      
+      errorEl.hidden = true;
+      spinner.hidden = false;
+      resultEl.hidden = true;
+      
+      const result = await handleScanSuccess(barcode);
+      
+      // Only clear input if product was found
+      if (result) {
+        manualBarcodeInput.value = '';
+      }
+    };
+    
+    newManualBtn.addEventListener('click', handleManualBarcodeLookup);
+    
+    if (manualBarcodeInput) {
+      manualBarcodeInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleManualBarcodeLookup();
+        }
+      });
+    }
   }
 }
 
@@ -1017,6 +1025,7 @@ async function handleScanSuccess(barcode) {
   const result = await lookupBarcode(barcode);
   
   if (result) {
+    spinner.hidden = true;
     prefillForm(result);
     showScreen('add');
     return result;
