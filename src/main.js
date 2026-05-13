@@ -18,6 +18,9 @@ import {
 // DOM element cache
 let DOM = {};
 
+// Delete confirmation timeout
+let deleteConfirmTimeout = null;
+
 /**
  * Show a specific screen and update navigation state
  * @param {string} screenName - The data-screen attribute value to show
@@ -685,15 +688,13 @@ function renderProductDetail(productId) {
   });
 
   const deleteBtn = document.getElementById("detail-delete-btn");
-  let resetListener = null;
 
-  deleteBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-
+  deleteBtn.addEventListener("click", () => {
     if (deleteBtn.getAttribute("data-confirming") === "true") {
       // Second click - confirm delete
-      if (resetListener) {
-        document.removeEventListener("click", resetListener);
+      if (deleteConfirmTimeout) {
+        clearTimeout(deleteConfirmTimeout);
+        deleteConfirmTimeout = null;
       }
       deleteProduct(product.id);
       showProductsList();
@@ -704,15 +705,13 @@ function renderProductDetail(productId) {
       deleteBtn.className = "btn btn-danger-confirm flex-1";
       deleteBtn.setAttribute("data-confirming", "true");
 
-      // Set up cancel listener
-      resetListener = () => {
+      // Set up 3-second auto-reset
+      deleteConfirmTimeout = setTimeout(() => {
         deleteBtn.textContent = "Delete";
         deleteBtn.className = "btn btn-danger flex-1";
         deleteBtn.removeAttribute("data-confirming");
-        resetListener = null;
-      };
-
-      document.addEventListener("click", resetListener, { once: true });
+        deleteConfirmTimeout = null;
+      }, 3000);
     }
   });
 }
@@ -723,6 +722,12 @@ function renderProductDetail(productId) {
 function showProductsList() {
   const listView = DOM.productsListView;
   const detailView = DOM.productDetailView;
+
+  // Clear any pending delete confirmation timeout
+  if (deleteConfirmTimeout) {
+    clearTimeout(deleteConfirmTimeout);
+    deleteConfirmTimeout = null;
+  }
 
   listView.classList.remove("hidden");
   detailView.classList.add("hidden");
