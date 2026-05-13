@@ -1,5 +1,5 @@
 /* ============================================
-   SkinLoop — Main JavaScript
+   SkinScript — Main JavaScript
    Navigation and app shell logic
    ============================================ */
 
@@ -155,7 +155,7 @@ function init() {
     });
   });
 
-  console.log('SkinLoop initialized ✓');
+  console.log('SkinScript initialized ✓');
 }
 
 /* ============================================
@@ -187,7 +187,7 @@ if (document.readyState === 'loading') {
  * @returns {Array} Array of product objects
  */
 function getProducts() {
-  const data = localStorage.getItem('skinloop_products');
+  const data = localStorage.getItem('skinscript_products');
   return data ? JSON.parse(data) : [];
 }
 
@@ -196,7 +196,7 @@ function getProducts() {
  * @param {Array} products - Array of product objects
  */
 function saveProducts(products) {
-  localStorage.setItem('skinloop_products', JSON.stringify(products));
+  localStorage.setItem('skinscript_products', JSON.stringify(products));
 }
 
 /**

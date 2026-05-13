@@ -1,8 +1,8 @@
-# 🧴 SkinLoop
+# 🧬 SkinScript
 
 **Safer skincare routines for teens**
 
-SkinLoop is a mobile-first web app that helps teenagers understand what's in their skincare products, build safe routines, and avoid mixing ingredients that can irritate their skin.
+SkinScript is a mobile-first web app that helps teenagers understand what's in their skincare products, build safe routines, and avoid mixing ingredients that can irritate their skin.
 
 ---
 
@@ -154,7 +154,7 @@ npm run preview   # Preview production build
 
 ## 🎯 Target Audience
 
-SkinLoop is designed for:
+SkinScript is designed for:
 - **Teens** (ages 13-19) new to skincare
 - **Parents** helping kids build safe routines
 - **Beginners** learning about active ingredients
@@ -164,7 +164,7 @@ SkinLoop is designed for:
 
 ## ⚠️ Disclaimer
 
-**SkinLoop is not a replacement for a dermatologist.** This app provides educational guidance based on common ingredient interactions, but individual skin conditions vary. When in doubt, consult a licensed dermatologist or skincare professional.
+**SkinScript is not a replacement for a dermatologist.** This app provides educational guidance based on common ingredient interactions, but individual skin conditions vary. When in doubt, consult a licensed dermatologist or skincare professional.
 
 ---
 

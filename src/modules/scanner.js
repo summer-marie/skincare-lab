@@ -1,5 +1,5 @@
 /* ============================================
-   SkinLoop — Barcode Scanner Module
+   SkinScript — Barcode Scanner Module
    Html5-qrcode wrapper for barcode scanning
    ============================================ */
 
