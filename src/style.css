@@ -8,8 +8,8 @@
   --app-max-width: 26.875rem;
   --bottom-nav-height: 4.5rem;
   --sidebar-width: 13rem;
-  --color-primary: #4a8c8f;
-  --color-primary-soft: #e8f4f4;
+  --color-primary: #0ea5a8;
+  --color-primary-soft: #e0f5f5;
   --color-primary-contrast: #ffffff;
   --color-warning: #b45309;
   --color-warning-soft: #fef3c7;
@@ -19,9 +19,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary: #5da5a8;
-    --color-primary-soft: #1f3535;
-    --color-primary-contrast: #0f1414;
+    --color-primary: #2dd4d7;
+    --color-primary-soft: #0d2e2f;
+    --color-primary-contrast: #0a1f1f;
     --color-warning: #d97706;
     --color-warning-soft: #3a2a1a;
     --color-error: #dc2626;
@@ -31,6 +31,7 @@
 
 /* Base styles */
 body {
+  background-color: #f7fafa;
   font-family:
     "DM Sans",
     -apple-system,
