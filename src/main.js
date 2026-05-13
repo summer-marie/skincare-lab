@@ -219,14 +219,14 @@ function seedIfEmpty() {
         name: 'CeraVe Foaming Cleanser',
         brand: 'CeraVe',
         type: 'cleanser',
-        actives: ['niacinamide', 'ceramides']
+        actives: ['niacinamide']
       },
       {
         id: crypto.randomUUID(),
         name: 'The Ordinary Niacinamide 10%',
         brand: 'The Ordinary',
         type: 'serum',
-        actives: ['niacinamide', 'zinc']
+        actives: ['niacinamide']
       },
       {
         id: crypto.randomUUID(),
@@ -240,14 +240,14 @@ function seedIfEmpty() {
         name: 'CeraVe PM Facial Moisturizing Lotion',
         brand: 'CeraVe',
         type: 'moisturizer',
-        actives: ['niacinamide', 'ceramides']
+        actives: ['niacinamide']
       },
       {
         id: crypto.randomUUID(),
         name: 'La Roche-Posay Anthelios SPF 50',
         brand: 'La Roche-Posay',
         type: 'spf',
-        actives: ['avobenzone', 'mexoryl-sx']
+        actives: ['other']
       }
     ];
     saveProducts(seedProducts);
@@ -709,7 +709,8 @@ function renderRoutine(timeOfDay = 'AM') {
 
   if (warnings.length > 0) {
     warningBanner.hidden = false;
-    warningBanner.querySelector('[data-warning-text]').textContent = warnings[0];
+    const warningText = warnings.length > 1 ? warnings.join(' · ') : warnings[0];
+    warningBanner.querySelector('[data-warning-text]').textContent = warningText;
   } else {
     warningBanner.hidden = true;
   }
