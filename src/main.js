@@ -958,6 +958,54 @@ function initScanScreen() {
       fileInput.value = '';
     });
   }
+  
+  // Wire up manual barcode entry
+  const manualBarcodeInput = document.getElementById('manual-barcode');
+  const manualBarcodeBtn = document.getElementById('manual-barcode-btn');
+  
+  const handleManualBarcodeLookup = async () => {
+    const barcode = manualBarcodeInput.value.trim();
+    const spinner = DOM.scannerSpinner;
+    const errorEl = DOM.scannerError;
+    const resultEl = DOM.scannerResult;
+    
+    if (!barcode) {
+      errorEl.textContent = 'Please enter a barcode number.';
+      errorEl.hidden = false;
+      return;
+    }
+    
+    errorEl.hidden = true;
+    spinner.hidden = false;
+    resultEl.hidden = true;
+    
+    try {
+      const result = await lookupBarcode(barcode);
+      await handleScanSuccess(barcode);
+      
+      // Clear input on success
+      manualBarcodeInput.value = '';
+    } catch (err) {
+      spinner.hidden = true;
+      errorEl.textContent = 'Failed to look up barcode. Please try again.';
+      errorEl.hidden = false;
+    } finally {
+      spinner.hidden = true;
+    }
+  };
+  
+  if (manualBarcodeBtn) {
+    manualBarcodeBtn.addEventListener('click', handleManualBarcodeLookup);
+  }
+  
+  if (manualBarcodeInput) {
+    manualBarcodeInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleManualBarcodeLookup();
+      }
+    });
+  }
 }
 
 /**

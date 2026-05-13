@@ -92,6 +92,23 @@
               <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Works on desktop — take a photo of the barcode with your phone and upload it here</p>
             </div>
             
+            <!-- Or separator -->
+            <div class="flex items-center gap-3 py-2">
+              <div class="flex-1 border-t border-gray-200 dark:border-gray-700"></div>
+              <span class="text-sm text-gray-500 dark:text-gray-400">or</span>
+              <div class="flex-1 border-t border-gray-200 dark:border-gray-700"></div>
+            </div>
+            
+            <!-- Manual barcode entry -->
+            <div class="section-card">
+              <label for="manual-barcode" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Enter barcode number manually</label>
+              <div class="flex gap-2">
+                <input type="text" id="manual-barcode" class="input flex-1" placeholder="e.g. 3606000537750" inputmode="numeric" pattern="[0-9]*" maxlength="14">
+                <button type="button" id="manual-barcode-btn" class="btn btn-primary">Look up</button>
+              </div>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Type or paste the barcode number from the product packaging</p>
+            </div>
+            
             <button class="btn btn-ghost w-full" data-action="go-add">
               Or enter product manually
             </button>
