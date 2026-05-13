@@ -279,3 +279,103 @@ body {
   flex-direction: column;
   gap: 1.25rem;
 }
+
+/* ============================================
+   Modal System
+   ============================================ */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-backdrop {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 24rem;
+  z-index: 201;
+  padding: 1rem;
+  animation: modalSlideIn 0.25s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.modal-content {
+  @apply bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700;
+  padding: 1.5rem;
+  box-shadow: 
+    0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.25),
+    0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-content {
+    box-shadow: 
+      0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.5),
+      0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.3);
+  }
+}
+
+.modal-title {
+  @apply text-gray-900 dark:text-gray-100 font-semibold;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.modal-body {
+  @apply text-gray-600 dark:text-gray-300;
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.modal-body [data-modal-product-name] {
+  @apply font-medium text-gray-900 dark:text-gray-100;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: column;
+}
+
+@media (min-width: 20rem) {
+  .modal-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  
+  .modal-actions .btn {
+    flex: 1;
+    max-width: 8rem;
+  }
+}
