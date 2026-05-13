@@ -528,5 +528,75 @@
     "safetyScore": 8,
     "skinCompatibility": ["all", "oily", "combination"],
     "allergenWarnings": []
+  },
+  {
+    "barcode": "3337875795456",
+    "name": "CeraVe SA Smoothing Cleanser",
+    "brand": "CeraVe",
+    "type": "cleanser",
+    "actives": ["salicylic acid", "niacinamide", "ceramides"],
+    "safetyScore": 8,
+    "skinCompatibility": ["oily", "combination", "acne-prone"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3606000512238",
+    "name": "CeraVe Acne Foaming Cream Cleanser",
+    "brand": "CeraVe",
+    "type": "cleanser",
+    "actives": ["benzoyl peroxide 4%", "niacinamide", "ceramides"],
+    "safetyScore": 7,
+    "skinCompatibility": ["oily", "acne-prone"],
+    "allergenWarnings": ["may bleach fabrics", "start slow to avoid irritation"]
+  },
+  {
+    "barcode": "0793379245584",
+    "name": "CeraVe AM Facial Moisturizing Lotion SPF 30",
+    "brand": "CeraVe",
+    "type": "spf",
+    "actives": ["homosalate 12%", "octinoxate 7.5%", "octocrylene 2%", "zinc oxide 3.5%", "niacinamide", "ceramides", "hyaluronic acid"],
+    "safetyScore": 8,
+    "skinCompatibility": ["all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3606000537606",
+    "name": "CeraVe Skin Renewing Night Cream",
+    "brand": "CeraVe",
+    "type": "moisturizer",
+    "actives": ["niacinamide", "ceramides", "hyaluronic acid", "peptides"],
+    "safetyScore": 9,
+    "skinCompatibility": ["all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3606000537613",
+    "name": "CeraVe Eye Repair Cream",
+    "brand": "CeraVe",
+    "type": "treatment",
+    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
+    "safetyScore": 9,
+    "skinCompatibility": ["all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3606000537217",
+    "name": "CeraVe Healing Ointment",
+    "brand": "CeraVe",
+    "type": "treatment",
+    "actives": ["petrolatum", "ceramides", "hyaluronic acid"],
+    "safetyScore": 9,
+    "skinCompatibility": ["all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "7899706192712",
+    "name": "CeraVe Acne Control Gel",
+    "brand": "CeraVe",
+    "type": "treatment",
+    "actives": ["salicylic acid 2%", "niacinamide", "ceramides"],
+    "safetyScore": 8,
+    "skinCompatibility": ["oily", "acne-prone"],
+    "allergenWarnings": []
   }
 ]
