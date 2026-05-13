@@ -644,11 +644,35 @@ function renderProductDetail(productId) {
     showScreen('add');
   });
   
-  document.getElementById('detail-delete-btn').addEventListener('click', () => {
-    if (confirm(`Remove ${product.name} from your stash?`)) {
+  const deleteBtn = document.getElementById('detail-delete-btn');
+  let resetListener = null;
+  
+  deleteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    
+    if (deleteBtn.getAttribute('data-confirming') === 'true') {
+      // Second click - confirm delete
+      if (resetListener) {
+        document.removeEventListener('click', resetListener);
+      }
       deleteProduct(product.id);
       showProductsList();
       renderProducts();
+    } else {
+      // First click - enter confirmation mode
+      deleteBtn.textContent = 'Tap again to confirm';
+      deleteBtn.className = 'btn btn-danger-confirm flex-1';
+      deleteBtn.setAttribute('data-confirming', 'true');
+      
+      // Set up cancel listener
+      resetListener = () => {
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.className = 'btn btn-danger flex-1';
+        deleteBtn.removeAttribute('data-confirming');
+        resetListener = null;
+      };
+      
+      document.addEventListener('click', resetListener, { once: true });
     }
   });
 }
