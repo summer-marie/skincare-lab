@@ -408,5 +408,125 @@
     "safetyScore": 8,
     "skinCompatibility": ["normal", "combination", "oily"],
     "allergenWarnings": ["oxidizes quickly — store away from light/heat"]
+  },
+  {
+    "barcode": "3606000537194",
+    "name": "CeraVe Foaming Facial Cleanser",
+    "brand": "CeraVe",
+    "type": "cleanser",
+    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
+    "safetyScore": 9,
+    "skinCompatibility": ["oily", "combination", "normal"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3606000537743",
+    "name": "CeraVe Moisturizing Cream",
+    "brand": "CeraVe",
+    "type": "moisturizer",
+    "actives": ["ceramides", "hyaluronic acid", "MVE technology"],
+    "safetyScore": 9,
+    "skinCompatibility": ["dry", "sensitive", "all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3606000537675",
+    "name": "CeraVe Hydrating Facial Cleanser",
+    "brand": "CeraVe",
+    "type": "cleanser",
+    "actives": ["ceramides", "hyaluronic acid"],
+    "safetyScore": 9,
+    "skinCompatibility": ["dry", "sensitive", "normal"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3606000537453",
+    "name": "CeraVe PM Facial Moisturizing Lotion",
+    "brand": "CeraVe",
+    "type": "moisturizer",
+    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
+    "safetyScore": 9,
+    "skinCompatibility": ["all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "0769915190731",
+    "name": "The Ordinary Natural Moisturizing Factors + HA",
+    "brand": "The Ordinary",
+    "type": "moisturizer",
+    "actives": ["hyaluronic acid", "amino acids", "fatty acids"],
+    "safetyScore": 9,
+    "skinCompatibility": ["all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "0769915190199",
+    "name": "The Ordinary Hyaluronic Acid 2% + B5",
+    "brand": "The Ordinary",
+    "type": "serum",
+    "actives": ["hyaluronic acid", "vitamin b5"],
+    "safetyScore": 9,
+    "skinCompatibility": ["all"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "7891010882983",
+    "name": "Neutrogena Hydro Boost Water Gel",
+    "brand": "Neutrogena",
+    "type": "moisturizer",
+    "actives": ["hyaluronic acid"],
+    "safetyScore": 8,
+    "skinCompatibility": ["oily", "combination", "normal"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "0655439020107",
+    "name": "Paula's Choice Skin Perfecting 2% BHA Liquid Exfoliant",
+    "brand": "Paula's Choice",
+    "type": "exfoliant",
+    "actives": ["salicylic acid"],
+    "safetyScore": 8,
+    "skinCompatibility": ["oily", "acne-prone", "combination"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "3337875545846",
+    "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer UV SPF 30",
+    "brand": "La Roche-Posay",
+    "type": "spf",
+    "actives": ["avobenzone", "ceramides", "niacinamide", "prebiotic thermal water"],
+    "safetyScore": 9,
+    "skinCompatibility": ["all", "sensitive", "dry"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "0731882497021",
+    "name": "EltaMD UV Clear Broad-Spectrum SPF 46",
+    "brand": "EltaMD",
+    "type": "spf",
+    "actives": ["zinc oxide 9%", "niacinamide", "hyaluronic acid"],
+    "safetyScore": 10,
+    "skinCompatibility": ["all", "acne-prone", "sensitive", "rosacea"],
+    "allergenWarnings": []
+  },
+  {
+    "barcode": "0302994910151",
+    "name": "Differin Adapalene Gel 0.1% Acne Treatment",
+    "brand": "Differin",
+    "type": "treatment",
+    "actives": ["adapalene 0.1%"],
+    "safetyScore": 8,
+    "skinCompatibility": ["acne-prone", "oily"],
+    "allergenWarnings": ["avoid during pregnancy", "use SPF daily", "purging expected first 4–8 weeks"]
+  },
+  {
+    "barcode": "0810052960166",
+    "name": "Glow Recipe Watermelon Glow Niacinamide Dew Drops",
+    "brand": "Glow Recipe",
+    "type": "serum",
+    "actives": ["niacinamide 5%", "hyaluronic acid", "watermelon extract"],
+    "safetyScore": 8,
+    "skinCompatibility": ["all", "oily", "combination"],
+    "allergenWarnings": []
   }
 ]
