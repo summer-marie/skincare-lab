@@ -18,9 +18,6 @@ import {
 // DOM element cache
 let DOM = {};
 
-// Delete confirmation timeout
-let deleteConfirmTimeout = null;
-
 /**
  * Show a specific screen and update navigation state
  * @param {string} screenName - The data-screen attribute value to show
@@ -690,29 +687,7 @@ function renderProductDetail(productId) {
   const deleteBtn = document.getElementById("detail-delete-btn");
 
   deleteBtn.addEventListener("click", () => {
-    if (deleteBtn.getAttribute("data-confirming") === "true") {
-      // Second click - confirm delete
-      if (deleteConfirmTimeout) {
-        clearTimeout(deleteConfirmTimeout);
-        deleteConfirmTimeout = null;
-      }
-      deleteProduct(product.id);
-      showProductsList();
-      renderProducts();
-    } else {
-      // First click - enter confirmation mode
-      deleteBtn.textContent = "Tap again to confirm";
-      deleteBtn.className = "btn btn-danger-confirm flex-1";
-      deleteBtn.setAttribute("data-confirming", "true");
-
-      // Set up 3-second auto-reset
-      deleteConfirmTimeout = setTimeout(() => {
-        deleteBtn.textContent = "Delete";
-        deleteBtn.className = "btn btn-danger flex-1";
-        deleteBtn.removeAttribute("data-confirming");
-        deleteConfirmTimeout = null;
-      }, 3000);
-    }
+    openDeleteModal(product.id, product.name);
   });
 }
 
@@ -723,14 +698,85 @@ function showProductsList() {
   const listView = DOM.productsListView;
   const detailView = DOM.productDetailView;
 
-  // Clear any pending delete confirmation timeout
-  if (deleteConfirmTimeout) {
-    clearTimeout(deleteConfirmTimeout);
-    deleteConfirmTimeout = null;
-  }
-
   listView.classList.remove("hidden");
   detailView.classList.add("hidden");
+}
+
+/* ============================================
+   Delete Modal
+   ============================================ */
+
+let deleteModal = null;
+let deleteModalBackdrop = null;
+let pendingDeleteProductId = null;
+
+function createDeleteModalIfNeeded() {
+  if (deleteModal) return;
+
+  // Backdrop
+  deleteModalBackdrop = document.createElement("div");
+  deleteModalBackdrop.className = "modal-backdrop";
+  deleteModalBackdrop.hidden = true;
+
+  // Modal container
+  deleteModal = document.createElement("div");
+  deleteModal.className = "modal";
+  deleteModal.hidden = true;
+
+  deleteModal.innerHTML = `
+    <div class="modal-content">
+      <h3 class="modal-title">Delete product?</h3>
+      <p class="modal-body">
+        This will remove <span data-modal-product-name></span> from your stash and routine.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" data-modal-cancel>Cancel</button>
+        <button type="button" class="btn btn-danger" data-modal-confirm>Delete</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(deleteModalBackdrop);
+  document.body.appendChild(deleteModal);
+
+  // Wire up buttons
+  const cancelBtn = deleteModal.querySelector("[data-modal-cancel]");
+  const confirmBtn = deleteModal.querySelector("[data-modal-confirm]");
+
+  cancelBtn.addEventListener("click", closeDeleteModal);
+  deleteModalBackdrop.addEventListener("click", closeDeleteModal);
+
+  confirmBtn.addEventListener("click", () => {
+    if (!pendingDeleteProductId) {
+      closeDeleteModal();
+      return;
+    }
+
+    deleteProduct(pendingDeleteProductId);
+    pendingDeleteProductId = null;
+    closeDeleteModal();
+    showProductsList();
+    renderProducts();
+  });
+}
+
+function openDeleteModal(productId, productName) {
+  createDeleteModalIfNeeded();
+
+  pendingDeleteProductId = productId;
+
+  const nameSpan = deleteModal.querySelector("[data-modal-product-name]");
+  if (nameSpan) nameSpan.textContent = productName;
+
+  deleteModal.hidden = false;
+  deleteModalBackdrop.hidden = false;
+}
+
+function closeDeleteModal() {
+  if (!deleteModal) return;
+  deleteModal.hidden = true;
+  deleteModalBackdrop.hidden = true;
+  pendingDeleteProductId = null;
 }
 
 /* ============================================
