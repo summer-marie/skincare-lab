@@ -164,12 +164,14 @@ body {
 
   /* Segmented toggle */
   .segmented-toggle {
-    @apply inline-flex rounded-lg p-1 bg-gray-200 dark:bg-gray-700;
+    @apply flex rounded-lg p-1 bg-gray-200 dark:bg-gray-700;
+    width: 100%;
   }
 
   .segmented-toggle button {
     @apply px-6 py-2 rounded-md text-sm font-medium transition-all;
     min-height: 2.75rem;
+    flex: 1;
   }
 
   .segmented-toggle button.is-active {
