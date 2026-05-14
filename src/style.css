@@ -334,6 +334,15 @@ body {
   display: none;
 }
 
+/* Hero slogan on homepage */
+.hero-slogan {
+  font-family: 'Ephesis', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--color-text-muted, #6b7280);
+}
+
 /* Hero logo on homepage */
 .hero-logo-wrap {
   display: flex;
@@ -346,6 +355,28 @@ body {
   width: clamp(280px, 70vw, 500px);
   height: auto;
   display: block;
+}
+
+/* Disclaimer bubble styling */
+.disclaimer-bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-inline: 1rem;
+  opacity: 0.85;
+}
+
+.disclaimer-bubble p {
+  text-align: left;
+  max-width: 100%;
+  color: var(--color-warning);
+  font-size: 0.75rem;
+  line-height: 1.5;
 }
 
 /* Bottom navigation: Fixed to bottom, 3 equal columns */

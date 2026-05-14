@@ -53,7 +53,8 @@
              ============================================ -->
         <section class="screen is-active" data-screen="home">
           <div class="flex flex-col gap-8 px-5 py-8">
-            <div class="text-center flex flex-col gap-3 mt-6">
+            <div class="text-center flex flex-col gap-1 mt-6">
+              <p class="hero-slogan">Skip the guessing. Know what's on your skin.</p>
               <div class="hero-logo-wrap">
                 <img
                   src="/logo-options/logo-cropped.png"
@@ -61,9 +62,6 @@
                   class="hero-logo"
                 />
               </div>
-              <p class="text-sm text-gray-600 dark:text-gray-400">
-                Skip the guessing. Know what's on your skin.
-              </p>
             </div>
 
             <div class="section-card">
@@ -88,12 +86,13 @@
               </button>
             </div>
 
-            <p
-              class="text-xs text-center text-gray-400 dark:text-gray-500 px-6 py-4"
-            >
-              SkinScript is not a replacement for a dermatologist. When in
-              doubt, see a professional.
-            </p>
+            <div class="disclaimer-bubble">
+              <span>⚠️</span>
+              <p class="text-xs text-center px-2">
+                SkinScript is not a replacement for a dermatologist. When in
+                doubt, see a professional.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -495,11 +494,12 @@
               This routine is a suggestion based on your products and goals.
             </p>
 
-            <p
-              class="text-xs text-center text-gray-400 dark:text-gray-500 px-6 pb-6"
-            >
-              Not a replacement for a dermatologist.
-            </p>
+            <div class="disclaimer-bubble">
+              <span>⚠️</span>
+              <p class="text-xs text-center px-2">
+                Not a replacement for a dermatologist.
+              </p>
+            </div>
           </div>
         </section>
       </main>
