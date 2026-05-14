@@ -16,16 +16,14 @@
   --color-error-soft: #fee2e2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #2dd4d7;
-    --color-primary-soft: #0d2e2f;
-    --color-primary-contrast: #0a1f1f;
-    --color-warning: #d97706;
-    --color-warning-soft: #3a2a1a;
-    --color-error: #dc2626;
-    --color-error-soft: #3a1f1f;
-  }
+[data-theme="dark"] {
+  --color-primary: #2dd4d7;
+  --color-primary-soft: #0d2e2f;
+  --color-primary-contrast: #0a1f1f;
+  --color-warning: #d97706;
+  --color-warning-soft: #3a2a1a;
+  --color-error: #dc2626;
+  --color-error-soft: #3a1f1f;
 }
 
 /* Base styles */
@@ -301,10 +299,8 @@ body {
   animation: fadeIn 0.2s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  .modal-backdrop {
-    background: rgba(0, 0, 0, 0.7);
-  }
+[data-theme="dark"] .modal-backdrop {
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .modal {
@@ -338,12 +334,10 @@ body {
     0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  .modal-content {
-    box-shadow: 
-      0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.5),
-      0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.3);
-  }
+[data-theme="dark"] .modal-content {
+  box-shadow: 
+    0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.5),
+    0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.3);
 }
 
 .modal-title {
