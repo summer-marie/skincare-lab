@@ -308,6 +308,20 @@ body {
   display: none;
 }
 
+/* Hero logo on homepage */
+.hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.hero-logo {
+  width: clamp(180px, 40vw, 320px);
+  height: auto;
+  display: block;
+}
+
 /* Bottom navigation: Fixed to bottom, 3 equal columns */
 .bottom-nav {
   @apply fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg;
