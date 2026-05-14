@@ -3,17 +3,10 @@
    Navigation and app shell logic
    ============================================ */
 
-import {
-  startScanner,
-  stopScanner,
-  lookupBarcode,
-  scanFromFile,
-} from "./modules/scanner.js";
-import {
-  getAMRoutine,
-  getPMRoutine,
-  getConflictWarnings,
-} from "./modules/routineEngine.js";
+import { stopScanner } from "./modules/scanner.js";
+import { initScanScreen, prefillForm } from "./modules/barcode.js";
+import { renderProducts as renderProductsList } from "./modules/search.js";
+import { renderRoutine as renderRoutineUI } from "./modules/routine.js";
 
 // DOM element cache
 let DOM = {};
@@ -99,7 +92,7 @@ function init() {
   if (scanButton) {
     scanButton.addEventListener("click", () => {
       showScreen("scan");
-      initScanScreen();
+      initScanScreen(DOM, showScreen);
     });
   }
 
@@ -361,74 +354,17 @@ function getUsageInstruction(product) {
    ============================================ */
 
 /**
- * Create a product card element
- * @param {Object} product - Product object
- * @returns {HTMLElement} Product card element
- */
-function createProductCard(product) {
-  const card = document.createElement("div");
-  card.className = "product-card";
-  card.dataset.productId = product.id;
-
-  const typeLabel = formatLabel(product.type);
-  const activesText =
-    product.actives.length > 0
-      ? product.actives.map((a) => a.replaceAll("-", " ")).join(", ")
-      : "No actives listed";
-
-  card.innerHTML = `
-    <div class="flex items-center justify-between">
-      <div class="flex-1">
-        <h3 class="font-semibold text-gray-900 dark:text-gray-50">${product.name}</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5">${product.brand} · ${typeLabel}</p>
-        <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">${activesText}</p>
-      </div>
-      <span class="text-gray-400 dark:text-gray-500 text-xl">›</span>
-    </div>
-  `;
-
-  card.addEventListener("click", () => {
-    renderProductDetail(product.id);
-  });
-
-  return card;
-}
-
-/**
  * Render products list with optional filter
  * @param {string} filter - Filter by type ("all" or specific type)
  */
 function renderProducts(filter = "all") {
-  const container = DOM.productsContainer;
-  const products = getProducts();
-
-  let filtered = products;
-  if (filter !== "all") {
-    filtered = products.filter((p) => p.type === filter);
-  }
-
-  container.innerHTML = "";
-
-  if (filtered.length === 0) {
-    const emptyState = document.createElement("div");
-    emptyState.className = "empty-state";
-    emptyState.innerHTML = `
-      <div class="text-4xl mb-4">🧴</div>
-      <p class="font-medium text-gray-700 dark:text-gray-300 mb-1">Your stash is empty</p>
-      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Scan a barcode or add a product manually to get started.</p>
-    `;
-    const addButton = document.createElement("button");
-    addButton.className = "btn btn-primary";
-    addButton.textContent = "Add your first product";
-    addButton.addEventListener("click", () => showScreen("add"));
-    emptyState.appendChild(addButton);
-    container.appendChild(emptyState);
-    return;
-  }
-
-  filtered.forEach((product) => {
-    container.appendChild(createProductCard(product));
-  });
+  renderProductsList(
+    DOM.productsContainer,
+    getProducts(),
+    filter,
+    showScreen,
+    renderProductDetail,
+  );
 }
 
 /**
@@ -788,62 +724,14 @@ function closeDeleteModal() {
  * @param {string} timeOfDay - "AM" or "PM"
  */
 function renderRoutine(timeOfDay = "AM") {
-  const container = DOM.routineContainer;
-  const warningBanner = DOM.routineWarning;
-  const products = getProducts();
-
-  const routine =
-    timeOfDay === "AM" ? getAMRoutine(products) : getPMRoutine(products);
-
-  const warnings = getConflictWarnings(routine, timeOfDay);
-
-  if (warnings.length > 0) {
-    warningBanner.hidden = false;
-    const warningText =
-      warnings.length > 1 ? warnings.join(" · ") : warnings[0];
-    warningBanner.querySelector("[data-warning-text]").textContent =
-      warningText;
-  } else {
-    warningBanner.hidden = true;
-  }
-
-  container.innerHTML = "";
-
-  routine.forEach(({ step, type, product }) => {
-    const typeLabel = formatLabel(type);
-    const stepCard = document.createElement("div");
-
-    if (product) {
-      stepCard.className = "product-card";
-      stepCard.innerHTML = `
-        <div class="flex items-center gap-3">
-          <div class="shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-semibold text-gray-700 dark:text-gray-300">${step}</div>
-          <div class="flex-1">
-            <p class="text-xs text-gray-500 dark:text-gray-400">${typeLabel}</p>
-            <p class="font-semibold text-gray-900 dark:text-gray-50">${product.name}</p>
-          </div>
-          <span class="text-gray-400 dark:text-gray-500 text-xl">›</span>
-        </div>
-      `;
-      stepCard.addEventListener("click", () => {
-        showScreen("products");
-        setTimeout(() => renderProductDetail(product.id), 100);
-      });
-    } else {
-      stepCard.className =
-        "bg-white dark:bg-gray-800 rounded-xl p-4 border border-dashed border-gray-300 dark:border-gray-700";
-      stepCard.innerHTML = `
-        <div class="flex items-center gap-3">
-          <div class="shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-semibold text-gray-700 dark:text-gray-300">${step}</div>
-          <div class="flex-1">
-            <p class="text-sm text-gray-500 dark:text-gray-400">No ${typeLabel.toLowerCase()} added yet.</p>
-          </div>
-        </div>
-      `;
-    }
-
-    container.appendChild(stepCard);
-  });
+  renderRoutineUI(
+    timeOfDay,
+    DOM.routineContainer,
+    DOM.routineWarning,
+    getProducts(),
+    showScreen,
+    renderProductDetail,
+  );
 }
 
 /* ============================================
@@ -935,100 +823,8 @@ function handleAddProductSubmit(e) {
 }
 
 /* ============================================
-   Scanner Integration
+   Form Prefilling for Edit Mode
    ============================================ */
-
-/**
- * Prefill the add product form with scanned data
- * @param {Object} productData - Product data from barcode lookup
- */
-function prefillForm(productData) {
-  // Set name and brand inputs
-  document.getElementById("product-name").value = productData.name || "";
-  document.getElementById("product-brand").value = productData.brand || "";
-
-  // Select the product type chip
-  const typeChips = document.querySelectorAll("#type-chips .chip");
-  typeChips.forEach((chip) => chip.classList.remove("is-selected"));
-  const typeChip = document.querySelector(
-    `#type-chips .chip[data-type="${productData.type}"]`,
-  );
-  if (typeChip) {
-    typeChip.classList.add("is-selected");
-  }
-
-  // Select the actives chips
-  const activesChips = document.querySelectorAll("#actives-chips .chip");
-  activesChips.forEach((chip) => chip.classList.remove("is-selected"));
-  if (productData.actives && productData.actives.length > 0) {
-    productData.actives.forEach((active) => {
-      const activeChip = document.querySelector(
-        `#actives-chips .chip[data-active="${active}"]`,
-      );
-      if (activeChip) {
-        activeChip.classList.add("is-selected");
-      }
-    });
-  }
-
-  // Display safety score (if available)
-  const safetyScoreSection = document.getElementById("scanned-safety-score");
-  const safetyScoreBadge = document.getElementById("safety-score-badge");
-  if (
-    productData.safetyScore !== undefined &&
-    productData.safetyScore !== null
-  ) {
-    const score = productData.safetyScore;
-    safetyScoreBadge.textContent = `${score}/10`;
-    // Color code: 1-4 = strong (red), 5-7 = medium (yellow), 8-10 = gentle (green)
-    if (score <= 4) {
-      safetyScoreBadge.className = "badge badge-strong";
-    } else if (score <= 7) {
-      safetyScoreBadge.className = "badge badge-medium";
-    } else {
-      safetyScoreBadge.className = "badge badge-gentle";
-    }
-    safetyScoreSection.hidden = false;
-  } else {
-    safetyScoreBadge.textContent = "N/A";
-    safetyScoreBadge.className = "badge";
-    safetyScoreSection.hidden = productData.safetyScore === undefined;
-  }
-
-  // Display skin compatibility (if available)
-  const compatibilitySection = document.getElementById("scanned-compatibility");
-  const compatibilityTags = document.getElementById("compatibility-tags");
-  if (
-    productData.skinCompatibility &&
-    productData.skinCompatibility.length > 0
-  ) {
-    compatibilityTags.innerHTML = "";
-    productData.skinCompatibility.forEach((skinType) => {
-      const tag = document.createElement("span");
-      tag.className = "badge badge-gentle";
-      tag.textContent = formatLabel(skinType);
-      compatibilityTags.appendChild(tag);
-    });
-    compatibilitySection.hidden = false;
-  } else {
-    compatibilitySection.hidden = true;
-  }
-
-  // Display allergen warnings (if any)
-  const allergensSection = document.getElementById("scanned-allergens");
-  const allergenList = document.getElementById("allergen-list");
-  if (productData.allergenWarnings && productData.allergenWarnings.length > 0) {
-    allergenList.innerHTML = "";
-    productData.allergenWarnings.forEach((warning) => {
-      const li = document.createElement("li");
-      li.textContent = warning;
-      allergenList.appendChild(li);
-    });
-    allergensSection.hidden = false;
-  } else {
-    allergensSection.hidden = true;
-  }
-}
 
 /**
  * Prefill the add product form for editing an existing product
@@ -1041,9 +837,6 @@ function prefillFormForEdit(product) {
   document.querySelector('[data-screen="add"] h2').textContent = "Edit product";
 }
 
-/**
- * Initialize the scan screen and wire up scanner
- */
 function initScanScreen() {
   const cameraBtn = document.getElementById("use-camera-btn");
 
