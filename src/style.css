@@ -30,7 +30,6 @@
 
 /* Base styles */
 body {
-  background-color: #f7fafa;
   font-family:
     "DM Sans",
     -apple-system,
@@ -336,14 +335,14 @@ body {
   box-shadow: 
     0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.25),
     0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.1);
+}
+
 @media (prefers-color-scheme: dark) {
   .modal-content {
     box-shadow: 
       0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.5),
       0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.3);
   }
-    0 1.25rem 2.5rem -0.75rem rgba(0, 0, 0, 0.5),
-    0 0.625rem 1.25rem -0.625rem rgba(0, 0, 0, 0.3);
 }
 
 .modal-title {
