@@ -171,9 +171,12 @@
             <div class="section-card">
               <label
                 for="manual-barcode"
-                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                 >Enter barcode number manually</label
               >
+              <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                Enter the full 12- or 13-digit number printed under the barcode on your product packaging.
+              </p>
               <div class="flex gap-2">
                 <input
                   type="text"
@@ -183,6 +186,7 @@
                   inputmode="numeric"
                   pattern="[0-9]*"
                   maxlength="14"
+                  aria-describedby="barcode-hint"
                 />
                 <button
                   type="button"
@@ -192,8 +196,8 @@
                   Look up
                 </button>
               </div>
-              <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                Type or paste the barcode number from the product packaging
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-2" id="barcode-hint">
+                UPC (12 digits) and EAN-13 (13 digits) barcodes are both supported.
               </p>
             </div>
 
