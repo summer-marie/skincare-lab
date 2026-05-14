@@ -1,8 +1,14 @@
 <!doctype html>
+<!-- 
+  SkinScript — Skincare Product Manager & Routine Builder
+  Single-page application with screen-based navigation
+  No page reloads; all screens are toggled via JavaScript
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Inline SVG favicon: droplet with inner circle motif -->
     <link
       rel="icon"
       type="image/svg+xml"
@@ -15,11 +21,20 @@
       rel="stylesheet"
     />
     <link href="/src/style.css" rel="stylesheet" />
+    <!-- Html5-qrcode library for barcode scanning via camera and image upload -->
     <script src="https://unpkg.com/html5-qrcode"></script>
     <title>SkinScript — Skip the guessing. Know what's on your skin.</title>
   </head>
   <body>
+    <!-- 
+      App Shell Architecture:
+      - Fixed header (top-bar) with logo and tagline
+      - Main content area with multiple screens (only one visible at a time)
+      - Fixed bottom navigation (bottom-nav) for primary navigation
+      - Max width constrained for better mobile/tablet experience
+    -->
     <div class="app-shell">
+      <!-- Fixed header: Always visible across all screens -->
       <header class="top-bar">
         <img
           src="/logo-options/main-logo.png"
@@ -31,8 +46,17 @@
         >
       </header>
 
+      <!-- 
+        Main content area: Contains all app screens
+        - Screens use data-screen attribute for JavaScript targeting
+        - Only one screen has .is-active class at a time
+        - .screen-container handles scrolling and bottom padding for nav
+      -->
       <main id="app-main" class="screen-container">
-        <!-- Home Screen -->
+        <!-- ============================================
+             HOME SCREEN
+             Landing page with quick actions
+             ============================================ -->
         <section class="screen is-active" data-screen="home">
           <div class="flex flex-col gap-8 px-5 py-8">
             <div class="text-center flex flex-col gap-3 mt-6">
@@ -78,7 +102,10 @@
           </div>
         </section>
 
-        <!-- Scan Screen -->
+        <!-- ============================================
+             SCAN SCREEN
+             Three ways to scan: Camera, Upload, or Manual Entry
+             ============================================ -->
         <section class="screen" data-screen="scan">
           <div class="flex flex-col gap-6 px-5 py-6">
             <button
@@ -92,8 +119,10 @@
               Scan your product
             </h2>
 
+            <!-- Scanner container: Html5Qrcode injects camera feed here -->
             <div id="scanner-container"></div>
 
+            <!-- Scan status messages: Toggled by JavaScript during barcode lookup -->
             <div
               id="scanner-spinner"
               class="text-center py-4"
@@ -137,7 +166,7 @@
               ></div>
             </div>
 
-            <!-- Upload barcode photo -->
+            <!-- Method 2: Upload image file (desktop-friendly alternative) -->
             <div class="section-card">
               <label
                 for="barcode-upload"
@@ -167,7 +196,7 @@
               ></div>
             </div>
 
-            <!-- Manual barcode entry -->
+            <!-- Method 3: Manual numeric entry for when camera/upload fails -->
             <div class="section-card">
               <label
                 for="manual-barcode"
@@ -212,7 +241,11 @@
           </div>
         </section>
 
-        <!-- Add Product Screen -->
+        <!-- ============================================
+             ADD PRODUCT SCREEN
+             Manual entry form + scanned data display
+             Used for both adding new products and editing existing ones
+             ============================================ -->
         <section class="screen" data-screen="add">
           <div class="flex flex-col gap-6 px-5 py-6">
             <button
@@ -226,7 +259,14 @@
               Add product
             </h2>
 
+            <!-- 
+              Product form:
+              - Basic fields: name, brand, type (single-select chips), actives (multi-select chips)
+              - Optional scanned metadata: safety score, compatibility, allergens
+              - data-editing-id attribute set by JavaScript when editing existing product
+            -->
             <form id="add-product-form" class="flex flex-col gap-5">
+              <!-- Two-column layout on desktop, stacks on mobile (see CSS) -->
               <div class="form-two-column">
                 <div class="form-left-column flex flex-col gap-5">
                   <div class="form-field">
@@ -259,6 +299,7 @@
                     />
                   </div>
 
+                  <!-- Product type: Single-select chip group (only one can be selected) -->
                   <div class="form-field">
                     <label
                       class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -296,6 +337,7 @@
                 </div>
 
                 <div class="form-right-column">
+                  <!-- Active ingredients: Multi-select chip group (multiple allowed) -->
                   <div class="form-field">
                     <label
                       class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -334,7 +376,12 @@
                 </div>
               </div>
 
-              <!-- Scanned Product Data (read-only, populated by barcode scanner) -->
+              <!-- 
+                Optional metadata from barcode scan:
+                - Hidden by default, shown only when barcode lookup returns this data
+                - Read-only display, not editable by user
+                - Populated by prefillForm() in barcode.js
+              -->
               <div id="scanned-safety-score" class="form-field" hidden>
                 <label
                   class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -377,8 +424,12 @@
           </div>
         </section>
 
-        <!-- My Products Screen -->
+        <!-- ============================================
+             MY PRODUCTS SCREEN
+             Two views: List (default) and Detail (toggled by JS)
+             ============================================ -->
         <section class="screen" data-screen="products">
+          <!-- Products list view: Shows all products with filter chips -->
           <div id="products-list-view">
             <div class="flex flex-col gap-4 px-5 py-6">
               <h2
@@ -387,6 +438,7 @@
                 My products
               </h2>
 
+              <!-- Filter chips: Single-select to filter by product type -->
               <div class="flex flex-wrap gap-2" id="filter-chips">
                 <button class="chip is-selected" data-filter="all">All</button>
                 <button class="chip" data-filter="cleanser">Cleansers</button>
@@ -398,29 +450,36 @@
                 <button class="chip" data-filter="spf">SPF</button>
               </div>
 
+              <!-- Product cards container: Populated by renderProducts() -->
               <div id="products-container" class="flex flex-col gap-3 mt-2">
-                <!-- Products rendered here -->
+                <!-- Products rendered here by search.js -->
               </div>
             </div>
           </div>
 
+          <!-- Product detail view: Hidden until user clicks a product card -->
           <div id="product-detail-view" class="hidden">
-            <!-- Product detail rendered here -->
+            <!-- Product detail rendered here by buildDetailHTML() in main.js -->
           </div>
         </section>
 
-        <!-- Routine Screen -->
+        <!-- ============================================
+             ROUTINE SCREEN
+             AM/PM routine builder with conflict warnings
+             ============================================ -->
         <section class="screen" data-screen="routine">
           <div class="flex flex-col gap-5 px-5 py-6">
             <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-50">
               My Routine
             </h2>
 
+            <!-- AM/PM toggle: data-time attribute used by JavaScript to render routine -->
             <div class="segmented-toggle">
               <button class="is-active" data-time="AM">AM</button>
               <button data-time="PM">PM</button>
             </div>
 
+            <!-- Warning banner: Shows ingredient conflicts (e.g., retinoid + benzoyl peroxide) -->
             <div id="routine-warning" class="warning-banner mx-5 mt-4" hidden>
               <span>⚠️</span>
               <span data-warning-text></span>
@@ -430,8 +489,9 @@
               Today's suggested routine
             </h3>
 
+            <!-- Routine steps container: Populated by renderRoutine() -->
             <div id="routine-container" class="flex flex-col gap-3">
-              <!-- Routine steps rendered here -->
+              <!-- Routine steps rendered here by routine.js -->
             </div>
 
             <p
@@ -449,12 +509,19 @@
         </section>
       </main>
 
+      <!-- 
+        Fixed bottom navigation:
+        - data-nav attribute links to data-screen for navigation
+        - aria-current="page" set by JavaScript on active screen
+        - Three main sections: Home, My Products, Routine
+      -->
       <nav class="bottom-nav" aria-label="Primary navigation">
         <button data-nav="home" aria-current="page">Home</button>
         <button data-nav="products">My Products</button>
         <button data-nav="routine">Routine</button>
       </nav>
     </div>
+    <!-- Vercel Speed Insights -->
     <script>
       window.si =
         window.si ||
