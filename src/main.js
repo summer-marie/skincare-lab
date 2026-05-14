@@ -47,6 +47,13 @@ function showScreen(screenName) {
     }
   });
 
+  // Manage page-home class on body for homepage-specific styling
+  if (screenName === "home") {
+    document.body.classList.add("page-home");
+  } else {
+    document.body.classList.remove("page-home");
+  }
+
   // Scroll to top of main container
   const mainContainer = document.getElementById("app-main");
   if (mainContainer) {
