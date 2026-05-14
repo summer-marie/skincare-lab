@@ -7,6 +7,15 @@ import { stopScanner } from "./modules/scanner.js";
 import { initScanScreen, prefillForm } from "./modules/barcode.js";
 import { renderProducts as renderProductsList } from "./modules/search.js";
 import { renderRoutine as renderRoutineUI } from "./modules/routine.js";
+import { formatLabel } from "./helpers/format.js";
+import { getProducts, saveProducts, deleteProduct } from "./helpers/storage.js";
+import {
+  getProductStrength,
+  getUsageTiming,
+  getActiveDescription,
+  getUsageInstruction,
+  getProductById,
+} from "./helpers/products.js";
 
 // DOM element cache
 let DOM = {};
@@ -166,19 +175,6 @@ function init() {
   console.log("SkinScript initialized ✓");
 }
 
-/* ============================================
-  Utility Functions
-   ============================================ */
-
-/**
- * Format a hyphenated string to title case with spaces
- * @param {string} str - String to format (e.g., "spot-treatment")
- * @returns {string} Formatted string (e.g., "Spot treatment")
- */
-function formatLabel(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1).replaceAll("-", " ");
-}
-
 // Start the app when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
@@ -189,32 +185,6 @@ if (document.readyState === "loading") {
 /* ============================================
    Product Data Management
    ============================================ */
-
-/**
- * Get products from localStorage
- * @returns {Array} Array of product objects
- */
-function getProducts() {
-  const data = localStorage.getItem("skinscript_products");
-  return data ? JSON.parse(data) : [];
-}
-
-/**
- * Save products to localStorage
- * @param {Array} products - Array of product objects
- */
-function saveProducts(products) {
-  localStorage.setItem("skinscript_products", JSON.stringify(products));
-}
-
-/**
- * Delete a product by ID from localStorage
- * @param {string} productId - Product ID to delete
- */
-function deleteProduct(productId) {
-  const updated = getProducts().filter((p) => p.id !== productId);
-  saveProducts(updated);
-}
 
 /**
  * Seed initial products if localStorage is empty
@@ -263,93 +233,6 @@ function seedIfEmpty() {
 }
 
 /* ============================================
-   Product Strength & Timing Logic
-   ============================================ */
-
-/**
- * Get product strength level based on actives and type
- * @param {Object} product - Product object
- * @returns {string} "gentle" | "medium" | "strong"
- */
-function getProductStrength(product) {
-  const strongActives = ["retinoid", "benzoyl-peroxide"];
-  const mediumActives = ["salicylic-acid"];
-
-  if (product.actives.some((active) => strongActives.includes(active))) {
-    return "strong";
-  }
-  if (
-    product.actives.some((active) => mediumActives.includes(active)) ||
-    product.type === "exfoliant"
-  ) {
-    return "medium";
-  }
-  return "gentle";
-}
-
-/**
- * Get usage timing for a product
- * @param {Object} product - Product object
- * @returns {string} "AM" | "PM" | "AM/PM" | "2-3x per week"
- */
-function getUsageTiming(product) {
-  if (product.type === "spf") return "AM";
-  if (product.type === "exfoliant" || product.actives.includes("retinoid"))
-    return "PM";
-  if (
-    product.type === "cleanser" ||
-    product.type === "moisturizer" ||
-    product.type === "serum"
-  )
-    return "AM/PM";
-  return "AM/PM";
-}
-
-/**
- * Get active ingredient descriptions
- * @param {string} active - Active ingredient key
- * @returns {string} Description text
- */
-function getActiveDescription(active) {
-  const descriptions = {
-    "salicylic-acid": "Helps with acne and clogged pores",
-    niacinamide: "Helps with redness and barrier support",
-    "benzoyl-peroxide": "Helps target acne-causing bacteria",
-    retinoid: "Helps with breakouts and texture",
-    ceramides: "Help support the skin barrier",
-    zinc: "Helps calm inflammation",
-    avobenzone: "Helps protect skin from UV damage",
-    "mexoryl-sx": "Helps protect skin from UV damage",
-    other: "Additional beneficial ingredient",
-  };
-  return descriptions[active] || "Beneficial ingredient";
-}
-
-/**
- * Get usage instruction for a product
- * @param {Object} product - Product object
- * @returns {string} Usage instruction
- */
-function getUsageInstruction(product) {
-  if (product.type === "spf") {
-    return "Apply as the last step in your morning routine.";
-  }
-  if (product.type === "exfoliant" || product.actives.includes("retinoid")) {
-    return "Use after cleansing, before moisturizer.";
-  }
-  if (product.type === "cleanser") {
-    return "Use morning and night.";
-  }
-  if (product.type === "moisturizer") {
-    return "Use after treatments, before SPF in the morning.";
-  }
-  if (product.type === "serum") {
-    return "Apply after cleansing, before moisturizer.";
-  }
-  return "Apply as directed.";
-}
-
-/* ============================================
    Product Rendering
    ============================================ */
 
@@ -365,15 +248,6 @@ function renderProducts(filter = "all") {
     showScreen,
     renderProductDetail,
   );
-}
-
-/**
- * Get a product by its ID
- * @param {string} id - Product ID
- * @returns {Object|null} Product object or null if not found
- */
-function getProductById(id) {
-  return getProducts().find((p) => p.id === id) || null;
 }
 
 /**
@@ -835,155 +709,4 @@ function prefillFormForEdit(product) {
   form.dataset.editingId = product.id;
   prefillForm(product);
   document.querySelector('[data-screen="add"] h2').textContent = "Edit product";
-}
-
-function initScanScreen() {
-  const cameraBtn = document.getElementById("use-camera-btn");
-
-  if (cameraBtn) {
-    // Remove any existing listeners by cloning
-    const newBtn = cameraBtn.cloneNode(true);
-    cameraBtn.parentNode.replaceChild(newBtn, cameraBtn);
-
-    newBtn.addEventListener("click", () => {
-      const spinner = DOM.scannerSpinner;
-      const errorEl = DOM.scannerError;
-      const resultEl = DOM.scannerResult;
-
-      spinner.hidden = true;
-      errorEl.hidden = true;
-      resultEl.hidden = true;
-
-      startScanner("scanner-container", handleScanSuccess, handleScanError);
-    });
-  }
-
-  // Wire up file upload barcode scanner
-  const fileInput = document.getElementById("barcode-upload");
-  if (fileInput) {
-    // Remove any existing listeners by cloning
-    const newFileInput = fileInput.cloneNode(true);
-    fileInput.parentNode.replaceChild(newFileInput, fileInput);
-
-    newFileInput.addEventListener("change", async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const spinner = DOM.scannerSpinner;
-      const errorEl = DOM.scannerError;
-      const resultEl = DOM.scannerResult;
-
-      spinner.hidden = false;
-      errorEl.hidden = true;
-      resultEl.hidden = true;
-
-      try {
-        const barcode = await scanFromFile(file);
-        await handleScanSuccess(barcode);
-      } catch (err) {
-        spinner.hidden = true;
-        errorEl.textContent =
-          "Couldn't read that barcode. Try a clearer photo in good lighting.";
-        errorEl.hidden = false;
-      }
-
-      // Reset file input so same file can be resubmitted
-      newFileInput.value = "";
-    });
-  }
-
-  // Wire up manual barcode entry
-  const manualBarcodeInput = document.getElementById("manual-barcode");
-  const manualBarcodeBtn = document.getElementById("manual-barcode-btn");
-
-  if (manualBarcodeBtn) {
-    // Remove any existing listeners by cloning
-    const newManualBtn = manualBarcodeBtn.cloneNode(true);
-    manualBarcodeBtn.parentNode.replaceChild(newManualBtn, manualBarcodeBtn);
-
-    const handleManualBarcodeLookup = async () => {
-      const barcode = manualBarcodeInput.value.trim();
-      const spinner = DOM.scannerSpinner;
-      const errorEl = DOM.scannerError;
-      const resultEl = DOM.scannerResult;
-
-      if (!barcode) {
-        errorEl.textContent = "Please enter a barcode number.";
-        errorEl.hidden = false;
-        return;
-      }
-
-      errorEl.hidden = true;
-      spinner.hidden = false;
-      resultEl.hidden = true;
-
-      const result = await handleScanSuccess(barcode);
-
-      // Only clear input if product was found
-      if (result) {
-        manualBarcodeInput.value = "";
-      }
-    };
-
-    newManualBtn.addEventListener("click", handleManualBarcodeLookup);
-
-    if (manualBarcodeInput) {
-      manualBarcodeInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          handleManualBarcodeLookup();
-        }
-      });
-    }
-  }
-}
-
-/**
- * Handle successful barcode scan
- * @param {string} barcode - Scanned barcode string
- */
-async function handleScanSuccess(barcode) {
-  const spinner = DOM.scannerSpinner;
-  const errorEl = DOM.scannerError;
-  const resultEl = DOM.scannerResult;
-
-  spinner.hidden = false;
-  errorEl.hidden = true;
-  resultEl.hidden = true;
-
-  const result = await lookupBarcode(barcode);
-
-  if (result) {
-    spinner.hidden = true;
-    prefillForm(result);
-    showScreen("add");
-    return result;
-  } else {
-    spinner.hidden = true;
-
-    // Show descriptive error with the barcode that wasn't found
-    errorEl.textContent = `We couldn't find this barcode (${barcode}) in our database or online. This is common for newer or regional products. Please enter your product details manually below.`;
-    errorEl.hidden = false;
-
-    // Scroll the manual entry button into view
-    const manualEntryBtn = document.querySelector('[data-action="go-add"]');
-    if (manualEntryBtn) {
-      manualEntryBtn.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-
-    return null;
-  }
-}
-
-/**
- * Handle scanner error
- * @param {string} message - Error message
- */
-function handleScanError(message) {
-  const spinner = DOM.scannerSpinner;
-  const errorEl = DOM.scannerError;
-
-  spinner.hidden = true;
-  errorEl.textContent = message;
-  errorEl.hidden = false;
 }

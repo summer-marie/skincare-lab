@@ -3,26 +3,10 @@
    Logic for AM/PM routines and conflict detection
    ============================================ */
 
+import { getUsageTiming } from "../helpers/products.js";
+
 const AM_ORDER = ["cleanser", "serum", "treatment", "moisturizer", "spf"];
 const PM_ORDER = ["cleanser", "exfoliant", "serum", "treatment", "moisturizer"];
-
-/**
- * Get usage timing for a product (private helper)
- * @param {Object} product - Product object
- * @returns {string} "AM" | "PM" | "AM/PM"
- */
-function getUsageTiming(product) {
-  if (product.type === "spf") return "AM";
-  if (product.type === "exfoliant" || product.actives.includes("retinoid"))
-    return "PM";
-  if (
-    product.type === "cleanser" ||
-    product.type === "moisturizer" ||
-    product.type === "serum"
-  )
-    return "AM/PM";
-  return "AM/PM";
-}
 
 /**
  * Get AM routine steps

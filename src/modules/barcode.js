@@ -9,15 +9,7 @@ import {
   lookupBarcode,
   scanFromFile,
 } from "./scanner.js";
-
-/**
- * Format a hyphenated string to title case with spaces
- * @param {string} str - String to format (e.g., "spot-treatment")
- * @returns {string} Formatted string (e.g., "Spot treatment")
- */
-function formatLabel(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1).replaceAll("-", " ");
-}
+import { formatLabel } from "../helpers/format.js";
 
 /**
  * Prefill the add product form with scanned data

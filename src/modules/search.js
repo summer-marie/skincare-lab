@@ -3,6 +3,8 @@
    Handles product listing, filtering, and search UI
    ============================================ */
 
+import { formatLabel } from "../helpers/format.js";
+
 /**
  * Create a product card element
  * @param {Object} product - Product object
@@ -31,6 +33,7 @@ export function createProductCard(product, renderProductDetail) {
     </div>
   `;
 
+  // Add click event to show product detail
   card.addEventListener("click", () => {
     renderProductDetail(product.id);
   });
@@ -60,6 +63,7 @@ export function renderProducts(
 
   container.innerHTML = "";
 
+  // If no products match the filter, show an empty state
   if (filtered.length === 0) {
     const emptyState = document.createElement("div");
     emptyState.className = "empty-state";
@@ -77,16 +81,8 @@ export function renderProducts(
     return;
   }
 
+  // Render filtered products
   filtered.forEach((product) => {
     container.appendChild(createProductCard(product, renderProductDetail));
   });
-}
-
-/**
- * Format a hyphenated string to title case with spaces
- * @param {string} str - String to format (e.g., "spot-treatment")
- * @returns {string} Formatted string (e.g., "Spot treatment")
- */
-function formatLabel(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1).replaceAll("-", " ");
 }
