@@ -7,6 +7,8 @@ import inciData from "../data/inci-data.json";
 
 /**
  * Build a fast O(1) lookup map from the INCI JSON array on first import.
+ * This converts the array to a Map structure for instant barcode lookups,
+ * avoiding O(n) array searches on every scan.
  * Key: barcode string  →  Value: product object
  */
 const INCI_MAP = Object.fromEntries(
@@ -71,11 +73,14 @@ export function stopScanner() {
 
 /**
  * Scan barcode from an uploaded image file
+ * Creates a temporary scanner instance because Html5Qrcode requires
+ * a DOM element ID, but we're scanning from memory (no video feed)
  * @param {File} file - Image file containing a barcode
  * @returns {Promise<string>} Decoded barcode text
  * @throws {Error} If scan fails
  */
 export async function scanFromFile(file) {
+  // Create unique temp ID to avoid conflicts with main scanner
   const tempId = `temp-scanner-${Date.now()}`;
   const tempScanner = new Html5Qrcode(tempId);
 
@@ -95,20 +100,23 @@ export async function scanFromFile(file) {
 
 /**
  * Look up product data by barcode.
- * Priority:
- *   1. Local inci-data.json  (full skincare metadata)
- *   2. Open Food Facts API   (name/brand only, generic fallback)
+ * Two-tier lookup strategy:
+ *   1. Local inci-data.json  → Full skincare metadata (actives, safety, etc.)
+ *   2. Open Food Facts API   → Fallback for general products (name/brand only)
+ * This ensures comprehensive data for curated products while still supporting
+ * lookups for products not in our database.
  *
  * @param {string} barcode - UPC/EAN barcode string
  * @returns {Promise<Object|null>} Normalized product data or null if not found
  */
 export async function lookupBarcode(barcode) {
-  // ── 1. Check local INCI data ─────────────────────────────────────────
+  // ── 1. Check local INCI data (preferred source) ──────────────────────
   if (INCI_MAP[barcode]) {
     return INCI_MAP[barcode];
   }
 
-  // ── 2. Fall back to Open Food Facts API ─────────────────────────────
+  // ── 2. Fall back to Open Food Facts API (general products) ───────────
+  // Provides basic product info but lacks skincare-specific metadata
   try {
     const response = await fetch(
       `https://world.openfoodfacts.org/api/v2/product/${barcode}.json`,

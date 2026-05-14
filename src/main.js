@@ -119,7 +119,8 @@ function init() {
     });
   }
 
-  // Type chips (single-select)
+  // ── Product form chips ────────────────────────────────────────────
+  // Type chips (single-select): Only one product type can be selected
   document.querySelectorAll("#type-chips .chip").forEach((chip) => {
     chip.addEventListener("click", () => {
       document
@@ -129,14 +130,14 @@ function init() {
     });
   });
 
-  // Actives chips (multi-select)
+  // Actives chips (multi-select): Multiple active ingredients allowed
   document.querySelectorAll("#actives-chips .chip").forEach((chip) => {
     chip.addEventListener("click", () => {
       chip.classList.toggle("is-selected");
     });
   });
 
-  // Filter chips
+  // Filter chips (single-select): Filter products by type on products screen
   document.querySelectorAll("#filter-chips .chip").forEach((chip) => {
     chip.addEventListener("click", () => {
       document
@@ -252,8 +253,14 @@ function renderProducts(filter = "all") {
 
 /**
  * Build the HTML for product detail view
+ * This creates a complex DOM structure with multiple cards showing:
+ * - Product header (name, brand, type)
+ * - Active ingredients with descriptions
+ * - Usage timing and instructions
+ * - Strength and safety information
+ * - Routine placement visualization
  * @param {Object} product - Product object
- * @returns {string} HTML string for the detail view
+ * @returns {HTMLElement} Complete detail view DOM element
  */
 function buildDetailHTML(product) {
   const strength = getProductStrength(product);
@@ -261,6 +268,7 @@ function buildDetailHTML(product) {
   const instruction = getUsageInstruction(product);
   const typeLabel = formatLabel(product.type);
 
+  // Determine badge styling based on product strength
   const strengthBadgeClass =
     strength === "gentle"
       ? "badge-gentle"
@@ -269,6 +277,7 @@ function buildDetailHTML(product) {
         : "badge-strong";
   const strengthLabel = formatLabel(strength);
 
+  // ── Build detail view DOM structure ──────────────────────────────
   // Create main container
   const container = document.createElement("div");
   container.className = "flex flex-col gap-5 px-5 py-6";
@@ -292,6 +301,7 @@ function buildDetailHTML(product) {
   header.appendChild(subtitle);
   container.appendChild(header);
 
+  // ── Three-column grid for What's In It / How to Use / Strength ──
   // Create wrapper for three-column desktop layout
   const detailSectionsGrid = document.createElement("div");
   detailSectionsGrid.className = "detail-sections-grid";
@@ -333,6 +343,7 @@ function buildDetailHTML(product) {
   activesCard.appendChild(activesContent);
   detailSectionsGrid.appendChild(activesCard);
 
+  // ── How to use it section ────────────────────────────────────────
   // "How to use it" section
   const usageCard = document.createElement("div");
   usageCard.className = "section-card";
@@ -356,6 +367,7 @@ function buildDetailHTML(product) {
   usageCard.appendChild(usageInstruction);
   detailSectionsGrid.appendChild(usageCard);
 
+  // ── Strength & safety section ────────────────────────────────────
   // "Strength & safety" section
   const strengthCard = document.createElement("div");
   strengthCard.className = "section-card";
@@ -386,6 +398,8 @@ function buildDetailHTML(product) {
   // Append the three-column grid to container
   container.appendChild(detailSectionsGrid);
 
+  // ── In your routine section ──────────────────────────────────────
+  // Shows simplified AM routine flow with current product highlighted
   // "In your routine" section
   const routineCard = document.createElement("div");
   routineCard.className = "section-card";
@@ -436,6 +450,7 @@ function buildDetailHTML(product) {
   routineCard.appendChild(routineFlow);
   container.appendChild(routineCard);
 
+  // ── Action buttons ───────────────────────────────────────────────
   // Bottom back button
   const bottomBackBtn = document.createElement("button");
   bottomBackBtn.className = "btn btn-primary w-full mt-2";
@@ -514,12 +529,17 @@ function showProductsList() {
 
 /* ============================================
    Delete Modal
+   Confirmation modal for product deletion
    ============================================ */
 
 let deleteModal = null;
 let deleteModalBackdrop = null;
-let pendingDeleteProductId = null;
+let pendingDeleteProductId = null; // Store ID of product awaiting deletion
 
+/**
+ * Lazy-create the delete modal on first use
+ * Modal persists in DOM to avoid recreating on every delete
+ */
 function createDeleteModalIfNeeded() {
   if (deleteModal) return;
 

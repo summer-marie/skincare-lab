@@ -44,10 +44,13 @@ export function renderRoutine(
 
   container.innerHTML = "";
 
+  // ── Render routine steps ─────────────────────────────────────────────
+  // Each step shows either a filled product card or an empty placeholder
   routine.forEach(({ step, type, product }) => {
     const typeLabel = formatLabel(type);
     const stepCard = document.createElement("div");
 
+    // Filled step: User has a product for this step
     if (product) {
       stepCard.className = "product-card";
       stepCard.innerHTML = `
@@ -65,6 +68,7 @@ export function renderRoutine(
         setTimeout(() => renderProductDetail(product.id), 100);
       });
     } else {
+      // Empty step: No product assigned for this step in routine
       stepCard.className =
         "bg-white dark:bg-gray-800 rounded-xl p-4 border border-dashed border-gray-300 dark:border-gray-700";
       stepCard.innerHTML = `

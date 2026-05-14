@@ -7,6 +7,8 @@ import { formatLabel } from "../helpers/format.js";
 
 /**
  * Create a product card element
+ * Displays product name, brand, type, and active ingredients list
+ * Clickable to navigate to full product detail view
  * @param {Object} product - Product object
  * @param {Function} renderProductDetail - Function to render product detail
  * @returns {HTMLElement} Product card element
@@ -22,6 +24,7 @@ export function createProductCard(product, renderProductDetail) {
       ? product.actives.map((a) => a.replaceAll("-", " ")).join(", ")
       : "No actives listed";
 
+  // Build card HTML: Three-line layout with name, brand/type, and actives
   card.innerHTML = `
     <div class="flex items-center justify-between">
       <div class="flex-1">
@@ -63,6 +66,8 @@ export function renderProducts(
 
   container.innerHTML = "";
 
+  // ── Empty state ──────────────────────────────────────────────────────
+  // Show friendly message when user has no products or filter returns nothing
   // If no products match the filter, show an empty state
   if (filtered.length === 0) {
     const emptyState = document.createElement("div");
@@ -81,6 +86,7 @@ export function renderProducts(
     return;
   }
 
+  // ── Render product cards ─────────────────────────────────────────────
   // Render filtered products
   filtered.forEach((product) => {
     container.appendChild(createProductCard(product, renderProductDetail));

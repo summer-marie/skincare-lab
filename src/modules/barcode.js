@@ -13,9 +13,12 @@ import { formatLabel } from "../helpers/format.js";
 
 /**
  * Prefill the add product form with scanned data
+ * Handles both basic fields (name, brand, type, actives) and optional
+ * metadata from INCI database (safety score, skin compatibility, allergens)
  * @param {Object} productData - Product data from barcode lookup
  */
 export function prefillForm(productData) {
+  // ── Basic product fields ─────────────────────────────────────────────
   // Set name and brand inputs
   document.getElementById("product-name").value = productData.name || "";
   document.getElementById("product-brand").value = productData.brand || "";
@@ -30,6 +33,7 @@ export function prefillForm(productData) {
     typeChip.classList.add("is-selected");
   }
 
+  // ── Active ingredients ───────────────────────────────────────────────
   // Select the actives chips
   const activesChips = document.querySelectorAll("#actives-chips .chip");
   activesChips.forEach((chip) => chip.classList.remove("is-selected"));
@@ -44,6 +48,7 @@ export function prefillForm(productData) {
     });
   }
 
+  // ── Optional INCI metadata (only if available from database) ─────────
   // Display safety score (if available)
   const safetyScoreSection = document.getElementById("scanned-safety-score");
   const safetyScoreBadge = document.getElementById("safety-score-badge");
@@ -53,7 +58,8 @@ export function prefillForm(productData) {
   ) {
     const score = productData.safetyScore;
     safetyScoreBadge.textContent = `${score}/10`;
-    // Color code: 1-4 = strong (red), 5-7 = medium (yellow), 8-10 = gentle (green)
+    // Color-coded safety score badges:
+    // 1-4 = strong/red (potentially irritating), 5-7 = medium/yellow (moderate), 8-10 = gentle/green (safe)
     if (score <= 4) {
       safetyScoreBadge.className = "badge badge-strong";
     } else if (score <= 7) {
@@ -165,6 +171,8 @@ export function initScanScreen(DOM, showScreen) {
   const cameraBtn = document.getElementById("use-camera-btn");
 
   if (cameraBtn) {
+    // Clone-and-replace pattern to remove all existing event listeners
+    // This prevents duplicate listeners when user navigates back to scan screen
     // Remove any existing listeners by cloning
     const newBtn = cameraBtn.cloneNode(true);
     cameraBtn.parentNode.replaceChild(newBtn, cameraBtn);
@@ -189,6 +197,7 @@ export function initScanScreen(DOM, showScreen) {
   // Wire up file upload barcode scanner
   const fileInput = document.getElementById("barcode-upload");
   if (fileInput) {
+    // Clone-and-replace to prevent duplicate file upload handlers
     // Remove any existing listeners by cloning
     const newFileInput = fileInput.cloneNode(true);
     fileInput.parentNode.replaceChild(newFileInput, fileInput);
@@ -225,6 +234,7 @@ export function initScanScreen(DOM, showScreen) {
   const manualBarcodeBtn = document.getElementById("manual-barcode-btn");
 
   if (manualBarcodeBtn) {
+    // Clone-and-replace to prevent duplicate manual lookup handlers
     // Remove any existing listeners by cloning
     const newManualBtn = manualBarcodeBtn.cloneNode(true);
     manualBarcodeBtn.parentNode.replaceChild(newManualBtn, manualBarcodeBtn);
