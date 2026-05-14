@@ -1,4 +1,4 @@
 export default {
-  darkMode: ['selector', '[data-theme="dark"]'],
+  darkMode: 'media',
   content: ['./index.html', './src/**/*.{js,ts}'],
 }

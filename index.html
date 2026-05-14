@@ -455,40 +455,5 @@
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script type="module" src="/src/main.js"></script>
-    
-    <!-- DEV ONLY — remove before production -->
-    <button
-      id="dev-theme-toggle"
-      style="
-        position: fixed;
-        bottom: 80px;
-        right: 16px;
-        z-index: 9999;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: 9999px;
-        padding: 8px 14px;
-        font-size: 13px;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        color: var(--color-text);
-      "
-    >🌙 Dark</button>
-    
-    <script>
-      // DEV ONLY — remove before production
-      (function () {
-        const btn = document.getElementById('dev-theme-toggle');
-        const html = document.documentElement;
-        let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        html.setAttribute('data-theme', dark ? 'dark' : 'light');
-        btn.textContent = dark ? '☀️ Light' : '🌙 Dark';
-        btn.addEventListener('click', () => {
-          dark = !dark;
-          html.setAttribute('data-theme', dark ? 'dark' : 'light');
-          btn.textContent = dark ? '☀️ Light' : '🌙 Dark';
-        });
-      })();
-    </script>
   </body>
 </html>
