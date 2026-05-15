@@ -18,7 +18,8 @@
     ],
     "barcodes": [
       "743877000017"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Aveeno Calm + Restore Oat Gel Moisturizer",
@@ -39,7 +40,8 @@
     ],
     "barcodes": [
       "074170399115"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Aveeno Clear Complexion Daily Moisturizer SPF 30",
@@ -59,7 +61,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "074170353377"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Beauty of Joseon Dynasty Cream",
@@ -78,7 +81,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809516820060"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Beauty of Joseon Glow Serum: Propolis + Niacinamide",
@@ -96,7 +100,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809516820015"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+ PA++++",
@@ -117,7 +122,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809516820046"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Bioderma Sebium Pore Refiner",
@@ -136,7 +142,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "3401528631558"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Bioderma Sensibio H2O Micellar Water",
@@ -153,8 +160,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "3701129812112",
       "3401399364212"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Bubble Fresh Start Gel Cleanser",
@@ -173,7 +182,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "850003761023"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Bubble Level Up Balancing Moisturizer SPF 30",
@@ -193,7 +203,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "850003761030"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Bubble Slam Dunk Hydrating Moisturizer",
@@ -213,7 +224,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "850003761016"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "CeraVe Acne Control Gel",
@@ -232,7 +244,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "7899706192712"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe Acne Foaming Cream Cleanser",
@@ -254,7 +267,8 @@
     ],
     "barcodes": [
       "3606000512238"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe AM Facial Moisturizing Lotion SPF 30",
@@ -275,8 +289,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "7922470515323",
       "0793379245584"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe Eye Repair Cream",
@@ -294,7 +310,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "3606000537613"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe Foaming Facial Cleanser",
@@ -315,7 +332,8 @@
     "barcodes": [
       "3606000537750",
       "3606000537194"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe Healing Ointment",
@@ -333,7 +351,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "3606000537217"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe Hydrating Facial Cleanser",
@@ -353,7 +372,8 @@
     "barcodes": [
       "036602359919",
       "3606000537675"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe Moisturizing Cream",
@@ -374,7 +394,8 @@
     "barcodes": [
       "036602300805",
       "3606000537743"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe PM Facial Moisturizing Lotion",
@@ -393,7 +414,8 @@
     "barcodes": [
       "036602307026",
       "3606000537453"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe SA Smoothing Cleanser",
@@ -413,7 +435,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "3337875795456"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "CeraVe Skin Renewing Night Cream",
@@ -431,8 +454,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "3337875903509",
       "3606000537606"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Cetaphil Daily Facial Cleanser",
@@ -449,8 +474,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "0302993927341",
       "302993921348"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Cetaphil Gentle Skin Cleanser",
@@ -467,8 +494,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "8906005274106",
       "302993913343"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Cetaphil Moisturizing Cream",
@@ -487,8 +516,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "0302993917564",
       "302993914357"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Cetaphil Moisturizing Lotion",
@@ -505,8 +536,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "0302993917564",
       "302993914340"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Cetaphil Sun SPF 50 Light Gel",
@@ -525,7 +558,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "302993935260"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Clean & Clear Advantage Acne Spot Treatment",
@@ -542,7 +576,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "305210108629"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "COSRX Advanced Snail 96 Mucin Power Essence",
@@ -562,7 +597,8 @@
     ],
     "barcodes": [
       "818466020009"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "COSRX AHA 7 Whitehead Power Liquid",
@@ -583,7 +619,8 @@
     ],
     "barcodes": [
       "8809416470108"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "COSRX BHA Blackhead Power Liquid",
@@ -599,8 +636,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "8809416470054",
       "8809416470283"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "COSRX Low pH Good Morning Gel Cleanser",
@@ -618,8 +657,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "8809416470511",
       "8809416470399"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Differin Adapalene Gel 0.1% Acne Treatment",
@@ -641,7 +682,8 @@
     "barcodes": [
       "682223007905",
       "0302994910151"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Drunk Elephant C-Firma Fresh Day Serum",
@@ -663,7 +705,8 @@
     ],
     "barcodes": [
       "859481007031"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Drunk Elephant Protini Polypeptide Cream",
@@ -681,7 +724,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "859481007024"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Drunk Elephant T.L.C. Framboos Glycolic Night Serum",
@@ -705,7 +749,8 @@
     ],
     "barcodes": [
       "859481007017"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "EltaMD UV Clear Broad-Spectrum SPF 46",
@@ -727,7 +772,8 @@
     "barcodes": [
       "191453049836",
       "0731882497021"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "First Aid Beauty Ultra Repair Cream",
@@ -748,8 +794,10 @@
       "oat allergy — patch test recommended"
     ],
     "barcodes": [
+      "0851939002791",
       "351021000021"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Glow Recipe Plum Plump Hyaluronic Acid Serum",
@@ -767,7 +815,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "811329013310"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Glow Recipe Watermelon Glow Niacinamide Dew Drops",
@@ -788,7 +837,8 @@
     "barcodes": [
       "811329011101",
       "0810052960166"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Hero Cosmetics Mighty Patch Original",
@@ -805,7 +855,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "850019231012"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Hero Cosmetics Mighty Patch Surface",
@@ -822,7 +873,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "850019231029"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Hero Cosmetics Rescue Balm Post-Blemish Recovery Cream",
@@ -842,7 +894,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "850019231036"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Innisfree Green Tea Hyaluronic Acid Toner",
@@ -859,7 +912,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809612872028"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Innisfree Green Tea Seed Serum",
@@ -878,7 +932,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809612872011"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Isntree Centella Ntica Ampoule",
@@ -898,7 +953,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809480480028"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Isntree Hyaluronic Acid Toner",
@@ -918,7 +974,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809480480011"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Krave Beauty Great Barrier Relief Serum",
@@ -938,7 +995,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "857239006018"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "La Roche-Posay Anthelios Melt-In Sunscreen Milk SPF 60",
@@ -958,7 +1016,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "3337875545082"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "La Roche-Posay Cicaplast Baume B5",
@@ -977,8 +1036,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "3337875517300",
       "3337875673136"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "La Roche-Posay Effaclar Medicated Gel Cleanser",
@@ -994,8 +1055,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "0883140040231",
       "3337875545099"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer UV SPF 30",
@@ -1016,7 +1079,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "3337875545846"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "La Roche-Posay Toleriane Hydrating Gentle Cleanser",
@@ -1035,8 +1099,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "3337875545778",
       "3337875643405"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Mario Badescu Facial Spray with Aloe, Herbs & Rosewater",
@@ -1057,8 +1123,10 @@
       "fragrance — may irritate sensitive skin"
     ],
     "barcodes": [
+      "0785364130104",
       "358150110011"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Neutrogena Hydro Boost Water Gel",
@@ -1075,9 +1143,11 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "3574661288345",
       "011509310706",
       "7891010882983"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Neutrogena Rapid Clear Stubborn Acne Face Wash",
@@ -1097,7 +1167,8 @@
     ],
     "barcodes": [
       "011509010998"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Neutrogena Ultra Sheer Dry-Touch Sunscreen SPF 100",
@@ -1119,7 +1190,8 @@
     ],
     "barcodes": [
       "011509015504"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Paula's Choice CLEAR Regular Strength Daily Skin Clearing Treatment",
@@ -1139,7 +1211,8 @@
     ],
     "barcodes": [
       "726150900009"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Paula's Choice Skin Perfecting 2% BHA Liquid Exfoliant",
@@ -1156,9 +1229,11 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "0787734079020",
       "726150111719",
       "0655439020107"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Purito Centella Green Level Unscented Serum",
@@ -1178,7 +1253,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809663752102"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Purito Daily Go-To Sunscreen SPF 50+ PA++++",
@@ -1198,7 +1274,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809663752089"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Purito From Green Cleansing Oil",
@@ -1217,7 +1294,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809663752096"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Round Lab 1025 Dokdo Toner",
@@ -1237,7 +1315,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809572890026"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Round Lab Birch Juice Moisturizing Cleanser",
@@ -1256,7 +1335,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809572890019"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Round Lab Birch Juice Moisturizing Sunscreen SPF 50+ PA++++",
@@ -1275,7 +1355,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "8809782551814"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Starface Hydro-Stars Pimple Patches",
@@ -1291,8 +1372,10 @@
     ],
     "allergenWarnings": [],
     "barcodes": [
+      "0860002106816",
       "810038570018"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "Tatcha The Dewy Skin Cream",
@@ -1312,7 +1395,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "816318020079"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Tatcha The Rice Wash Soft Cream Cleanser",
@@ -1331,7 +1415,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "816318020093"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Tatcha The Water Cream",
@@ -1351,7 +1436,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "816318020086"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "The Ordinary AHA 30% + BHA 2% Peeling Solution",
@@ -1375,7 +1461,8 @@
     ],
     "barcodes": [
       "769915192108"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "The Ordinary Hyaluronic Acid 2% + B5",
@@ -1393,7 +1480,8 @@
     "barcodes": [
       "769915193143",
       "0769915190199"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "The Ordinary Natural Moisturizing Factors + HA",
@@ -1411,7 +1499,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "0769915190731"
-    ]
+    ],
+    "barcodeVerified": true
   },
   {
     "name": "The Ordinary Niacinamide 10% + Zinc 1%",
@@ -1430,7 +1519,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "386160130000"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "The Ordinary Retinol 0.5% in Squalane",
@@ -1453,7 +1543,8 @@
     ],
     "barcodes": [
       "769915190081"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Tula Skincare The Cult Classic Purifying Face Cleanser",
@@ -1470,7 +1561,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "818597010093"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Vanicream Daily Facial Moisturizer SPF 30",
@@ -1488,7 +1580,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "645951010131"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Vanicream Gentle Facial Cleanser",
@@ -1506,7 +1599,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "645951010117"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Vanicream Moisturizing Skin Cream",
@@ -1525,7 +1619,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "645951010124"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Vichy Normaderm PhytoAction Daily Deep Cleansing Gel",
@@ -1545,7 +1640,8 @@
     "allergenWarnings": [],
     "barcodes": [
       "3614272050792"
-    ]
+    ],
+    "barcodeVerified": false
   },
   {
     "name": "Youth To The People Superfood Air-Whip Moisture Cream",
@@ -1565,6 +1661,7 @@
     "allergenWarnings": [],
     "barcodes": [
       "851714006023"
-    ]
+    ],
+    "barcodeVerified": false
   }
 ]
