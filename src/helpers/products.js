@@ -16,6 +16,9 @@ import { getProducts } from "./storage.js";
  * @param {Object} product - Product object with actives array and type string
  * @returns {string} Strength level: "gentle" | "medium" | "strong"
  */
+
+// TODO: Keyword tiers are simplified — doesn't handle concentration variants, edge-case actives (bakuchiol, azelaic acid), or prescription-strength ingredients.
+// TODO: Consider config-driven classification if catalog scales.
 export function getProductStrength(product) {
   const strongKeywords = [
     "retinol",
@@ -34,7 +37,9 @@ export function getProductStrength(product) {
     "betaine salicylate",
   ];
 
+  // Check for strong actives first, then medium, and default to gentle
   const hasStrong = product.actives.some((active) =>
+    // checks for strong actives and runs lowercase comparison for case-insensitive matching
     strongKeywords.some((keyword) => active.toLowerCase().includes(keyword)),
   );
 
@@ -43,9 +48,14 @@ export function getProductStrength(product) {
   );
 
   if (hasStrong) return "strong";
+  // Note: Exfoliants are classified as medium strength even if they don't contain a listed active, since their primary function is to exfoliate.
   if (hasMedium || product.type === "exfoliant") return "medium";
   return "gentle";
 }
+
+
+
+
 /**
  * Get usage timing for a product
  * @param {Object} product - Product object
