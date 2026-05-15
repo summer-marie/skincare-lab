@@ -285,13 +285,18 @@
                       class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
                       >Product name</label
                     >
-                    <input
-                      type="text"
-                      id="product-name"
-                      class="input"
-                      placeholder="e.g., Hydrating Cleanser"
-                      required
-                    />
+                    <div class="autocomplete-wrap">
+                      <input
+                        type="text"
+                        id="product-name"
+                        class="input"
+                        placeholder="e.g., Hydrating Cleanser"
+                        required
+                        autocomplete="off"
+                      />
+                      <!-- Autocomplete dropdown: Populated by JS, hidden by default -->
+                      <ul class="autocomplete-dropdown" id="autocomplete-dropdown" hidden role="listbox" aria-label="Product suggestions"></ul>
+                    </div>
                   </div>
 
                   <div class="form-field">

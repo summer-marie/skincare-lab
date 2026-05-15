@@ -205,6 +205,118 @@ function init() {
     });
   });
 
+  // ── Product name autocomplete ─────────────────────────────────────
+  // Filters saved products by name as user types; max 5 suggestions
+  // Supports click selection and keyboard navigation (arrows + Enter + Escape)
+  (function initAutocomplete() {
+    const input = document.getElementById("product-name");
+    const dropdown = document.getElementById("autocomplete-dropdown");
+    let focusedIndex = -1; // Tracks keyboard-highlighted item
+
+    if (!input || !dropdown) return;
+
+    // Filter and render suggestions on input
+    input.addEventListener("input", () => {
+      const query = input.value.trim().toLowerCase();
+      focusedIndex = -1;
+
+      if (!query) {
+        closeDropdown();
+        return;
+      }
+
+      // Match against saved products, limit to 5
+      const matches = getProducts()
+        .filter((p) => p.name.toLowerCase().includes(query))
+        .slice(0, 5);
+
+      if (matches.length === 0) {
+        closeDropdown();
+        return;
+      }
+
+      // Build dropdown items
+      dropdown.innerHTML = "";
+      matches.forEach((product, index) => {
+        const item = document.createElement("li");
+        item.className = "autocomplete-item";
+        item.setAttribute("role", "option");
+        item.dataset.index = index;
+        item.innerHTML = `${product.name} <span class="autocomplete-item-brand">${product.brand}</span>`;
+
+        // Click: prefill all form fields from selected product
+        item.addEventListener("mousedown", (e) => {
+          e.preventDefault(); // Prevent input blur before fill
+          fillFromProduct(product);
+          closeDropdown();
+        });
+
+        dropdown.appendChild(item);
+      });
+
+      dropdown.hidden = false;
+    });
+
+    // Keyboard navigation: arrows, Enter, Escape
+    input.addEventListener("keydown", (e) => {
+      const items = dropdown.querySelectorAll(".autocomplete-item");
+      if (dropdown.hidden || items.length === 0) return;
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        focusedIndex = Math.min(focusedIndex + 1, items.length - 1);
+        updateFocus(items);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        focusedIndex = Math.max(focusedIndex - 1, 0);
+        updateFocus(items);
+      } else if (e.key === "Enter" && focusedIndex >= 0) {
+        e.preventDefault();
+        items[focusedIndex].dispatchEvent(new Event("mousedown"));
+      } else if (e.key === "Escape") {
+        closeDropdown();
+      }
+    });
+
+    // Close dropdown when input loses focus
+    input.addEventListener("blur", () => {
+      setTimeout(closeDropdown, 150); // Delay allows mousedown to fire first
+    });
+
+    // Highlight focused item via keyboard
+    function updateFocus(items) {
+      items.forEach((item, i) => {
+        item.classList.toggle("is-focused", i === focusedIndex);
+      });
+    }
+
+    function closeDropdown() {
+      dropdown.hidden = true;
+      dropdown.innerHTML = "";
+      focusedIndex = -1;
+    }
+
+    // Prefill all form fields from a matched product
+    function fillFromProduct(product) {
+      document.getElementById("product-name").value = product.name;
+      document.getElementById("product-brand").value = product.brand;
+
+      // Set type chip
+      document.querySelectorAll("#type-chips .chip").forEach((chip) => {
+        chip.classList.toggle("is-selected", chip.dataset.type === product.type);
+      });
+
+      // Set actives chips
+      document.querySelectorAll("#actives-chips .chip").forEach((chip) => {
+        chip.classList.toggle("is-selected", product.actives.includes(chip.dataset.active));
+      });
+
+      // Show retinoid caution if retinoid is in actives
+      const caution = document.getElementById("retinoid-caution");
+      if (caution) caution.hidden = !product.actives.includes("retinoid");
+    }
+  })();
+
   console.log("SkinScript initialized ✓");
 }
 
