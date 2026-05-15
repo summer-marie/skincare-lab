@@ -180,6 +180,24 @@ function init() {
     });
   });
 
+  // ── Beta notice dismiss ───────────────────────────────────────────
+  // Hide beta bubble on close; persists dismissal in localStorage
+  document.querySelectorAll('[data-dismiss]').forEach((btn) => {
+    const id = btn.dataset.dismiss;
+
+    // On load: hide immediately if previously dismissed
+    if (localStorage.getItem(`dismissed-${id}`) === 'true') {
+      const target = document.getElementById(id);
+      if (target) target.classList.add('is-hidden');
+    }
+
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(id);
+      if (target) target.classList.add('is-hidden');
+      localStorage.setItem(`dismissed-${id}`, 'true'); // Remember dismissal
+    });
+  });
+
   console.log("SkinScript initialized ✓");
 }
 

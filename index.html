@@ -37,7 +37,9 @@
       <!-- Fixed header: Always visible across all screens -->
       <header class="top-bar">
         <img src="/logo-options/small-logo.png" alt="SkinScript" />
-        <span class="top-bar-slogan">Skip the guessing. Know what's on your skin.</span>
+        <span class="top-bar-slogan"
+          >Skip the guessing. Know what's on your skin.</span
+        >
       </header>
 
       <!-- 
@@ -54,7 +56,9 @@
         <section class="screen is-active" data-screen="home">
           <div class="flex flex-col gap-8 px-5 py-8">
             <div class="text-center flex flex-col gap-1">
-              <p class="hero-slogan">Skip the guessing. Know what's on your skin.</p>
+              <p class="hero-slogan">
+                Skip the guessing. Know what's on your skin.
+              </p>
               <div class="hero-logo-wrap">
                 <img
                   src="/logo-options/logo-cropped.png"
@@ -65,10 +69,26 @@
             </div>
 
             <p class="home-description home-description--sans">
-              SkinScript helps you understand what's in your skincare
-              products, build a safe routine, and avoid mixing ingredients
-              that can irritate your skin.
+              SkinScript helps you understand what's in your skincare products,
+              build a safe routine, and avoid mixing ingredients that can
+              irritate your skin.
             </p>
+
+            <!-- Beta notice: Dismissable info bubble, hidden after user closes it -->
+            <div class="beta-bubble" id="beta-notice-home" role="alert">
+              <span class="beta-bubble-icon">🧪</span>
+              <p class="beta-bubble-text">
+                <strong>Beta:</strong> Product data is currently limited to
+                teen-safe skincare. More products coming soon.
+              </p>
+              <button
+                class="beta-bubble-close"
+                aria-label="Dismiss beta notice"
+                data-dismiss="beta-notice-home"
+              >
+                ✕
+              </button>
+            </div>
 
             <div class="flex flex-col gap-4">
               <button class="btn btn-primary w-full" data-action="go-scan">
@@ -427,6 +447,22 @@
               >
                 My products
               </h2>
+
+              <!-- Beta notice: Dismissable info bubble, hidden after user closes it -->
+              <div class="beta-bubble" id="beta-notice-products" role="alert">
+                <span class="beta-bubble-icon">🧪</span>
+                <p class="beta-bubble-text">
+                  <strong>Beta:</strong> Product data is currently limited to
+                  teen-safe skincare. More products coming soon.
+                </p>
+                <button
+                  class="beta-bubble-close"
+                  aria-label="Dismiss beta notice"
+                  data-dismiss="beta-notice-products"
+                >
+                  ✕
+                </button>
+              </div>
 
               <!-- Filter chips: Single-select to filter by product type -->
               <div class="flex flex-wrap gap-2" id="filter-chips">

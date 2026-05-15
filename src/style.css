@@ -405,6 +405,61 @@ body {
   line-height: 1.5;
 }
 
+/* ────────────────────────────────────────────
+   Beta Notice Bubble
+   Dismissable info banner for beta/limited dataset warning
+   ──────────────────────────────────────────── */
+.beta-bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-inline: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+
+/* Hidden state: set by JS on dismiss */
+.beta-bubble.is-hidden {
+  display: none;
+}
+
+.beta-bubble-icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+  margin-top: 0.05rem;
+}
+
+.beta-bubble-text {
+  flex: 1;
+  max-width: 100%;
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+}
+
+.beta-bubble-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.beta-bubble-close:hover {
+  opacity: 1;
+}
+
 /* Bottom navigation: Fixed to bottom, 3 equal columns */
 .bottom-nav {
   @apply fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg;
