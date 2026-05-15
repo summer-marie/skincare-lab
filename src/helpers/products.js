@@ -6,26 +6,46 @@
 import { getProducts } from "./storage.js";
 
 /**
- * Get product strength level based on actives and type
- * @param {Object} product - Product object
- * @returns {string} "gentle" | "medium" | "strong"
+ * Determine product strength level based on active ingredients and product type
+ * 
+ * Strength classification:
+ * - "strong": Contains retinoids, adapalene, or benzoyl peroxide
+ * - "medium": Contains AHA/BHA/salicylic acid OR is an exfoliant type
+ * - "gentle": All other products (cleansers, moisturizers, basic serums)
+ * 
+ * @param {Object} product - Product object with actives array and type string
+ * @returns {string} Strength level: "gentle" | "medium" | "strong"
  */
 export function getProductStrength(product) {
-  const strongActives = ["retinoid", "benzoyl-peroxide"];
-  const mediumActives = ["salicylic-acid"];
+  const strongKeywords = [
+    "retinol",
+    "adapalene",
+    "retinoid",
+    "benzoyl peroxide",
+    "benzoyl-peroxide",
+  ];
+  const mediumKeywords = [
+    "salicylic acid",
+    "salicylic-acid",
+    "glycolic acid",
+    "lactic acid",
+    "aha",
+    "bha",
+    "betaine salicylate",
+  ];
 
-  if (product.actives.some((active) => strongActives.includes(active))) {
-    return "strong";
-  }
-  if (
-    product.actives.some((active) => mediumActives.includes(active)) ||
-    product.type === "exfoliant"
-  ) {
-    return "medium";
-  }
+  const hasStrong = product.actives.some((active) =>
+    strongKeywords.some((keyword) => active.toLowerCase().includes(keyword)),
+  );
+
+  const hasMedium = product.actives.some((active) =>
+    mediumKeywords.some((keyword) => active.toLowerCase().includes(keyword)),
+  );
+
+  if (hasStrong) return "strong";
+  if (hasMedium || product.type === "exfoliant") return "medium";
   return "gentle";
 }
-
 /**
  * Get usage timing for a product
  * @param {Object} product - Product object
