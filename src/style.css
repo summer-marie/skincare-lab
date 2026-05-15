@@ -460,6 +460,22 @@ body {
   opacity: 1;
 }
 
+/* ────────────────────────────────────────────
+   Retinoid Caution Note
+   Inline warning shown when retinoid chip is selected
+   ──────────────────────────────────────────── */
+.retinoid-caution {
+  font-size: 0.75rem;
+  color: var(--color-warning);
+  background: var(--color-warning-soft);
+  border: 1px solid var(--color-warning);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.25rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
 /* Bottom navigation: Fixed to bottom, 3 equal columns */
 .bottom-nav {
   @apply fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg;

@@ -138,9 +138,16 @@ function init() {
   });
 
   // Actives chips (multi-select): Multiple active ingredients allowed
+  // Retinoid chip also toggles inline caution note when selected
   document.querySelectorAll("#actives-chips .chip").forEach((chip) => {
     chip.addEventListener("click", () => {
       chip.classList.toggle("is-selected");
+
+      // Show caution note only when retinoid is selected
+      if (chip.dataset.active === "retinoid") {
+        const caution = document.getElementById("retinoid-caution");
+        if (caution) caution.hidden = !chip.classList.contains("is-selected");
+      }
     });
   });
 
@@ -416,6 +423,15 @@ function buildDetailHTML(product) {
     warningText.textContent =
       "Avoid combining with other strong actives in the same routine.";
     strengthCard.appendChild(warningText);
+  }
+
+  // Extra caution for retinoid: not recommended for teen self-selection
+  if (product.actives.includes("retinoid")) {
+    const retinoidWarning = document.createElement("p");
+    retinoidWarning.className = "retinoid-caution mt-2";
+    retinoidWarning.textContent =
+      "⚠️ Retinoids are occasionally prescribed to teens for severe acne but shouldn't be self-selected without a dermatologist's guidance.";
+    strengthCard.appendChild(retinoidWarning);
   }
 
   detailSectionsGrid.appendChild(strengthCard);
