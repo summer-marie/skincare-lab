@@ -386,23 +386,25 @@ body {
 /* Disclaimer bubble styling */
 .disclaimer-bubble {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background: var(--color-warning-soft);
   color: var(--color-warning);
   border: 1px solid var(--color-warning);
   border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1rem;
   margin-inline: 1rem;
   opacity: 0.85;
 }
 
 .disclaimer-bubble p {
-  text-align: left;
+  text-align: center;
   max-width: 100%;
   color: var(--color-warning);
   font-size: 0.75rem;
   line-height: 1.5;
+  margin: 0;
 }
 
 /* ────────────────────────────────────────────
