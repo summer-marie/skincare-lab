@@ -1,586 +1,262 @@
 [
   {
-    "barcode": "3606000537750",
-    "name": "CeraVe Foaming Facial Cleanser",
-    "brand": "CeraVe",
-    "type": "cleanser",
-    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["oily", "combination", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "036602307026",
-    "name": "CeraVe PM Facial Moisturizing Lotion",
-    "brand": "CeraVe",
-    "type": "moisturizer",
-    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "036602359919",
-    "name": "CeraVe Hydrating Facial Cleanser",
-    "brand": "CeraVe",
-    "type": "cleanser",
-    "actives": ["ceramides", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["dry", "sensitive", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "036602300805",
-    "name": "CeraVe Moisturizing Cream",
-    "brand": "CeraVe",
-    "type": "moisturizer",
-    "actives": ["ceramides", "hyaluronic acid", "MVE technology"],
-    "safetyScore": 9,
-    "skinCompatibility": ["dry", "sensitive", "all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "386160130000",
-    "name": "The Ordinary Niacinamide 10% + Zinc 1%",
-    "brand": "The Ordinary",
-    "type": "serum",
-    "actives": ["niacinamide", "zinc"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "acne-prone", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "769915193143",
-    "name": "The Ordinary Hyaluronic Acid 2% + B5",
-    "brand": "The Ordinary",
-    "type": "serum",
-    "actives": ["hyaluronic acid", "vitamin b5"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "769915192108",
-    "name": "The Ordinary AHA 30% + BHA 2% Peeling Solution",
-    "brand": "The Ordinary",
-    "type": "exfoliant",
-    "actives": [
-      "glycolic acid",
-      "lactic acid",
-      "salicylic acid",
-      "tartaric acid"
-    ],
-    "safetyScore": 6,
-    "skinCompatibility": ["normal", "oily", "combination"],
-    "allergenWarnings": [
-      "high-acid — not for sensitive/broken skin",
-      "avoid eye area"
-    ]
-  },
-  {
-    "barcode": "769915190081",
-    "name": "The Ordinary Retinol 0.5% in Squalane",
-    "brand": "The Ordinary",
-    "type": "treatment",
-    "actives": ["retinol", "squalane"],
-    "safetyScore": 7,
-    "skinCompatibility": ["normal", "combination", "oily"],
-    "allergenWarnings": [
-      "avoid during pregnancy",
-      "use SPF daily",
-      "not for beginners under 16"
-    ]
-  },
-  {
-    "barcode": "726150111719",
-    "name": "Paula's Choice Skin Perfecting 2% BHA Liquid Exfoliant",
-    "brand": "Paula's Choice",
-    "type": "exfoliant",
-    "actives": ["salicylic acid"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "acne-prone", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "726150900009",
-    "name": "Paula's Choice CLEAR Regular Strength Daily Skin Clearing Treatment",
-    "brand": "Paula's Choice",
-    "type": "treatment",
-    "actives": ["benzoyl peroxide 2.5%"],
-    "safetyScore": 7,
-    "skinCompatibility": ["acne-prone", "oily"],
-    "allergenWarnings": ["may bleach fabric", "avoid with retinol same routine"]
-  },
-  {
-    "barcode": "3337875545082",
-    "name": "La Roche-Posay Anthelios Melt-In Sunscreen Milk SPF 60",
-    "brand": "La Roche-Posay",
-    "type": "spf",
-    "actives": ["avobenzone", "homosalate", "octisalate", "octocrylene"],
-    "safetyScore": 8,
-    "skinCompatibility": ["all", "sensitive"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3337875643405",
-    "name": "La Roche-Posay Toleriane Hydrating Gentle Cleanser",
-    "brand": "La Roche-Posay",
-    "type": "cleanser",
-    "actives": ["ceramides", "niacinamide", "prebiotic thermal water"],
-    "safetyScore": 9,
-    "skinCompatibility": ["sensitive", "dry", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3337875545099",
-    "name": "La Roche-Posay Effaclar Medicated Gel Cleanser",
-    "brand": "La Roche-Posay",
-    "type": "cleanser",
-    "actives": ["salicylic acid 2%"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "acne-prone"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3337875673136",
-    "name": "La Roche-Posay Cicaplast Baume B5",
-    "brand": "La Roche-Posay",
-    "type": "moisturizer",
-    "actives": ["panthenol", "madecassoside", "shea butter"],
-    "safetyScore": 9,
-    "skinCompatibility": ["sensitive", "dry", "compromised barrier"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "011509310706",
-    "name": "Neutrogena Hydro Boost Water Gel",
-    "brand": "Neutrogena",
-    "type": "moisturizer",
-    "actives": ["hyaluronic acid"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "combination", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "011509015504",
-    "name": "Neutrogena Ultra Sheer Dry-Touch Sunscreen SPF 100",
-    "brand": "Neutrogena",
-    "type": "spf",
-    "actives": ["avobenzone", "homosalate", "octisalate", "oxybenzone"],
-    "safetyScore": 6,
-    "skinCompatibility": ["normal", "oily"],
-    "allergenWarnings": [
-      "contains oxybenzone — potential hormone disruptor concern"
-    ]
-  },
-  {
-    "barcode": "011509010998",
-    "name": "Neutrogena Rapid Clear Stubborn Acne Face Wash",
-    "brand": "Neutrogena",
-    "type": "cleanser",
-    "actives": ["benzoyl peroxide 10%"],
-    "safetyScore": 6,
-    "skinCompatibility": ["acne-prone", "oily"],
-    "allergenWarnings": [
-      "high-strength BP — may cause dryness/irritation",
-      "bleaches fabric"
-    ]
-  },
-  {
-    "barcode": "074170399115",
-    "name": "Aveeno Calm + Restore Oat Gel Moisturizer",
-    "brand": "Aveeno",
-    "type": "moisturizer",
-    "actives": ["oat extract", "feverfew"],
-    "safetyScore": 9,
-    "skinCompatibility": ["sensitive", "dry", "normal"],
-    "allergenWarnings": ["oat allergy — patch test recommended"]
-  },
-  {
-    "barcode": "074170353377",
-    "name": "Aveeno Clear Complexion Daily Moisturizer SPF 30",
-    "brand": "Aveeno",
-    "type": "spf",
-    "actives": ["salicylic acid 0.5%", "zinc oxide", "oat extract"],
-    "safetyScore": 8,
-    "skinCompatibility": ["acne-prone", "oily", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "191453049836",
-    "name": "EltaMD UV Clear Broad-Spectrum SPF 46",
-    "brand": "EltaMD",
-    "type": "spf",
-    "actives": ["zinc oxide 9%", "niacinamide", "hyaluronic acid"],
-    "safetyScore": 10,
-    "skinCompatibility": ["all", "acne-prone", "sensitive", "rosacea"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "818466020009",
-    "name": "COSRX Advanced Snail 96 Mucin Power Essence",
-    "brand": "COSRX",
-    "type": "serum",
-    "actives": ["snail secretion filtrate 96%"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all", "sensitive", "acne-prone"],
-    "allergenWarnings": ["snail allergy — patch test recommended"]
-  },
-  {
-    "barcode": "8809416470399",
-    "name": "COSRX Low pH Good Morning Gel Cleanser",
-    "brand": "COSRX",
-    "type": "cleanser",
-    "actives": ["tea tree oil", "willow bark water"],
-    "safetyScore": 9,
-    "skinCompatibility": ["oily", "acne-prone", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "8809416470108",
-    "name": "COSRX AHA 7 Whitehead Power Liquid",
-    "brand": "COSRX",
-    "type": "exfoliant",
-    "actives": ["glycolic acid 7%"],
-    "safetyScore": 7,
-    "skinCompatibility": ["normal", "combination", "oily"],
-    "allergenWarnings": ["use SPF daily", "avoid if sensitive"]
-  },
-  {
-    "barcode": "8809416470283",
-    "name": "COSRX BHA Blackhead Power Liquid",
-    "brand": "COSRX",
-    "type": "exfoliant",
-    "actives": ["betaine salicylate 4%"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "acne-prone"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "8809516820046",
-    "name": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+ PA++++",
-    "brand": "Beauty of Joseon",
-    "type": "spf",
-    "actives": ["zinc oxide", "rice extract", "probiotic ferment"],
-    "safetyScore": 10,
-    "skinCompatibility": ["all", "sensitive", "oily", "acne-prone"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "8809516820015",
-    "name": "Beauty of Joseon Glow Serum: Propolis + Niacinamide",
-    "brand": "Beauty of Joseon",
-    "type": "serum",
-    "actives": ["propolis extract", "niacinamide 2%"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all", "acne-prone"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "8809516820060",
-    "name": "Beauty of Joseon Dynasty Cream",
-    "brand": "Beauty of Joseon",
-    "type": "moisturizer",
-    "actives": ["rice extract", "ginseng root extract"],
-    "safetyScore": 9,
-    "skinCompatibility": ["dry", "normal", "sensitive"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3614272050792",
-    "name": "Vichy Normaderm PhytoAction Daily Deep Cleansing Gel",
-    "brand": "Vichy",
-    "type": "cleanser",
-    "actives": ["salicylic acid", "glycolic acid", "vichy volcanic water"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "acne-prone", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "351021000021",
-    "name": "First Aid Beauty Ultra Repair Cream",
-    "brand": "First Aid Beauty",
-    "type": "moisturizer",
-    "actives": ["colloidal oat", "ceramides", "shea butter"],
-    "safetyScore": 9,
-    "skinCompatibility": ["dry", "sensitive", "eczema-prone"],
-    "allergenWarnings": ["oat allergy — patch test recommended"]
-  },
-  {
-    "barcode": "682223007905",
-    "name": "Differin Adapalene Gel 0.1% Acne Treatment",
-    "brand": "Differin",
-    "type": "treatment",
-    "actives": ["adapalene 0.1%"],
-    "safetyScore": 8,
-    "skinCompatibility": ["acne-prone", "oily"],
-    "allergenWarnings": [
-      "avoid during pregnancy",
-      "use SPF daily",
-      "purging expected first 4–8 weeks"
-    ]
-  },
-  {
-    "barcode": "305210108629",
-    "name": "Clean & Clear Advantage Acne Spot Treatment",
-    "brand": "Clean & Clear",
-    "type": "treatment",
-    "actives": ["salicylic acid 2%"],
-    "safetyScore": 7,
-    "skinCompatibility": ["acne-prone", "oily"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "358150110011",
-    "name": "Mario Badescu Facial Spray with Aloe, Herbs & Rosewater",
-    "brand": "Mario Badescu",
-    "type": "treatment",
-    "actives": ["aloe vera", "rosewater", "herb extracts"],
-    "safetyScore": 7,
-    "skinCompatibility": ["all", "normal", "combination"],
-    "allergenWarnings": ["fragrance — may irritate sensitive skin"]
-  },
-  {
-    "barcode": "811329011101",
-    "name": "Glow Recipe Watermelon Glow Niacinamide Dew Drops",
-    "brand": "Glow Recipe",
-    "type": "serum",
-    "actives": ["niacinamide 5%", "hyaluronic acid", "watermelon extract"],
-    "safetyScore": 8,
-    "skinCompatibility": ["all", "oily", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "811329013310",
-    "name": "Glow Recipe Plum Plump Hyaluronic Acid Serum",
-    "brand": "Glow Recipe",
-    "type": "serum",
-    "actives": ["polyglutamic acid", "plum extract", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "857239006018",
-    "name": "Krave Beauty Great Barrier Relief Serum",
-    "brand": "Krave Beauty",
-    "type": "serum",
-    "actives": ["rose hip seed oil", "hemp seed oil", "sea buckthorn extract"],
-    "safetyScore": 9,
-    "skinCompatibility": ["dry", "sensitive", "compromised barrier"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "851714006023",
-    "name": "Youth To The People Superfood Air-Whip Moisture Cream",
-    "brand": "Youth To The People",
-    "type": "moisturizer",
-    "actives": ["hyaluronic acid", "kale extract", "spinach extract"],
-    "safetyScore": 9,
-    "skinCompatibility": ["oily", "combination", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "818597010093",
-    "name": "Tula Skincare The Cult Classic Purifying Face Cleanser",
-    "brand": "Tula",
-    "type": "cleanser",
-    "actives": ["probiotics", "apple extract"],
-    "safetyScore": 8,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "850003761016",
-    "name": "Bubble Slam Dunk Hydrating Moisturizer",
-    "brand": "Bubble",
-    "type": "moisturizer",
-    "actives": ["hyaluronic acid", "green tea extract", "watermelon extract"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all", "oily", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "850003761023",
-    "name": "Bubble Fresh Start Gel Cleanser",
-    "brand": "Bubble",
-    "type": "cleanser",
-    "actives": ["willowherb extract", "aloe vera"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all", "oily", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "850003761030",
-    "name": "Bubble Level Up Balancing Moisturizer SPF 30",
-    "brand": "Bubble",
-    "type": "spf",
-    "actives": ["zinc oxide", "niacinamide", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["oily", "combination", "acne-prone"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "743877000017",
     "name": "Acure Brightening Vitamin C Serum",
     "brand": "Acure",
     "type": "serum",
-    "actives": ["vitamin c (ascorbic acid)", "ferulic acid"],
-    "safetyScore": 8,
-    "skinCompatibility": ["normal", "combination", "oily"],
-    "allergenWarnings": ["oxidizes quickly — store away from light/heat"]
-  },
-  {
-    "barcode": "3606000537194",
-    "name": "CeraVe Foaming Facial Cleanser",
-    "brand": "CeraVe",
-    "type": "cleanser",
-    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["oily", "combination", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3606000537743",
-    "name": "CeraVe Moisturizing Cream",
-    "brand": "CeraVe",
-    "type": "moisturizer",
-    "actives": ["ceramides", "hyaluronic acid", "MVE technology"],
-    "safetyScore": 9,
-    "skinCompatibility": ["dry", "sensitive", "all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3606000537675",
-    "name": "CeraVe Hydrating Facial Cleanser",
-    "brand": "CeraVe",
-    "type": "cleanser",
-    "actives": ["ceramides", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["dry", "sensitive", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3606000537453",
-    "name": "CeraVe PM Facial Moisturizing Lotion",
-    "brand": "CeraVe",
-    "type": "moisturizer",
-    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "0769915190731",
-    "name": "The Ordinary Natural Moisturizing Factors + HA",
-    "brand": "The Ordinary",
-    "type": "moisturizer",
-    "actives": ["hyaluronic acid", "amino acids", "fatty acids"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "0769915190199",
-    "name": "The Ordinary Hyaluronic Acid 2% + B5",
-    "brand": "The Ordinary",
-    "type": "serum",
-    "actives": ["hyaluronic acid", "vitamin b5"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "7891010882983",
-    "name": "Neutrogena Hydro Boost Water Gel",
-    "brand": "Neutrogena",
-    "type": "moisturizer",
-    "actives": ["hyaluronic acid"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "combination", "normal"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "0655439020107",
-    "name": "Paula's Choice Skin Perfecting 2% BHA Liquid Exfoliant",
-    "brand": "Paula's Choice",
-    "type": "exfoliant",
-    "actives": ["salicylic acid"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "acne-prone", "combination"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3337875545846",
-    "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer UV SPF 30",
-    "brand": "La Roche-Posay",
-    "type": "spf",
     "actives": [
-      "avobenzone",
-      "ceramides",
-      "niacinamide",
-      "prebiotic thermal water"
+      "vitamin c (ascorbic acid)",
+      "ferulic acid"
     ],
-    "safetyScore": 9,
-    "skinCompatibility": ["all", "sensitive", "dry"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "0731882497021",
-    "name": "EltaMD UV Clear Broad-Spectrum SPF 46",
-    "brand": "EltaMD",
-    "type": "spf",
-    "actives": ["zinc oxide 9%", "niacinamide", "hyaluronic acid"],
-    "safetyScore": 10,
-    "skinCompatibility": ["all", "acne-prone", "sensitive", "rosacea"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "0302994910151",
-    "name": "Differin Adapalene Gel 0.1% Acne Treatment",
-    "brand": "Differin",
-    "type": "treatment",
-    "actives": ["adapalene 0.1%"],
     "safetyScore": 8,
-    "skinCompatibility": ["acne-prone", "oily"],
+    "skinCompatibility": [
+      "normal",
+      "combination",
+      "oily"
+    ],
     "allergenWarnings": [
-      "avoid during pregnancy",
-      "use SPF daily",
-      "purging expected first 4–8 weeks"
+      "oxidizes quickly — store away from light/heat"
+    ],
+    "barcodes": [
+      "743877000017"
     ]
   },
   {
-    "barcode": "0810052960166",
-    "name": "Glow Recipe Watermelon Glow Niacinamide Dew Drops",
-    "brand": "Glow Recipe",
+    "name": "Aveeno Calm + Restore Oat Gel Moisturizer",
+    "brand": "Aveeno",
+    "type": "moisturizer",
+    "actives": [
+      "oat extract",
+      "feverfew"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "sensitive",
+      "dry",
+      "normal"
+    ],
+    "allergenWarnings": [
+      "oat allergy — patch test recommended"
+    ],
+    "barcodes": [
+      "074170399115"
+    ]
+  },
+  {
+    "name": "Aveeno Clear Complexion Daily Moisturizer SPF 30",
+    "brand": "Aveeno",
+    "type": "spf",
+    "actives": [
+      "salicylic acid 0.5%",
+      "zinc oxide",
+      "oat extract"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "acne-prone",
+      "oily",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "074170353377"
+    ]
+  },
+  {
+    "name": "Beauty of Joseon Dynasty Cream",
+    "brand": "Beauty of Joseon",
+    "type": "moisturizer",
+    "actives": [
+      "rice extract",
+      "ginseng root extract"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809516820060"
+    ]
+  },
+  {
+    "name": "Beauty of Joseon Glow Serum: Propolis + Niacinamide",
+    "brand": "Beauty of Joseon",
     "type": "serum",
-    "actives": ["niacinamide 5%", "hyaluronic acid", "watermelon extract"],
-    "safetyScore": 8,
-    "skinCompatibility": ["all", "oily", "combination"],
-    "allergenWarnings": []
+    "actives": [
+      "propolis extract",
+      "niacinamide 2%"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809516820015"
+    ]
   },
   {
-    "barcode": "3337875795456",
-    "name": "CeraVe SA Smoothing Cleanser",
-    "brand": "CeraVe",
+    "name": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+ PA++++",
+    "brand": "Beauty of Joseon",
+    "type": "spf",
+    "actives": [
+      "zinc oxide",
+      "rice extract",
+      "probiotic ferment"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "oily",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809516820046"
+    ]
+  },
+  {
+    "name": "Bioderma Sebium Pore Refiner",
+    "brand": "Bioderma",
+    "type": "treatment",
+    "actives": [
+      "fluidactiv patent",
+      "zinc gluconate"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3401528631558"
+    ]
+  },
+  {
+    "name": "Bioderma Sensibio H2O Micellar Water",
+    "brand": "Bioderma",
     "type": "cleanser",
-    "actives": ["salicylic acid", "niacinamide", "ceramides"],
-    "safetyScore": 8,
-    "skinCompatibility": ["oily", "combination", "acne-prone"],
-    "allergenWarnings": []
+    "actives": [
+      "cucumber extract",
+      "fructooligosaccharides"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "sensitive",
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3401399364212"
+    ]
   },
   {
-    "barcode": "3606000512238",
+    "name": "Bubble Fresh Start Gel Cleanser",
+    "brand": "Bubble",
+    "type": "cleanser",
+    "actives": [
+      "willowherb extract",
+      "aloe vera"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "oily",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "850003761023"
+    ]
+  },
+  {
+    "name": "Bubble Level Up Balancing Moisturizer SPF 30",
+    "brand": "Bubble",
+    "type": "spf",
+    "actives": [
+      "zinc oxide",
+      "niacinamide",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "850003761030"
+    ]
+  },
+  {
+    "name": "Bubble Slam Dunk Hydrating Moisturizer",
+    "brand": "Bubble",
+    "type": "moisturizer",
+    "actives": [
+      "hyaluronic acid",
+      "green tea extract",
+      "watermelon extract"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "oily",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "850003761016"
+    ]
+  },
+  {
+    "name": "CeraVe Acne Control Gel",
+    "brand": "CeraVe",
+    "type": "treatment",
+    "actives": [
+      "salicylic acid 2%",
+      "niacinamide",
+      "ceramides"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "7899706192712"
+    ]
+  },
+  {
     "name": "CeraVe Acne Foaming Cream Cleanser",
     "brand": "CeraVe",
     "type": "cleanser",
-    "actives": ["benzoyl peroxide 4%", "niacinamide", "ceramides"],
+    "actives": [
+      "benzoyl peroxide 4%",
+      "niacinamide",
+      "ceramides"
+    ],
     "safetyScore": 7,
-    "skinCompatibility": ["oily", "acne-prone"],
-    "allergenWarnings": ["may bleach fabrics", "start slow to avoid irritation"]
+    "skinCompatibility": [
+      "oily",
+      "acne-prone"
+    ],
+    "allergenWarnings": [
+      "may bleach fabrics",
+      "start slow to avoid irritation"
+    ],
+    "barcodes": [
+      "3606000512238"
+    ]
   },
   {
-    "barcode": "0793379245584",
     "name": "CeraVe AM Facial Moisturizing Lotion SPF 30",
     "brand": "CeraVe",
     "type": "spf",
@@ -594,47 +270,1301 @@
       "hyaluronic acid"
     ],
     "safetyScore": 8,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "0793379245584"
+    ]
   },
   {
-    "barcode": "3606000537606",
-    "name": "CeraVe Skin Renewing Night Cream",
-    "brand": "CeraVe",
-    "type": "moisturizer",
-    "actives": ["niacinamide", "ceramides", "hyaluronic acid", "peptides"],
-    "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
-  },
-  {
-    "barcode": "3606000537613",
     "name": "CeraVe Eye Repair Cream",
     "brand": "CeraVe",
     "type": "treatment",
-    "actives": ["niacinamide", "ceramides", "hyaluronic acid"],
+    "actives": [
+      "niacinamide",
+      "ceramides",
+      "hyaluronic acid"
+    ],
     "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3606000537613"
+    ]
   },
   {
-    "barcode": "3606000537217",
+    "name": "CeraVe Foaming Facial Cleanser",
+    "brand": "CeraVe",
+    "type": "cleanser",
+    "actives": [
+      "niacinamide",
+      "ceramides",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3606000537750",
+      "3606000537194"
+    ]
+  },
+  {
     "name": "CeraVe Healing Ointment",
     "brand": "CeraVe",
     "type": "treatment",
-    "actives": ["petrolatum", "ceramides", "hyaluronic acid"],
+    "actives": [
+      "petrolatum",
+      "ceramides",
+      "hyaluronic acid"
+    ],
     "safetyScore": 9,
-    "skinCompatibility": ["all"],
-    "allergenWarnings": []
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3606000537217"
+    ]
   },
   {
-    "barcode": "7899706192712",
-    "name": "CeraVe Acne Control Gel",
+    "name": "CeraVe Hydrating Facial Cleanser",
     "brand": "CeraVe",
-    "type": "treatment",
-    "actives": ["salicylic acid 2%", "niacinamide", "ceramides"],
+    "type": "cleanser",
+    "actives": [
+      "ceramides",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "036602359919",
+      "3606000537675"
+    ]
+  },
+  {
+    "name": "CeraVe Moisturizing Cream",
+    "brand": "CeraVe",
+    "type": "moisturizer",
+    "actives": [
+      "ceramides",
+      "hyaluronic acid",
+      "MVE technology"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "sensitive",
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "036602300805",
+      "3606000537743"
+    ]
+  },
+  {
+    "name": "CeraVe PM Facial Moisturizing Lotion",
+    "brand": "CeraVe",
+    "type": "moisturizer",
+    "actives": [
+      "niacinamide",
+      "ceramides",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "036602307026",
+      "3606000537453"
+    ]
+  },
+  {
+    "name": "CeraVe SA Smoothing Cleanser",
+    "brand": "CeraVe",
+    "type": "cleanser",
+    "actives": [
+      "salicylic acid",
+      "niacinamide",
+      "ceramides"
+    ],
     "safetyScore": 8,
-    "skinCompatibility": ["oily", "acne-prone"],
-    "allergenWarnings": []
+    "skinCompatibility": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3337875795456"
+    ]
+  },
+  {
+    "name": "CeraVe Skin Renewing Night Cream",
+    "brand": "CeraVe",
+    "type": "moisturizer",
+    "actives": [
+      "niacinamide",
+      "ceramides",
+      "hyaluronic acid",
+      "peptides"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3606000537606"
+    ]
+  },
+  {
+    "name": "Cetaphil Daily Facial Cleanser",
+    "brand": "Cetaphil",
+    "type": "cleanser",
+    "actives": [
+      "niacinamide"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "normal",
+      "oily",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "302993921348"
+    ]
+  },
+  {
+    "name": "Cetaphil Gentle Skin Cleanser",
+    "brand": "Cetaphil",
+    "type": "cleanser",
+    "actives": [
+      "glycerin"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "dry"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "302993913343"
+    ]
+  },
+  {
+    "name": "Cetaphil Moisturizing Cream",
+    "brand": "Cetaphil",
+    "type": "moisturizer",
+    "actives": [
+      "glycerin",
+      "petrolatum",
+      "panthenol"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "sensitive",
+      "eczema-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "302993914357"
+    ]
+  },
+  {
+    "name": "Cetaphil Moisturizing Lotion",
+    "brand": "Cetaphil",
+    "type": "moisturizer",
+    "actives": [
+      "glycerin",
+      "vitamin e"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "302993914340"
+    ]
+  },
+  {
+    "name": "Cetaphil Sun SPF 50 Light Gel",
+    "brand": "Cetaphil",
+    "type": "spf",
+    "actives": [
+      "tinosorb s",
+      "tinosorb m",
+      "zinc oxide"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "302993935260"
+    ]
+  },
+  {
+    "name": "Clean & Clear Advantage Acne Spot Treatment",
+    "brand": "Clean & Clear",
+    "type": "treatment",
+    "actives": [
+      "salicylic acid 2%"
+    ],
+    "safetyScore": 7,
+    "skinCompatibility": [
+      "acne-prone",
+      "oily"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "305210108629"
+    ]
+  },
+  {
+    "name": "COSRX Advanced Snail 96 Mucin Power Essence",
+    "brand": "COSRX",
+    "type": "serum",
+    "actives": [
+      "snail secretion filtrate 96%"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "acne-prone"
+    ],
+    "allergenWarnings": [
+      "snail allergy — patch test recommended"
+    ],
+    "barcodes": [
+      "818466020009"
+    ]
+  },
+  {
+    "name": "COSRX AHA 7 Whitehead Power Liquid",
+    "brand": "COSRX",
+    "type": "exfoliant",
+    "actives": [
+      "glycolic acid 7%"
+    ],
+    "safetyScore": 7,
+    "skinCompatibility": [
+      "normal",
+      "combination",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "use SPF daily",
+      "avoid if sensitive"
+    ],
+    "barcodes": [
+      "8809416470108"
+    ]
+  },
+  {
+    "name": "COSRX BHA Blackhead Power Liquid",
+    "brand": "COSRX",
+    "type": "exfoliant",
+    "actives": [
+      "betaine salicylate 4%"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809416470283"
+    ]
+  },
+  {
+    "name": "COSRX Low pH Good Morning Gel Cleanser",
+    "brand": "COSRX",
+    "type": "cleanser",
+    "actives": [
+      "tea tree oil",
+      "willow bark water"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "oily",
+      "acne-prone",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809416470399"
+    ]
+  },
+  {
+    "name": "Differin Adapalene Gel 0.1% Acne Treatment",
+    "brand": "Differin",
+    "type": "treatment",
+    "actives": [
+      "adapalene 0.1%"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "acne-prone",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "avoid during pregnancy",
+      "use SPF daily",
+      "purging expected first 4–8 weeks"
+    ],
+    "barcodes": [
+      "682223007905",
+      "0302994910151"
+    ]
+  },
+  {
+    "name": "Drunk Elephant C-Firma Fresh Day Serum",
+    "brand": "Drunk Elephant",
+    "type": "serum",
+    "actives": [
+      "vitamin c (l-ascorbic acid) 15%",
+      "ferulic acid",
+      "vitamin e"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "normal",
+      "combination",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "oxidizes — use within 3 months of opening"
+    ],
+    "barcodes": [
+      "859481007031"
+    ]
+  },
+  {
+    "name": "Drunk Elephant Protini Polypeptide Cream",
+    "brand": "Drunk Elephant",
+    "type": "moisturizer",
+    "actives": [
+      "peptides",
+      "amino acids",
+      "pygmy waterlily stem cell extract"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "859481007024"
+    ]
+  },
+  {
+    "name": "Drunk Elephant T.L.C. Framboos Glycolic Night Serum",
+    "brand": "Drunk Elephant",
+    "type": "serum",
+    "actives": [
+      "glycolic acid",
+      "salicylic acid",
+      "lactic acid",
+      "tartaric acid"
+    ],
+    "safetyScore": 7,
+    "skinCompatibility": [
+      "normal",
+      "combination",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "use SPF daily",
+      "avoid if sensitive"
+    ],
+    "barcodes": [
+      "859481007017"
+    ]
+  },
+  {
+    "name": "EltaMD UV Clear Broad-Spectrum SPF 46",
+    "brand": "EltaMD",
+    "type": "spf",
+    "actives": [
+      "zinc oxide 9%",
+      "niacinamide",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "acne-prone",
+      "sensitive",
+      "rosacea"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "191453049836",
+      "0731882497021"
+    ]
+  },
+  {
+    "name": "First Aid Beauty Ultra Repair Cream",
+    "brand": "First Aid Beauty",
+    "type": "moisturizer",
+    "actives": [
+      "colloidal oat",
+      "ceramides",
+      "shea butter"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "sensitive",
+      "eczema-prone"
+    ],
+    "allergenWarnings": [
+      "oat allergy — patch test recommended"
+    ],
+    "barcodes": [
+      "351021000021"
+    ]
+  },
+  {
+    "name": "Glow Recipe Plum Plump Hyaluronic Acid Serum",
+    "brand": "Glow Recipe",
+    "type": "serum",
+    "actives": [
+      "polyglutamic acid",
+      "plum extract",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "811329013310"
+    ]
+  },
+  {
+    "name": "Glow Recipe Watermelon Glow Niacinamide Dew Drops",
+    "brand": "Glow Recipe",
+    "type": "serum",
+    "actives": [
+      "niacinamide 5%",
+      "hyaluronic acid",
+      "watermelon extract"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "all",
+      "oily",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "811329011101",
+      "0810052960166"
+    ]
+  },
+  {
+    "name": "Hero Cosmetics Mighty Patch Original",
+    "brand": "Hero Cosmetics",
+    "type": "treatment",
+    "actives": [
+      "hydrocolloid"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "850019231012"
+    ]
+  },
+  {
+    "name": "Hero Cosmetics Mighty Patch Surface",
+    "brand": "Hero Cosmetics",
+    "type": "treatment",
+    "actives": [
+      "hydrocolloid"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "850019231029"
+    ]
+  },
+  {
+    "name": "Hero Cosmetics Rescue Balm Post-Blemish Recovery Cream",
+    "brand": "Hero Cosmetics",
+    "type": "moisturizer",
+    "actives": [
+      "centella asiatica",
+      "ceramides",
+      "panthenol"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "sensitive",
+      "acne-prone",
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "850019231036"
+    ]
+  },
+  {
+    "name": "Innisfree Green Tea Hyaluronic Acid Toner",
+    "brand": "Innisfree",
+    "type": "treatment",
+    "actives": [
+      "green tea extract",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809612872028"
+    ]
+  },
+  {
+    "name": "Innisfree Green Tea Seed Serum",
+    "brand": "Innisfree",
+    "type": "serum",
+    "actives": [
+      "green tea extract",
+      "hyaluronic acid",
+      "amino acids"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809612872011"
+    ]
+  },
+  {
+    "name": "Isntree Centella Ntica Ampoule",
+    "brand": "Isntree",
+    "type": "serum",
+    "actives": [
+      "centella asiatica",
+      "madecassoside",
+      "niacinamide"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "sensitive",
+      "acne-prone",
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809480480028"
+    ]
+  },
+  {
+    "name": "Isntree Hyaluronic Acid Toner",
+    "brand": "Isntree",
+    "type": "treatment",
+    "actives": [
+      "hyaluronic acid",
+      "panthenol",
+      "allantoin"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "dry"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809480480011"
+    ]
+  },
+  {
+    "name": "Krave Beauty Great Barrier Relief Serum",
+    "brand": "Krave Beauty",
+    "type": "serum",
+    "actives": [
+      "rose hip seed oil",
+      "hemp seed oil",
+      "sea buckthorn extract"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "sensitive",
+      "compromised barrier"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "857239006018"
+    ]
+  },
+  {
+    "name": "La Roche-Posay Anthelios Melt-In Sunscreen Milk SPF 60",
+    "brand": "La Roche-Posay",
+    "type": "spf",
+    "actives": [
+      "avobenzone",
+      "homosalate",
+      "octisalate",
+      "octocrylene"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "all",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3337875545082"
+    ]
+  },
+  {
+    "name": "La Roche-Posay Cicaplast Baume B5",
+    "brand": "La Roche-Posay",
+    "type": "moisturizer",
+    "actives": [
+      "panthenol",
+      "madecassoside",
+      "shea butter"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "sensitive",
+      "dry",
+      "compromised barrier"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3337875673136"
+    ]
+  },
+  {
+    "name": "La Roche-Posay Effaclar Medicated Gel Cleanser",
+    "brand": "La Roche-Posay",
+    "type": "cleanser",
+    "actives": [
+      "salicylic acid 2%"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3337875545099"
+    ]
+  },
+  {
+    "name": "La Roche-Posay Toleriane Double Repair Face Moisturizer UV SPF 30",
+    "brand": "La Roche-Posay",
+    "type": "spf",
+    "actives": [
+      "avobenzone",
+      "ceramides",
+      "niacinamide",
+      "prebiotic thermal water"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "dry"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3337875545846"
+    ]
+  },
+  {
+    "name": "La Roche-Posay Toleriane Hydrating Gentle Cleanser",
+    "brand": "La Roche-Posay",
+    "type": "cleanser",
+    "actives": [
+      "ceramides",
+      "niacinamide",
+      "prebiotic thermal water"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "sensitive",
+      "dry",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3337875643405"
+    ]
+  },
+  {
+    "name": "Mario Badescu Facial Spray with Aloe, Herbs & Rosewater",
+    "brand": "Mario Badescu",
+    "type": "treatment",
+    "actives": [
+      "aloe vera",
+      "rosewater",
+      "herb extracts"
+    ],
+    "safetyScore": 7,
+    "skinCompatibility": [
+      "all",
+      "normal",
+      "combination"
+    ],
+    "allergenWarnings": [
+      "fragrance — may irritate sensitive skin"
+    ],
+    "barcodes": [
+      "358150110011"
+    ]
+  },
+  {
+    "name": "Neutrogena Hydro Boost Water Gel",
+    "brand": "Neutrogena",
+    "type": "moisturizer",
+    "actives": [
+      "hyaluronic acid"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "011509310706",
+      "7891010882983"
+    ]
+  },
+  {
+    "name": "Neutrogena Rapid Clear Stubborn Acne Face Wash",
+    "brand": "Neutrogena",
+    "type": "cleanser",
+    "actives": [
+      "benzoyl peroxide 10%"
+    ],
+    "safetyScore": 6,
+    "skinCompatibility": [
+      "acne-prone",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "high-strength BP — may cause dryness/irritation",
+      "bleaches fabric"
+    ],
+    "barcodes": [
+      "011509010998"
+    ]
+  },
+  {
+    "name": "Neutrogena Ultra Sheer Dry-Touch Sunscreen SPF 100",
+    "brand": "Neutrogena",
+    "type": "spf",
+    "actives": [
+      "avobenzone",
+      "homosalate",
+      "octisalate",
+      "oxybenzone"
+    ],
+    "safetyScore": 6,
+    "skinCompatibility": [
+      "normal",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "contains oxybenzone — potential hormone disruptor concern"
+    ],
+    "barcodes": [
+      "011509015504"
+    ]
+  },
+  {
+    "name": "Paula's Choice CLEAR Regular Strength Daily Skin Clearing Treatment",
+    "brand": "Paula's Choice",
+    "type": "treatment",
+    "actives": [
+      "benzoyl peroxide 2.5%"
+    ],
+    "safetyScore": 7,
+    "skinCompatibility": [
+      "acne-prone",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "may bleach fabric",
+      "avoid with retinol same routine"
+    ],
+    "barcodes": [
+      "726150900009"
+    ]
+  },
+  {
+    "name": "Paula's Choice Skin Perfecting 2% BHA Liquid Exfoliant",
+    "brand": "Paula's Choice",
+    "type": "exfoliant",
+    "actives": [
+      "salicylic acid"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "acne-prone",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "726150111719",
+      "0655439020107"
+    ]
+  },
+  {
+    "name": "Purito Centella Green Level Unscented Serum",
+    "brand": "Purito",
+    "type": "serum",
+    "actives": [
+      "centella asiatica 49%",
+      "madecassoside",
+      "asiaticoside"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "sensitive",
+      "acne-prone",
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809663752102"
+    ]
+  },
+  {
+    "name": "Purito Daily Go-To Sunscreen SPF 50+ PA++++",
+    "brand": "Purito",
+    "type": "spf",
+    "actives": [
+      "zinc oxide",
+      "uvinul a plus",
+      "tinosorb s"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809663752089"
+    ]
+  },
+  {
+    "name": "Purito From Green Cleansing Oil",
+    "brand": "Purito",
+    "type": "cleanser",
+    "actives": [
+      "rice bran oil",
+      "sunflower seed oil"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "dry",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809663752096"
+    ]
+  },
+  {
+    "name": "Round Lab 1025 Dokdo Toner",
+    "brand": "Round Lab",
+    "type": "treatment",
+    "actives": [
+      "sea water minerals",
+      "hyaluronic acid",
+      "panthenol"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "dry",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809572890026"
+    ]
+  },
+  {
+    "name": "Round Lab Birch Juice Moisturizing Cleanser",
+    "brand": "Round Lab",
+    "type": "cleanser",
+    "actives": [
+      "birch sap",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all",
+      "dry",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809572890019"
+    ]
+  },
+  {
+    "name": "Round Lab Birch Juice Moisturizing Sunscreen SPF 50+ PA++++",
+    "brand": "Round Lab",
+    "type": "spf",
+    "actives": [
+      "zinc oxide",
+      "birch sap",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "8809782551814"
+    ]
+  },
+  {
+    "name": "Starface Hydro-Stars Pimple Patches",
+    "brand": "Starface",
+    "type": "treatment",
+    "actives": [
+      "hydrocolloid"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "acne-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "810038570018"
+    ]
+  },
+  {
+    "name": "Tatcha The Dewy Skin Cream",
+    "brand": "Tatcha",
+    "type": "moisturizer",
+    "actives": [
+      "hyaluronic acid",
+      "collagen",
+      "algae extract"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "816318020079"
+    ]
+  },
+  {
+    "name": "Tatcha The Rice Wash Soft Cream Cleanser",
+    "brand": "Tatcha",
+    "type": "cleanser",
+    "actives": [
+      "japanese rice bran",
+      "hyaluronic acid"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "816318020093"
+    ]
+  },
+  {
+    "name": "Tatcha The Water Cream",
+    "brand": "Tatcha",
+    "type": "moisturizer",
+    "actives": [
+      "hadasei-3 complex",
+      "wild rose",
+      "leopard lily"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "816318020086"
+    ]
+  },
+  {
+    "name": "The Ordinary AHA 30% + BHA 2% Peeling Solution",
+    "brand": "The Ordinary",
+    "type": "exfoliant",
+    "actives": [
+      "glycolic acid",
+      "lactic acid",
+      "salicylic acid",
+      "tartaric acid"
+    ],
+    "safetyScore": 6,
+    "skinCompatibility": [
+      "normal",
+      "oily",
+      "combination"
+    ],
+    "allergenWarnings": [
+      "high-acid — not for sensitive/broken skin",
+      "avoid eye area"
+    ],
+    "barcodes": [
+      "769915192108"
+    ]
+  },
+  {
+    "name": "The Ordinary Hyaluronic Acid 2% + B5",
+    "brand": "The Ordinary",
+    "type": "serum",
+    "actives": [
+      "hyaluronic acid",
+      "vitamin b5"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "769915193143",
+      "0769915190199"
+    ]
+  },
+  {
+    "name": "The Ordinary Natural Moisturizing Factors + HA",
+    "brand": "The Ordinary",
+    "type": "moisturizer",
+    "actives": [
+      "hyaluronic acid",
+      "amino acids",
+      "fatty acids"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "0769915190731"
+    ]
+  },
+  {
+    "name": "The Ordinary Niacinamide 10% + Zinc 1%",
+    "brand": "The Ordinary",
+    "type": "serum",
+    "actives": [
+      "niacinamide",
+      "zinc"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "acne-prone",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "386160130000"
+    ]
+  },
+  {
+    "name": "The Ordinary Retinol 0.5% in Squalane",
+    "brand": "The Ordinary",
+    "type": "treatment",
+    "actives": [
+      "retinol",
+      "squalane"
+    ],
+    "safetyScore": 7,
+    "skinCompatibility": [
+      "normal",
+      "combination",
+      "oily"
+    ],
+    "allergenWarnings": [
+      "avoid during pregnancy",
+      "use SPF daily",
+      "not for beginners under 16"
+    ],
+    "barcodes": [
+      "769915190081"
+    ]
+  },
+  {
+    "name": "Tula Skincare The Cult Classic Purifying Face Cleanser",
+    "brand": "Tula",
+    "type": "cleanser",
+    "actives": [
+      "probiotics",
+      "apple extract"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "all"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "818597010093"
+    ]
+  },
+  {
+    "name": "Vanicream Daily Facial Moisturizer SPF 30",
+    "brand": "Vanicream",
+    "type": "spf",
+    "actives": [
+      "zinc oxide 9%"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "rosacea"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "645951010131"
+    ]
+  },
+  {
+    "name": "Vanicream Gentle Facial Cleanser",
+    "brand": "Vanicream",
+    "type": "cleanser",
+    "actives": [
+      "glycerin"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "eczema-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "645951010117"
+    ]
+  },
+  {
+    "name": "Vanicream Moisturizing Skin Cream",
+    "brand": "Vanicream",
+    "type": "moisturizer",
+    "actives": [
+      "petrolatum",
+      "glycerin"
+    ],
+    "safetyScore": 10,
+    "skinCompatibility": [
+      "all",
+      "sensitive",
+      "eczema-prone"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "645951010124"
+    ]
+  },
+  {
+    "name": "Vichy Normaderm PhytoAction Daily Deep Cleansing Gel",
+    "brand": "Vichy",
+    "type": "cleanser",
+    "actives": [
+      "salicylic acid",
+      "glycolic acid",
+      "vichy volcanic water"
+    ],
+    "safetyScore": 8,
+    "skinCompatibility": [
+      "oily",
+      "acne-prone",
+      "combination"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "3614272050792"
+    ]
+  },
+  {
+    "name": "Youth To The People Superfood Air-Whip Moisture Cream",
+    "brand": "Youth To The People",
+    "type": "moisturizer",
+    "actives": [
+      "hyaluronic acid",
+      "kale extract",
+      "spinach extract"
+    ],
+    "safetyScore": 9,
+    "skinCompatibility": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "allergenWarnings": [],
+    "barcodes": [
+      "851714006023"
+    ]
   }
 ]

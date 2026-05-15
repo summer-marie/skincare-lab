@@ -10,9 +10,12 @@ import inciData from "../data/inci-data.json";
  * This converts the array to a Map structure for instant barcode lookups,
  * avoiding O(n) array searches on every scan.
  * Key: barcode string  →  Value: product object
+ * Note: Products can have multiple barcodes, so each barcode maps to the same product
  */
 const INCI_MAP = Object.fromEntries(
-  inciData.map((product) => [product.barcode, product]),
+  inciData.flatMap((product) =>
+    product.barcodes.map((barcode) => [barcode, product])
+  )
 );
 
 /**
