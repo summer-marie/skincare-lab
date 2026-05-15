@@ -1,220 +1,193 @@
 # 🧬 SkinScript
 
-**Safer skincare routines for teens**
+**Safer skincare routines for teens — a gender-neutral guide to understanding ingredients and building confidence**
 
-SkinScript is a mobile-first web app that helps teenagers understand what's in their skincare products, build safe routines, and avoid mixing ingredients that can irritate their skin.
+SkinScript helps teenagers learn how to build safe, effective skincare routines without the overwhelm. Scan your products, understand what's inside them, and get personalized AM/PM routines that avoid irritating ingredient combinations.
+
+**✨ Live App:** [myskinscript.app](https://myskinscript.app)
 
 ---
 
-## ✨ Features
+## Why SkinScript?
 
-### 📱 Product Management
-- **Barcode Scanner** — Scan product barcodes using your device camera
-- **File Upload Scanning** — Upload a photo of a barcode to scan it
-- **Manual Barcode Entry** — Type in a barcode number directly to look up products
-- **Manual Product Entry** — Add products by hand with name, brand, type, and active ingredients
-- **Product Library** — View and filter all your products in one place
-- **Verified Product Database** — 60+ pre-loaded products with real barcodes from Open Beauty Facts
-- **Edit & Delete** — Update product details or remove items with modal confirmation
+Skincare can be confusing — especially when you're just starting out. Brands target teens with trendy products, but rarely explain what's safe to use together. SkinScript was built to solve that problem.
+
+**The challenge:**
+- Teens are bombarded with skincare products but lack guidance on what's safe to combine
+- Mixing certain actives (like retinoids + benzoyl peroxide) can irritate skin or cancel each other out
+- There's no simple way to know if your routine makes sense
+- Most skincare advice is either too technical or oversimplified
+
+**What SkinScript does:**
+- Scans product barcodes to instantly identify ingredients
+- Builds personalized AM and PM routines from your products
+- Detects conflicts before they happen (like mixing incompatible actives)
+- Explains what each ingredient does in plain language
+- Uses a gender-neutral, inclusive design that works for everyone
+
+---
+
+## 🎯 Current Status: Beta (Teen Products Only)
+
+SkinScript is currently in **beta** with a curated database of **80+ verified teen-safe products** from trusted brands like CeraVe, The Ordinary, Paula's Choice, La Roche-Posay, and Neutrogena.
+
+**What "beta" means:**
+- The app is live and fully functional
+- The product database focuses on teen-appropriate skincare only
+- Some barcodes may not be recognized yet (pending ongoing verification)
+- Active ingredients are limited to gentle-to-moderate strength formulations
+
+**Future plans:**
+- Expand to include adult-targeted products (stronger retinoids, prescription actives)
+- Add 200+ more products across all age groups
+- Introduce user accounts and cloud sync
+- Build a comprehensive ingredient education library
+
+---
+
+## ✨ Key Features
+
+### 📱 Product Scanning
+- **Barcode Scanner** — Use your phone camera to scan product barcodes
+- **Photo Upload** — Upload a barcode photo if camera scanning isn't available
+- **Manual Entry** — Type in barcode numbers or add products by hand
+- **Instant Recognition** — Search against 80+ verified products with real barcodes
 
 ### 🔬 Ingredient Intelligence
-- **Safety Scores** — See ingredient safety ratings (1-10 scale) for scanned products
-- **Skin Compatibility** — Know which skin types each product suits best
-- **Allergen Warnings** — Get alerts for common allergens and irritants
-- **Active Descriptions** — Learn what each ingredient does
+- **Safety Scores** — See how gentle or strong each product is (1-10 scale)
+- **Active Descriptions** — Learn what niacinamide, salicylic acid, and other actives actually do
+- **Allergen Warnings** — Get alerts for common irritants
+- **Skin Type Matching** — Know which products suit oily, dry, sensitive, or combination skin
 
 ### 🌙 Smart Routine Builder
-- **AM/PM Routines** — Get personalized morning and evening skincare sequences
-- **Conflict Detection** — Receive warnings when mixing incompatible actives
-- **Product Strength Analysis** — Understand gentle, medium, and strong treatments
-- **Usage Timing** — Know when to use each product for best results
+- **AM/PM Routines** — Get morning and evening routines auto-sorted in the right order
+- **Conflict Detection** — See warnings when products shouldn't be used together:
+  - Retinoid + benzoyl peroxide clash
+  - Multiple exfoliants (AHA + BHA layering)
+  - Too many strong actives at once
+  - Missing SPF in your morning routine
+- **Product Strength Analysis** — Understand which treatments are gentle, medium, or strong
 
-### 🛡️ Safety Checks
-- **Retinoid + Benzoyl Peroxide** warning
-- **AHA + Salicylic Acid** layering alerts
-- **Multiple Strong Actives** detection
-- **Missing SPF** reminders for AM routines
+### 🛡️ Designed for Teens
+- **Gender-Neutral Design** — Clean, inclusive interface that works for everyone
+- **Age-Appropriate Products** — Teen-safe formulations only (beta phase)
+- **Retinoid Caution** — Special warnings for prescription-strength actives
+- **Beginner-Friendly** — No jargon, just clear explanations
 
 ---
 
-## 🚀 Tech Stack
+## 🆕 Recent Improvements
 
-- **JavaScript** — Vanilla ES6+ modules (no framework)
-- **Vite** — Fast dev server and build tool
-- **Tailwind CSS** — Utility-first styling via @tailwindcss/vite plugin
+### Product Name Autocomplete
+The manual add form now includes live suggestions as you type:
+- Shows up to 5 matching products from your library
+- Full keyboard navigation (arrow keys, Enter, Escape)
+- Auto-fills all fields when you select a match (name, brand, type, actives)
+
+### Enhanced Safety Features
+- **Retinoid warnings** now appear both on the add form and product detail screens
+- Clear caution notes explain when to seek dermatologist guidance
+
+### Bug Fixes
+- Fixed homepage navigation bar visibility issue
+- Improved top-bar logo sizing for better readability
+- Centered disclaimer bubble text for cleaner layout
+
+### Data Quality Improvements
+- Consolidated duplicate products into unified entries with multiple barcodes
+- Verified 35+ barcodes through Open Beauty Facts and UPC Item DB
+- Updated schema to support products with regional barcode variations
+- 45 additional products pending verification (rate-limited API access)
+
+---
+
+## 📊 Product Database & Verification
+
+SkinScript's database includes **80+ verified products** across major skincare brands. Each product has been cross-referenced with industry databases to ensure accuracy.
+
+**Barcode Verification Process:**
+1. **Pass 1:** Open Beauty Facts API — primary cosmetics database
+2. **Pass 2:** UPC Item DB — secondary verification for products not in cosmetics-specific databases
+3. Products are marked `barcodeVerified: true` when confirmed
+4. Unverified entries are flagged for future review
+
+**Included Brands:**
+- CeraVe (cleansers, moisturizers, treatments)
+- The Ordinary (serums, retinols, actives)
+- Paula's Choice (exfoliants, treatments)
+- La Roche-Posay (sunscreens, sensitive skin care)
+- Neutrogena, EltaMD, Differin, Cetaphil
+- K-beauty: COSRX, Beauty of Joseon, Purito
+- Teen-focused: Bubble, Hero Cosmetics
+
+**Data Sources:**
+- Open Beauty Facts (cosmetics ingredient database)
+- UPC Item DB (universal product codes)
+- Clinical dermatology guidelines (conflict detection rules)
+- Published research on ingredient interactions
+
+---
+
+## 📚 Documentation
+
+- **[README.md](README.md)** (this file) — User-facing overview and features
+- **[TECHNICAL-README.md](TECHNICAL-README.md)** — Architecture, modules, data pipeline, AI usage disclosure, and developer setup
+
+For implementation details, code structure, or local development instructions, see the technical documentation.
+
+---
+
+## 🚀 Roadmap
+
+### Short-term (Beta Phase)
+- [ ] Sensitivity level filters (gentle/medium/strong)
+- [ ] Finish barcode verification for remaining 45 products
+- [ ] Ingredient education library with visual guides
+
+### Medium-term (Version 2.0)
+- [ ] User accounts & cloud sync
+- [ ] Live API integration for real-time product lookups
+- [ ] Expand database to 200+ products (all age groups)
+- [ ] Include adult-targeted actives (prescription retinoids, stronger acids)
+- [ ] Western vs. international product comparison (K-beauty, J-beauty)
+- [ ] Skin type quiz with personalized product recommendations
+- [ ] Expanded allergen database and custom allergen tracking
+- [ ] PWA support for offline use
+- [ ] Routine sharing via shareable links
+
+### Long-term (Future Versions)
+- [ ] AI-powered product recognition from photos
+- [ ] Before/after photo tracking
+- [ ] Skin journal and progress notes
+- [ ] Multi-language support
+- [ ] Export routines as PDF
+- [ ] Product expiration tracking
+
+---
+
+## ⚠️ Important Disclaimer
+
+**SkinScript is not a replacement for professional medical advice.**
+
+This app provides educational guidance based on common ingredient interactions and dermatological best practices. Individual skin conditions vary widely. If you experience irritation, unusual reactions, or have specific skin concerns:
+
+- Stop using the product immediately
+- Consult a licensed dermatologist or healthcare provider
+- Patch test new products before full application
+
+SkinScript is a learning tool designed to help you understand skincare basics — not diagnose or treat skin conditions.
+
+---
+
+## 🛠️ Built With
+
+- **Vanilla JavaScript** — No framework, just clean ES6+ modules
+- **Tailwind CSS** — Utility-first styling
 - **HTML5 QR Code** — Barcode scanning library
+- **Vite** — Build tool and dev server
 - **localStorage** — Client-side data persistence
 
----
-
-## 📦 Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/summer-marie/skincare-lab.git
-cd skincare-lab
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
-The app will be available at `http://localhost:3005` (or 3006 if port is in use).
-
----
-
-## 🏗️ Project Structure
-
-```
-skincare-lab/
-├── src/
-│   ├── main.js              # App initialization & core logic
-│   ├── style.css            # Tailwind imports & custom styles
-│   ├── modules/
-│   │   ├── scanner.js       # Barcode scanning + API integration
-│   │   └── routineEngine.js # Routine logic & conflict detection
-│   └── data/
-│       └── inci-data.json   # Ingredient database (if present)
-├── index.html               # App shell & screen markup
-├── vite.config.ts           # Vite configuration
-├── package.json             # Dependencies & scripts
-└── README.md                # You are here
-```
-
----
-
-## 🎨 Design System
-
-### Colors
-- **Primary** — Muted blue-green (#4a8c8f / #5da5a8 dark)
-- **Warning** — Amber for medium-strength ingredients
-- **Error** — Red for strong actives and allergen alerts
-- **Gender-neutral palette** — Inclusive design for all teens
-
-### Typography
-- **Font** — DM Sans (300-700 weights)
-- **Scale** — Responsive sizing with rem units
-- **Hierarchy** — Clear headings and labels
-
-### Components
-- **Buttons** — Primary, Secondary, Ghost, Danger variants
-- **Chips** — Single-select (type) and multi-select (actives)
-- **Cards** — Product cards, section cards, detail views
-- **Badges** — Gentle/Medium/Strong color coding
-
-### Layout
-- **Max Width** — 430px (26.875rem) for optimal mobile experience
-- **Bottom Nav** — Fixed navigation with 3 tabs
-- **Screen Transitions** — Smooth 200ms fade-in animations
-
----
-
-## 🧪 Key Functionality
-
-### Barcode Scanning Flow
-1. User chooses from three scan options:
-   - **Camera** — Live camera scanning with permission request
-   - **File Upload** — Select an image containing a barcode
-   - **Manual Entry** — Type in a 13-digit barcode number
-2. Html5-qrcode library processes the barcode (camera/file modes)
-3. App searches the verified product database (60+ entries)
-4. If not found locally, queries Open Beauty Facts API
-5. Product data prefills the add form with safety scores and actives
-6. User reviews and saves to localStorage
-7. Error handling shows descriptive messages for unknown barcodes
-
-### Routine Building Logic
-- **AM Order** — Cleanser → Serum → Treatment → Moisturizer → SPF
-- **PM Order** — Cleanser → Exfoliant → Serum → Treatment → Moisturizer
-- Products auto-sorted by type and usage timing
-- Empty slots displayed with dashed borders
-- Click any step to view product details
-
-### Conflict Warnings
-- ⚠️ **Too many strong treatments** — 2+ strong actives used simultaneously
-- ⚠️ **BP + retinoid clash** — Benzoyl peroxide deactivates retinoids (PM only)
-- ⚠️ **Multiple exfoliants** — AHA + salicylic acid or multiple acids layered together
-- ⚠️ **Missing SPF** — No sunscreen detected in morning routine
-- Multiple warnings displayed together with clear separators
-
----
-
-## 🔧 Scripts
-
-```bash
-npm run dev       # Start development server (Vite)
-npm run build     # Build for production
-npm run preview   # Preview production build
-```
-
----
-
-## 📚 Data Sources
-
-### Product Database
-- **Verified Barcodes** — 60+ real products from brands like:
-  - CeraVe (cleansers, moisturizers, sunscreens)
-  - The Ordinary (serums, treatments)
-  - Paula's Choice (exfoliants, retinols)
-  - La Roche-Posay (sunscreens, cleansers)
-  - Neutrogena, EltaMD, Differin, Glow Recipe
-- **Open Beauty Facts API** — Real-time product lookup for unknown barcodes
-- **Custom INCI Database** — Safety scores, skin compatibility, allergen data
-
-### Ingredient Interaction Logic
-
-The conflict detection rules are based on established dermatological research and best practices:
-
-#### Scientific Foundation
-- **Retinoid + Benzoyl Peroxide** — BP oxidizes retinoids, reducing efficacy ([Journal of Drugs in Dermatology](https://jddonline.com/), dermatology consensus)
-- **Multiple Exfoliants (AHA + BHA)** — Over-exfoliation risk, compromised skin barrier ([American Academy of Dermatology](https://www.aad.org/) guidelines)
-- **Layering Strong Actives** — Increased irritation potential for sensitive/teen skin (clinical practice standards)
-- **SPF Requirements** — Essential for retinoid users and daily UV protection ([FDA sunscreen guidance](https://www.fda.gov/))
-
-#### Safety Scoring System
-Product safety scores (1-10 scale) are derived from:
-- **Ingredient concentration** — Higher actives = stronger treatments
-- **pH levels** — Affects exfoliant strength and irritation potential
-- **Known irritants** — Fragrance, alcohol, essential oils flagged
-- **Clinical data** — Peer-reviewed studies on ingredient safety
-
-#### Skin Compatibility
-Recommendations for skin types based on:
-- **Comedogenicity ratings** — Non-comedogenic ingredients for acne-prone skin
-- **Hydration profiles** — Humectants for dry skin, mattifying for oily
-- **Sensitivity markers** — Gentle formulations for reactive skin
-- **Teen-specific needs** — Age-appropriate actives and strengths
-
-**Note:** While based on scientific research, SkinScript is educational software, not medical advice. Always patch test new products and consult a dermatologist for personalized recommendations.
-
----
-
-## 🎯 Target Audience
-
-SkinScript is designed for:
-- **Teens** (ages 13-19) new to skincare
-- **Parents** helping kids build safe routines
-- **Beginners** learning about active ingredients
-- **Anyone** wanting to avoid irritating product combinations
-
----
-
-## ⚠️ Disclaimer
-
-**SkinScript is not a replacement for a dermatologist.** This app provides educational guidance based on common ingredient interactions, but individual skin conditions vary. When in doubt, consult a licensed dermatologist or skincare professional.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+AI-assisted development with human oversight and decision-making. See [TECHNICAL-README.md](TECHNICAL-README.md) for the full AI usage disclosure.
 
 ---
 
@@ -224,36 +197,21 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 💡 Future Enhancements
-
-- [ ] User accounts & cloud sync
-- [ ] AI-powered product recognition from photos
-- [ ] Expanded ingredient database (200+ products)
-- [ ] Routine sharing with friends
-- [ ] Progress tracking & skin journals
-- [ ] Before/after photo comparisons
-- [ ] Ingredient education library
-- [ ] PWA support for offline use
-- [ ] Multi-language support
-- [ ] Export routine as PDF/image
-- [ ] Product expiration tracking
-- [ ] Budget tracking for skincare spending
-
----
-
 ## 👤 Author
 
-**Summer Marie** — [GitHub](https://github.com/summer-marie)
+**Summer Marie**  
+[GitHub](https://github.com/summer-marie) • [Live App](https://myskinscript.app)
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Open Food Facts** — Product data API
-- **Html5-qrcode** — Barcode scanning library
-- **Tailwind CSS** — Utility-first CSS framework
-- **Vite** — Next-generation frontend tooling
+- **Open Beauty Facts** — Cosmetics ingredient database and API
+- **UPC Item DB** — Universal barcode verification
+- **HTML5-qrcode** — Barcode scanning library
+- **Tailwind CSS** — Styling framework
+- **Vite** — Modern build tooling
 
 ---
 
-Built with 💙 for healthier skin routines
+**Built with care for healthier, happier skin 💙**
