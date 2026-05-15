@@ -103,44 +103,18 @@ export async function scanFromFile(file) {
 
 /**
  * Look up product data by barcode.
- * Two-tier lookup strategy:
- *   1. Local inci-data.json  → Full skincare metadata (actives, safety, etc.)
- *   2. Open Food Facts API   → Fallback for general products (name/brand only)
- * This ensures comprehensive data for curated products while still supporting
- * lookups for products not in our database.
+ * Static lookup strategy - checks only local inci-data.json database.
+ * No external API calls - fully offline capable.
  *
  * @param {string} barcode - UPC/EAN barcode string
- * @returns {Promise<Object|null>} Normalized product data or null if not found
+ * @returns {Promise<Object|null>} Product data from local database or null if not found
  */
 export async function lookupBarcode(barcode) {
-  // ── 1. Check local INCI data (preferred source) ──────────────────────
+  // Check local INCI data only
   if (INCI_MAP[barcode]) {
     return INCI_MAP[barcode];
   }
 
-  // ── 2. Fall back to Open Food Facts API (general products) ───────────
-  // Provides basic product info but lacks skincare-specific metadata
-  try {
-    const response = await fetch(
-      `https://world.openfoodfacts.org/api/v2/product/${barcode}.json`,
-    );
-    const data = await response.json();
-
-    if (data.status === 1 && data.product) {
-      return {
-        barcode,
-        name: data.product.product_name || "Unknown Product",
-        brand: data.product.brands || "Unknown Brand",
-        type: "moisturizer", // best-guess default; user can correct in form
-        actives: [],
-        safetyScore: null, // not available from OFF
-        skinCompatibility: [],
-        allergenWarnings: [],
-      };
-    }
-  } catch (err) {
-    console.error("Barcode lookup failed:", err);
-  }
-
+  // Not found in local database
   return null;
 }
